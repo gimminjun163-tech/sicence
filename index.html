@@ -1069,7 +1069,7 @@ function renderSetup(){
     </div></div>
     <div class="step"><div class="step-n">4</div><div class="step-body"><h3>출제 방식</h3>
       <div class="modes">
-       <button class="mode" data-act="mode" data-v="ai" aria-pressed="${state.mode==='ai'}" ${aiOK?'':'disabled'}><b>AI 새 문제</b><span>${aiState==='checking'?'AI 연결 확인 중…':aiOK?'볼 때마다 새 문제를 출제하고 서술형도 AI가 채점해요. 내 Claude 사용량을 써요.':'이 화면에서는 AI를 쓸 수 없어요.'}</span></button>
+       <button class="mode" data-act="mode" data-v="ai" aria-pressed="${state.mode==='ai'}" ${aiOK?'':'disabled'}><b>AI 새 문제</b><span>${aiState==='checking'?'AI 연결 확인 중…':aiOK?'볼 때마다 새 문제를 출제하고 서술형도 AI가 채점해요. 내 Claude 사용량을 써요.':'이 화면에서는 AI를 쓸 수 없어요.(제작자 화면만 ai 가능)'}</span></button>
        <button class="mode" data-act="mode" data-v="bank" aria-pressed="${state.mode==='bank'}"><b>기본 문제은행</b><span>바로 시작해요. 계산 문제는 숫자가 매번 바뀌어요. 최상위권·극심화는 AI 출제를 권해요.</span></button>
       </div>
       <div class="go"><button class="btn" data-act="start" ${state.sel.length&&state.types.length?'':'disabled'}>시험지 받기</button>
