@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>과학 단원평가실</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,8 +79,8 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .pk{font-size:12.5px;border-radius:6px;background:var(--chip);padding:3px 4px 3px 9px;display:inline-flex;gap:4px;align-items:center}
 .pk button{border:0;background:none;color:var(--muted);padding:0 4px;font-size:14px;line-height:1}
 
-.diffs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
-@media (max-width:620px){.diffs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.diffs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+@media (max-width:760px){.diffs{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .diff{border:1px solid var(--rule);background:none;border-radius:8px;padding:9px 10px;text-align:left;min-width:0}
 .diff b{display:block;font-size:14px}
 .diff span{font-size:11.5px;color:var(--muted)}
@@ -261,6 +260,96 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .omr-ox{display:grid;grid-template-columns:28px repeat(2,1fr);align-items:center;gap:4px;padding-block:3px;border-bottom:1px solid var(--omr-soft)}
 .omr-sub{margin:10px 0 4px;font-size:12px;color:var(--omr);font-weight:600}
 
+/* similar-question practice */
+.simtag{font-family:var(--f-ui);font-size:11.5px;font-weight:600;color:var(--omr);border:1px solid var(--omr);border-radius:5px;padding:0 6px;margin-right:6px;white-space:nowrap;vertical-align:1px}
+.simbox{margin-top:16px;padding:14px;border:1.5px dashed var(--omr);border-radius:10px;background:var(--omr-soft);display:flex;flex-direction:column;gap:8px}
+.simbox b{font-size:14.5px}
+.simbox p{margin:0;font-size:13px;color:var(--muted)}
+.simrow{display:flex;gap:8px;flex-wrap:wrap}
+/* tabs, custom input, picking, level test */
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--rule);margin:-6px 0 14px;flex-wrap:wrap}
+.tab{border:0;background:none;padding:10px 14px;font-size:14.5px;font-weight:600;color:var(--muted);border-bottom:2.5px solid transparent;margin-bottom:-1px}
+.tab:hover{color:var(--ink)}
+.tab[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--omr)}
+.ctext{display:block;width:100%;min-height:180px;border:1px solid var(--rule-strong);border-radius:6px;padding:10px 12px;font-family:var(--f-paper);font-size:15px;line-height:1.7;background:var(--paper);resize:vertical}
+.pickq{flex:none;margin-left:auto;align-self:flex-start;border:1px solid var(--rule);background:none;border-radius:999px;padding:1px 10px;font-family:var(--f-ui);font-size:12px;color:var(--muted);white-space:nowrap}
+.pickq:hover{border-color:var(--omr);color:var(--omr)}
+.pickq[aria-pressed="true"]{border-color:var(--omr);background:var(--omr);color:#fff}
+.simbox hr{border:0;border-top:1px dashed var(--omr);margin:4px 0;width:100%}
+.simrow .lbl2{font-size:13px;align-self:center;color:var(--muted)}
+.meter{margin:18px 0 10px;position:relative;padding-bottom:24px}
+.mtrack{height:10px;border-radius:5px;background:var(--chip);position:relative}
+.mband{position:absolute;top:-1px;bottom:-1px;background:var(--omr-soft);border:1.5px solid var(--omr);border-radius:5px;transition:left .4s,width .4s}
+.mmark{position:absolute;top:-6px;width:3px;height:22px;background:var(--ink);border-radius:2px;transform:translateX(-1.5px);transition:left .4s}
+@media (prefers-reduced-motion:reduce){.mband,.mmark{transition:none}}
+.mticks{position:absolute;left:0;right:0;top:18px;font-size:11px;color:var(--muted)}
+.mticks span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.mticks span:first-child{transform:none}.mticks span:last-child{transform:translateX(-100%)}
+@media (max-width:480px){.mticks span{font-size:0}.mticks span::first-letter{font-size:11px}}
+.lv-ctrl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:16px 0 0 32px}
+@media (max-width:560px){.lv-ctrl{margin-left:0}}
+.lv-load{display:flex;gap:10px;align-items:center;padding:28px 4px;color:var(--muted);font-size:14px}
+.lvlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.lvlist li{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:8px;align-items:center}
+.lvlist .ok,.lvrev .ok{color:var(--ok);font-weight:700}
+.lvlist .no,.lvrev .no{color:var(--pen);font-weight:700}
+.lvlist .lvv{font-variant-numeric:tabular-nums;color:var(--muted)}
+.lvbig{font-family:var(--f-pen);color:var(--pen);font-size:80px;line-height:.9;font-variant-numeric:tabular-nums}
+.lvbig small{font-size:32px}
+.lvchart{width:100%;height:auto;display:block;margin-top:12px;max-width:560px}
+.lvrev{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.lvrev details{border:1px solid var(--rule);border-radius:8px;padding:8px 12px}
+.lvrev summary{cursor:pointer;font-size:13.5px;display:flex;gap:8px;align-items:baseline}
+/* custom input form */
+.cf-sec{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.cf-lab{font-size:13px;font-weight:600;color:var(--ink)}
+.cf-row{display:flex;gap:8px;align-items:center;min-width:0}
+.cf-pref{flex:none;min-width:22px;text-align:center;font-family:var(--f-paper);font-weight:700}
+.cf-in{flex:1;min-width:0;width:100%;border:1px solid var(--rule-strong);border-radius:6px;padding:7px 10px;background:var(--paper);font-family:var(--f-paper);font-size:15px}
+.ctext.sm{min-height:96px}
+.cf-chip{min-width:44px;justify-content:center;font-size:15px}
+.tbl-scroll{overflow-x:auto;max-width:100%}
+.tbl-ed{border-collapse:collapse}
+.tbl-ed td{padding:0;border:1px solid var(--rule-strong)}
+.tcell{width:104px;border:0;padding:7px 8px;background:var(--paper);font-size:13.5px;text-align:center;font-variant-numeric:tabular-nums}
+.tcell.th{background:var(--chip);font-weight:600}
+.preview{border:1px dashed var(--rule-strong);border-radius:8px;padding:0 14px 10px;pointer-events:none}
+.preview .q{padding-top:12px}
+/* timer, pause */
+#clock.low,#clock2.low,#clock3.low{color:var(--pen);font-weight:700}
+.omr-clock{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid var(--omr-soft);font-size:13px;font-variant-numeric:tabular-nums}
+.mclock{font-variant-numeric:tabular-nums;font-size:13px}
+.pausebox{margin:24px 0;padding:36px 16px;border:1.5px dashed var(--omr);border-radius:12px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.pausebox b{font-size:19px;font-family:var(--f-paper)}
+/* grading tab */
+.gscore{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}
+.gtag{display:inline-block;margin-bottom:8px;font-size:12.5px;font-weight:600;border:1.5px solid var(--pen);color:var(--pen);border-radius:5px;padding:1px 8px}
+.gacc{margin-top:14px;border-radius:10px;padding:12px 14px;border:1.5px solid var(--rule)}
+.gacc p{margin:6px 0 0;font-size:14px}
+.gacc.ok{border-color:var(--ok)}.gacc.ok b{color:var(--ok)}
+.gacc.mid{border-color:var(--omr);background:var(--omr-soft)}.gacc.mid b{color:var(--omr)}
+.gacc.no{border-color:var(--pen)}.gacc.no b{color:var(--pen)}
+.gtab{border-collapse:collapse;width:100%;margin-top:14px;font-size:13.5px;min-width:480px}
+.gtab th,.gtab td{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+.gtab th{background:var(--chip);font-weight:600}
+.gtab .n{text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gtab .ok{color:var(--ok);font-weight:700}.gtab .mid{color:var(--omr);font-weight:700}.gtab .no{color:var(--pen);font-weight:700}
+.glists{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px}
+.gl{border-left:3px solid var(--rule);padding:2px 0 2px 10px;min-width:0}
+.gl.ok{border-color:var(--ok)}.gl.mid{border-color:var(--omr)}.gl.no{border-color:var(--pen)}
+.gl ul{margin:4px 0 0;padding-left:18px;font-size:13.5px}
+.gcomp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+@media (max-width:620px){.gcomp{grid-template-columns:minmax(0,1fr)}}
+.gcomp>div{border:1px solid var(--rule);border-radius:8px;padding:10px 12px;min-width:0}
+.gcomp p,.gimp{margin:4px 0 0;font-family:var(--f-paper);font-size:14.5px;line-height:1.7;overflow-wrap:anywhere}
+.gimp{border:1px solid var(--ok);border-radius:8px;padding:10px 12px}
+/* subject switch */
+.subj{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;padding:3px;gap:3px;margin:-4px 0 14px}
+.subjb{border:0;background:none;padding:7px 24px;border-radius:999px;font-weight:700;font-size:15px;color:var(--muted)}
+.subjb[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container[display="true"]{margin:.4em 0!important}
+.hint code{font-size:12px;background:var(--chip);padding:0 4px;border-radius:4px}
 /* mobile bar */
 .mbar{display:none}
 @media (max-width:900px){
@@ -275,8 +364,8 @@ h1,h2,h3{text-wrap:balance;margin:0}
 <script>
 /* ===================== 데이터 ===================== */
 const LVN={m:'중학교',h:'고등학교'};
-const GROUPS={m:['중1','중2','중3'],h:['통합과학','물리학Ⅰ','화학Ⅰ','생명과학Ⅰ','지구과학Ⅰ']};
-const UNITS=[
+let GROUPS={m:['중1','중2','중3'],h:['통합과학','물리학Ⅰ','화학Ⅰ','생명과학Ⅰ','지구과학Ⅰ']};
+let UNITS=[
 ['m1a','m','중1','지권의 변화','지권의 층상 구조, 광물과 암석(화성암·퇴적암·변성암), 암석의 순환, 풍화, 판의 운동, 지진과 화산'],
 ['m1b','m','중1','여러 가지 힘','중력, 무게와 질량, 탄성력, 마찰력, 부력'],
 ['m1c','m','중1','생물의 다양성','생물 다양성, 변이와 자연 선택, 종, 생물 분류(5계), 생물 다양성 보전'],
@@ -321,9 +410,9 @@ const UNITS=[
 ['h4b','h','지구과학Ⅰ','유체 지구의 변화','기단과 전선, 온대 저기압, 태풍, 해수의 성질(수온·염분·밀도), 대기 대순환과 표층 순환, 심층 순환, 용승, 엘니뇨와 라니냐, 기후 변화'],
 ['h4c','h','지구과학Ⅰ','우주의 신비','별의 물리량(표면 온도·광도·반지름), H-R도, 별의 진화와 핵융합, 외계 행성 탐사, 은하의 분류, 허블 법칙, 빅뱅 우주론, 암흑 물질과 암흑 에너지'],
 ].map(([id,lv,grp,name,kw])=>({id,lv,grp,name,kw}));
-const U=Object.fromEntries(UNITS.map(u=>[u.id,u]));
+let U=Object.fromEntries(UNITS.map(u=>[u.id,u]));
 
-const DIFF=[
+let DIFF=[
  {name:'쉬움',short:'교과서 기본',desc:'교과서 본문 개념과 용어를 확인하는 수준이에요.',
   ai:'교과서 본문의 기본 개념과 용어를 확인하는 수준. 한 단계로 풀리며 계산은 공식에 한 번 대입하는 정도.'},
  {name:'보통',short:'내신 평균',desc:'학교 내신 평균 수준. 개념을 상황에 적용하고 간단히 계산해요.',
@@ -334,14 +423,16 @@ const DIFF=[
   ai:'하이탑 등 심화 문제집의 최상위권(최고난도) 문항 수준. 대부분 수치가 들어간 실험·관찰 자료(표)를 주고, 단원 안의 여러 개념을 동시에 써야 풀리며, 다단계 정량 계산이나 정교한 ㄱ·ㄴ·ㄷ 판단이 필요하다. 쉽게 지울 수 있는 오답 선지를 넣지 않는다.'},
  {name:'극심화',short:'최상위권 그 이상',desc:'영재학교 입시·올림피아드 1차 수준. 낯선 상황을 모델링하고 정밀하게 추론해요.',
   ai:'최상위권 문제보다 더 어려운 수준. 과학영재학교·과학고 입시, KJSO·KPhO·KChO 같은 올림피아드 1차 수준으로, 낯선 상황에 개념을 적용해 모델을 세우고 여러 단계의 정량 추론을 해야 한다. 함정이 있는 자료, 결과에서 조건을 거꾸로 추론하는 문항, 선지 하나하나를 정밀하게 따져야 하는 문항을 포함한다. 단, 해당 학교급 교육과정 개념과 그 자연스러운 확장만으로 풀 수 있어야 하고 정답은 반드시 하나여야 한다.'},
+ {name:'경시',short:'올림피아드 본선',desc:'과학 올림피아드 본선·영재학교 2단계 수준이에요. 극심화보다 한 단계 더 어려워요.',
+  ai:'극심화보다 확실히 더 어려운 경시대회 수준. 고등은 KPhO·KChO·KBO·KESO 본선, 중등은 KJSO 본선·영재학교 2단계 수준으로, 교과 개념을 깊게 확장해 낯선 현상을 정량적으로 모델링하고 여러 단계의 추론과 계산을 엄밀하게 해야 한다. 함정과 조건을 꼼꼼히 따져야 하며 정답은 반드시 하나여야 한다. 대학 지식이 꼭 필요하면 문제 안에 정의나 공식을 제시한다.'},
 ];
-const TYPES={ox:{name:'OX 퀴즈',sub:'맞으면 O, 틀리면 X',pts:2},match:{name:'선 연결',sub:'짝을 찾아 선으로 잇기 · 쌍마다 부분 점수',pts:4},mc:{name:'객관식',sub:'5지선다',pts:3},fill:{name:'주관식',sub:'한 단어·한 수치로 답하기',pts:3},short:{name:'서술형',sub:'2~4문장 · 기준표 부분 점수',pts:5},essay:{name:'논술형',sub:'긴 글 · 근거와 논리 채점',pts:10}};
+const TYPES={ox:{name:'OX 퀴즈',sub:'맞으면 O, 틀리면 X',pts:2},match:{name:'선 연결',sub:'짝을 찾아 선으로 잇기 · 쌍마다 부분 점수',pts:4},mc:{name:'객관식',sub:'5지선다',pts:3},box:{name:'〈보기〉 선택형',sub:'ㄱ·ㄴ·ㄷ 보기 조합 고르기',pts:3},fill:{name:'주관식',sub:'한 단어·한 수치로 답하기',pts:3},short:{name:'서술형',sub:'2~4문장 · 기준표 부분 점수',pts:5},essay:{name:'논술형',sub:'긴 글 · 근거와 논리 채점',pts:10}};
 const CN=['①','②','③','④','⑤'];
 
 /* ---------- 기본 문제은행 (객관식) ---------- */
 const S=(q,c,a,e,d,b)=>({q,c,a,e,d,b});
 const BOX5=['ㄱ','ㄴ','ㄱ, ㄷ','ㄴ, ㄷ','ㄱ, ㄴ, ㄷ'];
-const BANK={
+let BANK={
 m1a:[S('마그마가 지표 근처에서 빠르게 식어 만들어져 광물 결정의 크기가 작은 암석은?',['현무암','화강암','석회암','편마암','사암'],0,'마그마가 지표 가까이에서 빨리 식으면 결정이 자랄 시간이 부족해 결정이 작은 화산암(현무암 등)이 된다. 화강암은 깊은 곳에서 천천히 식은 심성암이다.',1),
  S('해령에서 새로운 해양 지각이 만들어지는 판의 경계는?',['발산형 경계','수렴형 경계','보존형 경계','섭입대','습곡 산맥'],0,'해령은 두 판이 서로 멀어지는 발산형 경계로, 맨틀 물질이 올라와 새 해양 지각이 생긴다.',2),
  S('퇴적암에서 주로 나타나는 특징만을 <보기>에서 있는 대로 고른 것은?',BOX5,2,'층리와 화석은 퇴적 과정에서 만들어지는 퇴적암의 특징이다. 엽리는 높은 압력을 받은 변성암에서 나타난다.',2,['ㄱ. 층리','ㄴ. 엽리','ㄷ. 화석']),
@@ -468,7 +559,7 @@ h4c:[S('H-R도에서 주계열의 왼쪽 위에 위치한 별일수록 갖는 �
 
 /* ---------- 기본 문제은행 (서술형·논술형) ---------- */
 const W=(type,q,ans,rub,d)=>({type,q,ans,rub,d});
-const WBANK={
+let WBANK={
 m1a:[W('short','화강암과 현무암의 결정 크기가 다른 까닭을 마그마가 식는 장소와 속도를 들어 서술하시오.','화강암은 마그마가 지하 깊은 곳에서 천천히 식어 결정이 크고, 현무암은 지표 근처에서 빠르게 식어 결정이 작다.',[['화강암: 깊은 곳에서 천천히 식어 결정이 큼',2],['현무암: 지표 근처에서 빨리 식어 결정이 작음',2],['냉각 속도가 느릴수록 결정이 크다는 관계를 밝힘',1]],2),
  W('essay','우리나라가 일본보다 지진과 화산 활동이 적은 까닭을 판의 경계와 관련지어 논술하시오.','지진과 화산은 판과 판이 만나는 경계에 집중된다. 일본은 태평양판·필리핀판이 유라시아판 아래로 섭입하는 수렴형 경계 부근에 있어 판의 충돌로 응력이 쌓이고 마그마가 생성되어 지진·화산이 잦다. 반면 우리나라는 유라시아판 내부에 있어 판 경계에서 멀기 때문에 상대적으로 활동이 적다. 다만 판 내부에서도 응력이 전달되어 지진이 일어날 수 있다.',[['일본은 수렴형 경계(섭입대) 부근에 위치함',3],['우리나라는 판 경계에서 떨어진 판 내부에 위치함',3],['판 경계에서 지진·화산이 집중되는 원리(응력, 마그마 생성)를 설명',2],['논리적 구성과 정확한 과학 용어',2]],3)],
 m1b:[W('short','물속에 완전히 잠긴 물체를 더 깊이 넣어도 부력의 크기가 변하지 않는 까닭을 서술하시오.','부력은 물체가 밀어낸 물의 무게, 즉 물에 잠긴 부피에 따라 결정되는데, 완전히 잠긴 뒤에는 잠긴 부피가 변하지 않기 때문이다.',[['부력은 잠긴 부피(밀어낸 물의 양)에 따라 결정됨',3],['완전히 잠긴 뒤에는 잠긴 부피가 일정함',2]],2)],
@@ -527,7 +618,7 @@ h4c:[W('short','허블 법칙이 우주 팽창의 증거가 되는 까닭을 서
 };
 
 /* ---------- 기본 문제은행 (OX · 선 연결 · 주관식) ---------- */
-const OXB={
+let OXB={
 m1a:[['화강암은 마그마가 지하 깊은 곳에서 천천히 식어 만들어진 암석이다.',1,'화강암은 심성암으로 결정이 크다.'],['엽리는 퇴적암에서 나타나는 대표적인 구조이다.',0,'엽리는 변성암에서 나타난다. 퇴적암의 대표적인 특징은 층리이다.']],
 m1b:[['질량은 측정하는 장소가 바뀌어도 변하지 않는다.',1,'질량은 물체의 고유한 양이다. 장소에 따라 달라지는 것은 무게이다.'],['마찰력은 항상 물체의 운동 방향과 같은 방향으로 작용한다.',0,'마찰력은 운동을 방해하는 방향, 즉 운동 방향과 반대로 작용한다.']],
 m1c:[['생김새가 비슷하면 모두 같은 종이다.',0,'자연 상태에서 짝짓기해 생식 능력이 있는 자손을 낳아야 같은 종이다.'],['같은 종의 생물 사이에서도 형질이 조금씩 다른 것을 변이라고 한다.',1,'변이는 자연 선택의 재료가 된다.']],
@@ -572,7 +663,7 @@ h4a:[['관입한 화성암은 관입당한 암석보다 나중에 생성되었�
 h4b:[['북반구에서 태풍의 진행 방향 오른쪽은 위험 반원이다.',1,'바람 방향과 이동 방향이 같아 풍속이 더해진다.'],['라니냐 시기에는 무역풍이 평소보다 약해진다.',0,'라니냐 때는 무역풍이 강해진다.']],
 h4c:[['주계열성은 질량이 클수록 수명이 짧다.',1,'연료를 빠르게 소모한다.'],['멀리 있는 은하일수록 청색 편이가 크게 나타난다.',0,'멀리 있는 은하일수록 적색 편이가 크다.']],
 };
-const MATB={
+let MATB={
 m1a:[['현무암','지표 근처에서 빨리 식은 마그마'],['화강암','지하 깊은 곳에서 천천히 식은 마그마'],['사암','모래가 쌓여 굳은 암석'],['편마암','높은 열과 압력으로 변성된 암석']],
 m1b:[['중력','지구가 물체를 끌어당기는 힘'],['탄성력','변형된 물체가 원래대로 돌아가려는 힘'],['마찰력','접촉면에서 운동을 방해하는 힘'],['부력','유체가 물체를 위로 밀어 올리는 힘']],
 m1c:[['종','생식 능력이 있는 자손을 낳는 무리'],['변이','같은 종 개체 사이의 형질 차이'],['원핵생물계','핵막이 없는 단세포 생물'],['균계','몸이 균사로 된 생물']],
@@ -618,7 +709,7 @@ h4b:[['온난 전선','층운형 구름, 넓은 지역에 약한 비'],['한랭 
 h4c:[['타원 은하','나선팔 없음, 늙은 별 위주'],['나선 은하','나선팔, 젊은 별과 성간 물질'],['불규칙 은하','일정한 모양이 없음'],['퀘이사','매우 멀고 밝은 활동 은하핵']],
 };
 const F=(q,acc,e,num)=>({q,acc,e,num});
-const FILB={
+let FILB={
 m1a:F('지각을 이루는 암석이 오랜 시간에 걸쳐 다른 종류의 암석으로 변해 가는 과정을 암석의 (    )이라고 한다.',['순환','암석의순환'],'화성암·퇴적암·변성암은 서로 바뀌며 순환한다.'),
 m1b:F('용수철처럼 변형된 물체가 원래 모양으로 돌아가려는 힘을 (    )이라고 한다.',['탄성력'],'탄성력은 변형된 방향과 반대 방향으로 작용한다.'),
 m1c:F('같은 종의 생물 사이에서 나타나는 형질의 차이를 (    )라고 한다.',['변이'],'변이는 자연 선택의 재료가 된다.'),
@@ -671,7 +762,7 @@ const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(M
 const fmt=v=>{const x=Math.round(v*100)/100;return String(Object.is(x,-0)?0:x)};
 function mkN(q,val,unit,wrongs,e,concept,extra){
   const want=fmt(val),set=[want];
-  for(const w of [...wrongs,val*2,val/2,val*1.5,val*3,val*0.75,val+1,val*4,val/4,val*1.25]){
+  for(const w of [...wrongs,val*2,val/2,val*1.5,val*3,val*0.75,val+1,val*4,val/4,val*1.25,val-1,val+2,val-2,val+3,val+5]){
     if(set.length>=5)break; if(!isFinite(w)||(w<=0&&val>0))continue; const s=fmt(w); if(!set.includes(s))set.push(s);
   }
   const sorted=set.map(Number).sort((a,b)=>a-b).map(fmt);
@@ -681,7 +772,7 @@ function mkT(q,correct,wrongs,e,concept,extra){
   const set=[correct]; for(const w of wrongs){if(set.length>=5)break;if(!set.includes(w))set.push(w)}
   const c=shuffle(set); return Object.assign({q,c,a:c.indexOf(correct),e,concept,ans:correct},extra||{});
 }
-const GEN={};
+let GEN={};
 GEN.m1b=[d=>{
   const k=pick([0.5,1,2,3]),F1=pick([2,4,5,10]),x1=F1*k,F2=pick([3,6,8,12,15].filter(v=>v!==F1));
   if(d<=2){const x=F2*k;return mkN(`어떤 용수철에 ${F1} N의 힘을 가했더니 ${fmt(x1)} cm 늘어났다. 같은 용수철에 ${F2} N의 힘을 가하면 늘어나는 길이는? (단, 탄성 한계 안에서 실험한다.)`,x,' cm',[x1+F2,F2/k,x+x1],`용수철이 늘어난 길이는 힘의 크기에 비례한다. 1 N당 ${fmt(k)} cm 늘어나므로 ${F2} N이면 ${F2} × ${fmt(k)} = ${fmt(x)} cm이다.`,'탄성력과 비례')}
@@ -814,13 +905,406 @@ GEN.h4c=[d=>{
 /* clean-up: m3g d>=4 branch uses mkTNum directly */
 GEN.m3g[0]=(orig=>d=>{if(d>=4){const p=pick([0.1,0.01,0.001]),dist=Math.round(1/p),m=ri(1,8),M=m-5*Math.log10(dist/10);return mkTNum(m,M,dist)}return orig(d)})(GEN.m3g[0]);
 
+/* ===================== 수학 데이터 ===================== */
+const MGROUPS={m:['중1','중2','중3'],h:['공통수학1','공통수학2','대수','미적분Ⅰ','확률과 통계','미적분Ⅱ','기하']};
+const MUNITS=[
+['n1a','m','중1','소인수분해','소수와 합성수, 거듭제곱, 소인수분해, 약수의 개수, 최대공약수와 최소공배수'],
+['n1b','m','중1','정수와 유리수','양수와 음수, 절댓값, 수의 대소, 정수와 유리수의 사칙계산'],
+['n1c','m','중1','문자와 식','문자의 사용, 식의 값, 일차식의 계산, 등식의 성질, 일차방정식의 풀이와 활용'],
+['n1d','m','중1','좌표평면과 그래프','순서쌍과 좌표, 그래프의 해석, 정비례 y=ax, 반비례 y=a/x'],
+['n1e','m','중1','기본 도형','점·선·면, 각, 맞꼭지각, 수직과 수선, 평행선의 성질, 위치 관계, 작도와 합동'],
+['n1f','m','중1','평면도형과 입체도형','다각형의 내각과 외각, 대각선, 원과 부채꼴, 다면체와 회전체, 겉넓이와 부피'],
+['n1g','m','중1','자료의 정리와 해석','줄기와 잎 그림, 도수분포표, 히스토그램, 도수분포다각형, 상대도수'],
+['n2a','m','중2','유리수와 순환소수','유한소수와 무한소수, 순환소수를 분수로 나타내기'],
+['n2b','m','중2','식의 계산','지수법칙, 단항식의 곱셈과 나눗셈, 다항식의 덧셈과 뺄셈, 등식의 변형'],
+['n2c','m','중2','일차부등식','부등식의 성질, 일차부등식의 풀이와 활용'],
+['n2d','m','중2','연립일차방정식','미지수가 2개인 연립일차방정식, 가감법과 대입법, 활용'],
+['n2e','m','중2','일차함수와 그래프','일차함수, 기울기와 절편, 그래프의 평행과 교점, 일차함수와 일차방정식의 관계'],
+['n2f','m','중2','삼각형과 사각형의 성질','이등변삼각형, 직각삼각형의 합동, 외심과 내심, 평행사변형, 여러 가지 사각형'],
+['n2g','m','중2','도형의 닮음','닮음의 성질, 삼각형의 닮음 조건, 평행선과 선분의 길이의 비, 무게중심, 닮음비와 넓이·부피의 비'],
+['n2h','m','중2','피타고라스 정리','피타고라스 정리와 그 역, 평면도형과 입체도형에서의 활용'],
+['n2i','m','중2','확률','경우의 수, 확률의 뜻과 성질, 확률의 계산'],
+['n3a','m','중3','제곱근과 실수','제곱근의 뜻과 성질, 무리수와 실수, 근호를 포함한 식의 계산'],
+['n3b','m','중3','다항식의 곱셈과 인수분해','곱셈 공식, 인수분해 공식, 인수분해의 활용'],
+['n3c','m','중3','이차방정식','이차방정식의 풀이(인수분해·완전제곱식·근의 공식), 근의 개수, 활용'],
+['n3d','m','중3','이차함수와 그래프','y=ax²과 y=a(x-p)²+q의 그래프, 꼭짓점과 축, 이차함수의 식 구하기'],
+['n3e','m','중3','삼각비','삼각비의 뜻, 특수각의 삼각비, 삼각비의 활용(길이·넓이)'],
+['n3f','m','중3','원의 성질','원의 현과 접선, 원주각과 중심각, 원에 내접하는 사각형, 접선과 현이 이루는 각'],
+['n3g','m','중3','대푯값과 산포도','평균·중앙값·최빈값, 편차, 분산과 표준편차'],
+['n3h','m','중3','상관관계','산점도, 양·음의 상관관계, 상관관계의 해석'],
+['p1a','h','공통수학1','다항식','다항식의 연산, 항등식과 나머지정리, 인수정리, 인수분해'],
+['p1b','h','공통수학1','방정식과 부등식','복소수, 이차방정식의 판별식, 근과 계수의 관계, 이차함수와 이차방정식, 여러 가지 방정식과 부등식'],
+['p1c','h','공통수학1','경우의 수','합의 법칙과 곱의 법칙, 순열, 조합'],
+['p1d','h','공통수학1','행렬','행렬의 뜻, 행렬의 덧셈·뺄셈·실수배, 행렬의 곱셈'],
+['p2a','h','공통수학2','도형의 방정식','두 점 사이의 거리, 내분점, 직선의 방정식, 점과 직선 사이의 거리, 원의 방정식, 도형의 이동'],
+['p2b','h','공통수학2','집합과 명제','집합의 연산, 명제와 조건, 역·이·대우, 필요조건과 충분조건, 절대부등식'],
+['p2c','h','공통수학2','함수와 그래프','함수, 합성함수, 역함수, 유리함수와 무리함수'],
+['p3a','h','대수','지수함수와 로그함수','지수와 로그, 지수함수와 로그함수의 그래프, 지수·로그 방정식과 부등식'],
+['p3b','h','대수','삼각함수','호도법, 삼각함수의 뜻과 그래프, 사인법칙과 코사인법칙'],
+['p3c','h','대수','수열','등차수열, 등비수열, 수열의 합(Σ), 수학적 귀납법'],
+['p4a','h','미적분Ⅰ','함수의 극한과 연속','함수의 극한, 극한의 성질, 함수의 연속, 최대·최소 정리와 사잇값 정리'],
+['p4b','h','미적분Ⅰ','미분','미분계수와 도함수, 접선의 방정식, 평균값 정리, 증가·감소와 극값, 그래프의 활용'],
+['p4c','h','미적분Ⅰ','적분','부정적분, 정적분, 넓이, 속도와 거리'],
+['p5a','h','확률과 통계','순열과 조합','중복순열, 같은 것이 있는 순열, 중복조합, 이항정리'],
+['p5b','h','확률과 통계','확률','확률의 덧셈정리, 여사건, 조건부확률, 사건의 독립과 종속, 독립시행'],
+['p5c','h','확률과 통계','통계','확률변수와 확률분포, 이항분포, 정규분포, 모평균의 추정'],
+['p6a','h','미적분Ⅱ','수열의 극한','수열의 극한, 급수, 등비급수'],
+['p6b','h','미적분Ⅱ','미분법','지수·로그·삼각함수의 미분, 여러 가지 미분법, 도함수의 활용'],
+['p6c','h','미적분Ⅱ','적분법','치환적분, 부분적분, 정적분의 활용(넓이·부피)'],
+['p7a','h','기하','이차곡선','포물선, 타원, 쌍곡선, 이차곡선의 접선'],
+['p7b','h','기하','평면벡터','벡터의 연산, 벡터의 성분, 내적, 직선과 원의 벡터방정식'],
+['p7c','h','기하','공간도형과 공간좌표','직선과 평면의 위치 관계, 삼수선 정리, 정사영, 공간좌표, 구의 방정식'],
+].map(([id,lv,grp,name,kw])=>({id,lv,grp,name,kw}));
+const MU=Object.fromEntries(MUNITS.map(u=>[u.id,u]));
+const MDIFF=[
+ {name:'쉬움',short:'교과서 기본',desc:'교과서 예제 수준이에요. 개념과 공식을 바로 적용해요.',
+  ai:'교과서 예제 수준. 공식이나 개념을 한 번 적용하면 풀린다.'},
+ {name:'보통',short:'내신 평균',desc:'학교 내신 평균 수준이에요. 두세 단계 계산과 기본 응용을 해요.',
+  ai:'학교 내신 시험 평균 수준(유형 문제집 기본·중간 단계). 두세 단계의 계산과 기본 응용을 요구한다.'},
+ {name:'어려움',short:'내신 고난도',desc:'내신 변별 문항 수준이에요. 여러 개념을 연결하고 조건을 해석해요.',
+  ai:'내신 고난도 변별 문항 수준(유형 문제집 최고 단계·일품 수준). 여러 개념을 연결하고 조건을 해석해야 한다.'},
+ {name:'최상위권',short:'최상위 심화',desc:'최상위수학·블랙라벨 최고난도 수준이에요. 케이스 분류와 다단계 추론을 해요.',
+  ai:'최상위수학·블랙라벨 등 심화 문제집의 최고난도 문항 수준. 여러 단원 개념을 함께 쓰고, 케이스 분류·그래프 해석·다단계 추론이 필요하다. 쉽게 지울 수 있는 오답 선지를 넣지 않는다.'},
+ {name:'극심화',short:'최상위권 그 이상',desc:'영재학교·과학고 입시와 KMO 1차 수준이에요. 정형화되지 않은 문제를 추론해요.',
+  ai:'최상위권보다 더 어려운 수준. 영재학교·과학고 입시 수학, KMO(한국수학올림피아드) 1차 수준으로, 정형화되지 않은 문제에서 규칙을 찾고 논리적으로 추론해야 한다. 해당 학교급 교육과정 개념과 그 자연스러운 확장으로 풀 수 있어야 하며 정답은 하나여야 한다.'},
+ {name:'경시',short:'올림피아드 본선',desc:'KMO 2차·본선 수준이에요. 극심화보다 한 단계 더 어려워요.',
+  ai:'극심화보다 확실히 더 어려운 경시대회 수준. KMO 2차(중등부·고등부) 수준으로, 정수론·조합·부등식·기하의 경시 기법(비둘기집 원리, 불변량, 극단 원리, 산술-기하 평균 부등식, 합동식 등)을 써서 깊이 추론해야 한다. 객관식이나 단답형이면 답이 하나의 값으로 정해지게 한다. 교육과정 밖 개념이 필요하면 문제 안에 정의를 제시한다.'},
+];
+const MOXB={
+n1a:[['1은 소수도 합성수도 아니다.',1,'1은 약수가 1개뿐이라 소수도 합성수도 아니다.'],['모든 소수는 홀수이다.',0,'2는 짝수인 소수이다.']],
+n1b:[['0은 양의 정수도 음의 정수도 아니다.',1,'0은 부호가 없는 정수이다.'],['절댓값이 같은 두 수는 항상 같다.',0,'3과 −3은 절댓값이 같지만 서로 다르다.']],
+n1c:[['$2x+3=2x+5$를 만족하는 x는 없다.',1,'정리하면 $3=5$가 되어 해가 없다.'],['$3(x-1)$과 $3x-1$은 같은 식이다.',0,'$3(x-1)=3x-3$이다.']],
+n1d:[['정비례 관계 $y=ax$의 그래프는 항상 원점을 지난다.',1,'x=0이면 y=0이다.'],['반비례 관계 $y=\\frac{a}{x}$의 그래프는 원점을 지난다.',0,'x=0에서 정의되지 않으므로 원점을 지나지 않는다.']],
+n1e:[['맞꼭지각의 크기는 서로 같다.',1,'두 각 모두 같은 각과 평각을 이룬다.'],['한 평면 위에서 만나지 않는 두 직선은 꼬인 위치에 있다.',0,'한 평면 위에서 만나지 않는 두 직선은 평행하다. 꼬인 위치는 공간에서만 생긴다.']],
+n1f:[['정다면체는 모두 5가지이다.',1,'정사면체, 정육면체, 정팔면체, 정십이면체, 정이십면체이다.'],['원기둥을 회전축을 포함하는 평면으로 자른 단면은 원이다.',0,'단면은 직사각형이다.']],
+n1g:[['상대도수의 총합은 항상 1이다.',1,'각 계급의 도수를 전체 도수로 나눈 값을 모두 더하면 1이다.']],
+n2a:[['모든 순환소수는 유리수이다.',1,'순환소수는 분수로 나타낼 수 있다.'],['$\\frac{3}{12}$은 유한소수로 나타낼 수 없다.',0,'$\\frac{3}{12}=\\frac{1}{4}$이고 분모의 소인수가 2뿐이라 유한소수이다.']],
+n2b:[['$(a^2)^3=a^5$이다.',0,'$(a^2)^3=a^6$이다.'],['$a^3\\times a^4=a^7$이다.',1,'밑이 같은 거듭제곱의 곱은 지수를 더한다.']],
+n2c:[['부등식의 양변에 같은 음수를 곱하면 부등호의 방향이 바뀐다.',1,'예: $2<3$에서 $-2>-3$.']],
+n2d:[['연립방정식의 두 일차방정식의 그래프가 평행하면 해가 없다.',1,'교점이 없으므로 해가 없다.']],
+n2e:[['일차함수 $y=-2x+3$의 그래프는 x의 값이 커질 때 y의 값도 커진다.',0,'기울기가 음수라 x가 커지면 y는 작아진다.'],['기울기가 같고 y절편이 다른 두 일차함수의 그래프는 평행하다.',1,'만나지 않는다.']],
+n2f:[['이등변삼각형의 꼭지각의 이등분선은 밑변을 수직이등분한다.',1,'두 삼각형이 SAS 합동이 된다.'],['마름모의 두 대각선의 길이는 항상 같다.',0,'두 대각선의 길이가 같은 것은 직사각형이다. 마름모의 대각선은 서로를 수직이등분한다.']],
+n2g:[['닮음비가 1 : 2인 두 평면도형의 넓이의 비는 1 : 4이다.',1,'넓이의 비는 닮음비의 제곱이다.']],
+n2h:[['세 변의 길이가 6, 8, 10인 삼각형은 직각삼각형이다.',1,'$6^2+8^2=10^2$이다.']],
+n2i:[['어떤 사건이 일어날 확률 p는 $0\\le p\\le 1$이다.',1,'반드시 일어나면 1, 절대 일어나지 않으면 0이다.']],
+n3a:[['$\\sqrt{(-3)^2}=-3$이다.',0,'$\\sqrt{(-3)^2}=\\sqrt{9}=3$이다.'],['모든 실수는 수직선 위의 한 점에 대응한다.',1,'실수는 수직선을 빈틈없이 채운다.']],
+n3b:[['$(a+b)^2=a^2+b^2$이다.',0,'$(a+b)^2=a^2+2ab+b^2$이다.']],
+n3c:[['이차방정식 $x^2+1=0$은 실수인 해를 갖지 않는다.',1,'실수의 제곱은 음수가 될 수 없다.']],
+n3d:[['$y=-x^2$의 그래프는 위로 볼록하다.',1,'$x^2$의 계수가 음수이다.']],
+n3e:[['$0°<A<90°$일 때 $\\sin A$의 값은 1보다 클 수 있다.',0,'빗변이 가장 길어 $\\sin A<1$이다.']],
+n3f:[['한 원에서 같은 호에 대한 원주각의 크기는 모두 같다.',1,'모두 중심각의 절반이다.']],
+n3g:[['분산이 클수록 자료가 평균 주위에 몰려 있다.',0,'분산이 클수록 자료가 넓게 흩어져 있다.']],
+n3h:[['상관관계가 있으면 반드시 인과관계가 있다.',0,'상관관계는 함께 변하는 경향일 뿐 원인과 결과를 뜻하지 않는다.'],['키와 몸무게처럼 한쪽이 커질 때 다른 쪽도 대체로 커지면 양의 상관관계이다.',1,'산점도의 점들이 오른쪽 위로 향한다.']],
+p1a:[['다항식 f(x)를 $x-a$로 나눈 나머지는 $f(a)$이다.',1,'나머지정리이다.']],
+p1b:[['계수가 실수인 이차방정식의 판별식이 0보다 작으면 서로 다른 두 허근을 갖는다.',1,'$D<0$이면 두 허근을 갖는다.']],
+p1c:[['$_n\\mathrm{C}_r={}_n\\mathrm{C}_{n-r}$이다.',1,'r개를 뽑는 것은 남길 n−r개를 고르는 것과 같다.']],
+p1d:[['두 행렬 A, B에 대하여 항상 $AB=BA$이다.',0,'행렬의 곱셈은 교환법칙이 성립하지 않는다.']],
+p2a:[['두 직선의 기울기의 곱이 −1이면 두 직선은 수직이다.',1,'수직 조건이다.']],
+p2b:[['명제 $p\\to q$가 참이면 그 대우 $\\sim q\\to\\sim p$도 참이다.',1,'명제와 대우의 참거짓은 일치한다.'],['명제가 참이면 그 역도 항상 참이다.',0,'역은 참이 아닐 수 있다.']],
+p2c:[['일대일대응인 함수만 역함수를 갖는다.',1,'역함수가 존재할 조건이다.']],
+p3a:[['$\\log_a xy=\\log_a x\\times\\log_a y$이다.',0,'$\\log_a xy=\\log_a x+\\log_a y$이다.']],
+p3b:[['$y=\\sin x$의 주기는 $2\\pi$이다.',1,'$\\sin(x+2\\pi)=\\sin x$이다.']],
+p3c:[['등비수열의 공비가 1이면 모든 항이 같다.',1,'매번 1을 곱하기 때문이다.']],
+p4a:[['함수 f(x)가 x=a에서 연속이면 x=a에서 미분가능하다.',0,'$y=|x|$는 x=0에서 연속이지만 미분가능하지 않다.']],
+p4b:[["$f'(a)=0$이면 f(x)는 x=a에서 반드시 극값을 갖는다.",0,"$f(x)=x^3$은 $f'(0)=0$이지만 극값이 없다."]],
+p4c:[['$\\int_a^a f(x)\\,dx=0$이다.',1,'적분 구간의 길이가 0이다.']],
+p5a:[['$_n\\mathrm{H}_r={}_{n+r-1}\\mathrm{C}_r$이다.',1,'중복조합의 공식이다.']],
+p5b:[['확률이 0이 아닌 두 사건 A, B가 서로 배반이면 서로 독립이다.',0,'배반이면 $P(A\\cap B)=0\\ne P(A)P(B)$이므로 독립이 아니다.']],
+p5c:[['이항분포 B(n, p)의 평균은 np이다.',1,'이항분포의 평균 공식이다.']],
+p6a:[['$\\lim_{n\\to\\infty}\\left(1+\\frac{1}{n}\\right)^n=e$이다.',1,'e의 정의이다.']],
+p6b:[["$(e^x)'=e^x$이다.",1,'지수함수 $e^x$는 미분해도 자기 자신이다.']],
+p6c:[['$\\int\\frac{1}{x}\\,dx=\\ln|x|+C$이다.',1,'$(\\ln|x|)\'=\\frac{1}{x}$이다.']],
+p7a:[['타원 위의 한 점에서 두 초점까지의 거리의 합은 일정하다.',1,'타원의 정의이다.']],
+p7b:[['영벡터가 아닌 두 벡터의 내적이 0이면 두 벡터는 수직이다.',1,'$\\vec a\\cdot\\vec b=|\\vec a||\\vec b|\\cos\\theta=0$이므로 $\\theta=90°$이다.']],
+p7c:[['좌표공간에서 점 (1, 2, 3)과 xy평면 사이의 거리는 3이다.',1,'z좌표의 절댓값이다.']],
+};
+const MMATB={
+n1f:[['정사면체','면이 4개'],['정육면체','면이 6개'],['정팔면체','면이 8개'],['정십이면체','면이 12개']],
+n2e:[['$y=2x+1$','기울기 2, y절편 1'],['$y=-x+3$','기울기 −1, y절편 3'],['$y=\\frac{1}{2}x$','원점을 지난다'],['$y=4$','x축에 평행하다']],
+n2f:[['평행사변형','두 쌍의 대변이 각각 평행'],['직사각형','네 각이 모두 직각'],['마름모','네 변의 길이가 모두 같음'],['사다리꼴','한 쌍의 대변만 평행']],
+n3b:[['$x^2-9$','$(x+3)(x-3)$'],['$x^2+6x+9$','$(x+3)^2$'],['$x^2-x-6$','$(x-3)(x+2)$'],['$x^2+x-6$','$(x+3)(x-2)$']],
+n3e:[['$\\sin 30°$','$\\frac{1}{2}$'],['$\\cos 30°$','$\\frac{\\sqrt{3}}{2}$'],['$\\tan 45°$','1'],['$\\tan 60°$','$\\sqrt{3}$']],
+p1c:[['$_5\\mathrm{P}_2$','20'],['$_5\\mathrm{C}_2$','10'],['$3!$','6'],['$_4\\mathrm{C}_4$','1']],
+p3a:[['$\\log_2 8$','3'],['$\\log_3 \\frac{1}{9}$','−2'],['$\\log_5 1$','0'],['$\\log_{10} 10000$','4']],
+p3b:[['$\\sin\\frac{\\pi}{6}$','$\\frac{1}{2}$'],['$\\cos\\pi$','−1'],['$\\tan\\frac{\\pi}{4}$','1'],['$\\cos\\frac{\\pi}{2}$','0']],
+p4b:[['$x^3$','$3x^2$'],['$x^2+x$','$2x+1$'],['$5x$','5'],['$7$','0']],
+p6b:[['$e^x$','$e^x$'],['$\\ln x$','$\\frac{1}{x}$'],['$\\sin x$','$\\cos x$'],['$\\cos x$','$-\\sin x$']],
+p7a:[['포물선','한 점과 한 직선에서 같은 거리'],['타원','두 초점까지 거리의 합이 일정'],['쌍곡선','두 초점까지 거리의 차가 일정'],['원','한 점에서 같은 거리']],
+};
+const MWBANK={
+n1c:[W('short','일차방정식 $3(x-2)=x+4$를 푸는 과정을 서술하고 해를 구하시오.','괄호를 풀면 $3x-6=x+4$, 이항하면 $2x=10$, 따라서 $x=5$이다.',[['분배법칙으로 괄호 풀기',1],['이항하여 $2x=10$으로 정리',2],['해 $x=5$',2]],1)],
+n2d:[W('short','연립방정식 $x+y=7$, $2x-y=2$를 가감법으로 푸는 과정을 서술하시오.','두 식을 더하면 $3x=9$이므로 $x=3$. $x+y=7$에 대입하면 $y=4$이다.',[['두 식을 더해 y를 소거',2],['$x=3$',1.5],['대입하여 $y=4$',1.5]],1)],
+n2h:[W('short','세 변의 길이가 5, 12, 13인 삼각형이 직각삼각형인 까닭을 서술하시오.','$5^2+12^2=25+144=169=13^2$이므로 가장 긴 변의 제곱이 나머지 두 변의 제곱의 합과 같다. 피타고라스 정리의 역에 의해 직각삼각형이다.',[['제곱의 합 계산',2],['$13^2$과 같음을 확인',1],['피타고라스 정리의 역 언급',2]],1),
+ W('essay','피타고라스 정리 $a^2+b^2=c^2$을 넓이를 이용하여 증명하시오. (그림은 말로 설명해도 된다)','한 변이 $a+b$인 정사각형 안에 빗변이 c인 직각삼각형 4개를 돌려 붙이면 가운데에 한 변이 c인 정사각형이 생긴다. 큰 정사각형의 넓이는 $(a+b)^2=4\\times\\frac{ab}{2}+c^2$. 전개하면 $a^2+2ab+b^2=2ab+c^2$이므로 $a^2+b^2=c^2$이다.',[['도형 배치를 명확히 설명',3],['넓이 관계식 세우기',3],['식을 정리해 결론 도출',2],['논리적 구성과 정확한 용어',2]],3)],
+n3c:[W('short','이차방정식 $x^2-6x+k=0$이 중근을 가질 때 k의 값과 그 중근을 구하는 과정을 서술하시오.','중근을 가지려면 $x^2-6x+k$가 완전제곱식이어야 하므로 $k=\\left(\\frac{6}{2}\\right)^2=9$. 이때 $(x-3)^2=0$이므로 중근은 $x=3$이다.',[['중근 조건(완전제곱식 또는 판별식 0)',2],['$k=9$',1.5],['중근 $x=3$',1.5]],2)],
+n3d:[W('short','이차함수 $y=x^2-4x+1$의 꼭짓점의 좌표를 완전제곱식으로 구하는 과정을 서술하시오.','$y=(x^2-4x+4)-4+1=(x-2)^2-3$이므로 꼭짓점은 $(2,-3)$이다.',[['완전제곱식으로 변형',3],['꼭짓점 $(2,-3)$',2]],1)],
+p1b:[W('short','이차방정식 $x^2-3x+1=0$의 두 근을 α, β라 할 때, $\\alpha^2+\\beta^2$의 값을 근과 계수의 관계로 구하는 과정을 서술하시오.','$\\alpha+\\beta=3$, $\\alpha\\beta=1$이다. $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=9-2=7$이다.',[['근과 계수의 관계',2],['곱셈 공식 변형',2],['답 7',1]],2)],
+p2b:[W('short','명제 "자연수 n에 대하여 $n^2$이 짝수이면 n은 짝수이다"가 참임을 대우를 이용해 증명하시오.','대우는 "n이 홀수이면 $n^2$은 홀수이다"이다. $n=2k-1$이면 $n^2=4k^2-4k+1=2(2k^2-2k)+1$로 홀수이다. 대우가 참이므로 원래 명제도 참이다.',[['대우를 바르게 진술',2],['$n=2k-1$로 놓고 홀수임을 보이기',2],['대우가 참이면 원명제도 참',1]],2),
+ W('essay','$\\sqrt{2}$가 무리수임을 귀류법으로 증명하시오.','$\\sqrt2$가 유리수라고 가정하면 $\\sqrt2=\\frac{p}{q}$(p, q는 서로소인 자연수)로 쓸 수 있다. $2q^2=p^2$이므로 $p^2$이 짝수이고 p도 짝수이다. $p=2k$로 놓으면 $q^2=2k^2$이므로 q도 짝수이다. p, q가 서로소라는 가정에 모순이므로 $\\sqrt2$는 무리수이다.',[['귀류법 가정 설정(서로소)',2],['p가 짝수임을 보임',3],['q도 짝수임을 보여 모순 도출',3],['논리적 구성',2]],3)],
+p3c:[W('short','첫째항이 3, 공차가 4인 등차수열의 첫째항부터 제10항까지의 합을 구하는 과정을 서술하시오.','$a_{10}=3+9\\times4=39$이고 $S_{10}=\\frac{10(3+39)}{2}=210$이다.',[['일반항 또는 합의 공식',2],['제10항 39 또는 공식 대입',2],['답 210',1]],1),
+ W('essay','수학적 귀납법으로 모든 자연수 n에 대하여 $1+2+\\cdots+n=\\frac{n(n+1)}{2}$임을 증명하시오.','n=1일 때 좌변과 우변이 모두 1이다. n=k일 때 성립한다고 가정하면, n=k+1일 때 좌변은 $\\frac{k(k+1)}{2}+(k+1)=\\frac{(k+1)(k+2)}{2}$이므로 성립한다. 따라서 모든 자연수 n에 대하여 성립한다.',[['n=1 확인',2],['n=k 가정',2],['n=k+1 유도',4],['결론과 논리적 구성',2]],2)],
+p4b:[W('short','함수 $f(x)=x^3-3x$의 극댓값과 극솟값을 구하는 과정을 서술하시오.',"$f'(x)=3x^2-3=3(x+1)(x-1)=0$에서 $x=-1, 1$. $x=-1$의 좌우에서 $f'$의 부호가 +에서 −로 바뀌므로 극댓값 $f(-1)=2$, $x=1$에서 −에서 +로 바뀌므로 극솟값 $f(1)=-2$이다.",[['도함수와 $f\'(x)=0$의 해',2],['부호 변화로 극대·극소 판정',2],['극댓값 2, 극솟값 −2',1]],2)],
+p4c:[W('short','곡선 $y=x^2$과 직선 $y=x$로 둘러싸인 부분의 넓이를 구하는 과정을 서술하시오.','교점은 $x=0, 1$이고 $0\\le x\\le1$에서 $x\\ge x^2$이다. 넓이는 $\\int_0^1(x-x^2)\\,dx=\\frac12-\\frac13=\\frac16$이다.',[['교점 구하기',1],['위아래 판단과 적분식',2],['계산 $\\frac16$',2]],2),
+ W('essay','$\\int_0^1 x^2\\,dx=\\frac{1}{3}$임을 구분구적법으로 설명하시오.','구간 [0, 1]을 n등분하고 오른쪽 끝점으로 만든 직사각형 넓이의 합은 $S_n=\\sum_{k=1}^{n}\\left(\\frac{k}{n}\\right)^2\\frac1n=\\frac{1}{n^3}\\cdot\\frac{n(n+1)(2n+1)}{6}$이다. $n\\to\\infty$일 때 $S_n\\to\\frac{2}{6}=\\frac13$이다.',[['n등분과 직사각형 넓이의 합 설정',3],['제곱의 합 공식 적용',3],['극한 계산',2],['논리적 구성',2]],3)],
+};
+/* ---------- 수학 계산 문제 생성기 ---------- */
+const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b]}return a||1};
+const red=(p,q)=>{if(q<0){p=-p;q=-q}const g=gcd(p,q);return[p/g,q/g]};
+function ftex(p,q){[p,q]=red(p,q);if(q===1)return`$${p}$`;return p<0?`$-\\frac{${-p}}{${q}}$`:`$\\frac{${p}}{${q}}$`}
+const fin=(p,q)=>ftex(p,q).slice(1,-1);
+function mkF(q,p,d,wr,e,concept){
+  const right=ftex(p,d),set=[right];
+  for(const [a,b] of wr){if(set.length>=5)break;if(!b)continue;const s=ftex(a,b);if(!set.includes(s))set.push(s)}
+  for(let k=1;set.length<5&&k<40;k++){const s=ftex(p+(k%2?k:-k),d+(k>3?1:0));if(!set.includes(s))set.push(s)}
+  const c=shuffle(set);return{q,c,a:c.indexOf(right),e,concept,num:p/d,ans:right,unit:''};
+}
+const sg=n=>n===0?'':n>0?`+${n}`:`${n}`;
+const lin=(c,v='x')=>c===0?'':c===1?`+${v}`:c===-1?`-${v}`:`${sg(c)}${v}`;
+const co=(c,v='x')=>c===1?v:c===-1?`-${v}`:`${c}${v}`;
+const divs=n=>{const r=[];for(let i=1;i<=n;i++)if(n%i===0)r.push(i);return r};
+const fact=n=>n<=1?1:n*fact(n-1),nP=(n,r)=>r>n?0:fact(n)/fact(n-r),nC=(n,r)=>r>n||r<0?0:fact(n)/(fact(r)*fact(n-r));
+const TRI=[[3,4,5],[5,12,13],[8,15,17],[7,24,25],[6,8,10],[9,12,15],[20,21,29]];
+const tx23=(a,b,c)=>[[2,a],[3,b],[5,c]].filter(x=>x[1]).map(([p,e])=>e>1?`${p}^{${e}}`:`${p}`).join('\\times ');
+const mat=(a,b,c,d)=>`\\begin{pmatrix}${a}&${b}\\\\${c}&${d}\\end{pmatrix}`;
+const MG={};
+MG.n1a=[d=>{
+  if(d<=2){let a,b,c,N;do{a=ri(1,4);b=ri(0,2);c=ri(0,1);N=2**a*3**b*5**c}while(N<12||N>600);const n=(a+1)*(b+1)*(c+1);
+    return mkN(`$${N}$의 약수의 개수는?`,n,'개',[a+b+c+1,(a+b+c)*2,n+2,n-1],`$${N}=${tx23(a,b,c)}$이므로 약수의 개수는 ${[a,b,c].filter(Boolean).map(x=>`(${x}+1)`).join('×')}=${n}개이다.`,'약수의 개수')}
+  let a,b,c,N;do{a=ri(1,5);b=ri(1,3);c=ri(0,2);N=2**a*3**b*5**c}while(N>3000||(a%2===0&&b%2===0&&c%2===0));const k=(a%2?2:1)*(b%2?3:1)*(c%2?5:1);
+  return mkN(`$${N}\\times x$가 어떤 자연수의 제곱이 되게 하는 가장 작은 자연수 x는?`,k,'',[k*2,k*4,k+1,k*3],`$${N}=${tx23(a,b,c)}$에서 지수가 홀수인 소인수를 하나씩 곱해야 하므로 $x=${k}$이다.`,'제곱수 만들기')}];
+MG.n1b=[d=>{
+  if(d<=2){const a=ri(2,9),b=ri(2,9),c=ri(2,15),v=-a*b+c;return mkN(`$(-${a})\\times ${b}-(-${c})$의 값은?`,v,'',[a*b+c,-a*b-c,a*b-c,v+2],`$(-${a})\\times ${b}=-${a*b}$이고 $-(-${c})=+${c}$이므로 $-${a*b}+${c}=${v}$이다.`,'정수의 혼합 계산')}
+  const p=ri(1,5),q=pick([2,3,4,5,6]),r=ri(1,5),s=pick([2,3,4,5,6]),e=ri(2,4),num=p*s+r*e*q,den=q*s;
+  return mkF(`$\\frac{${p}}{${q}}-\\frac{${r}}{${s}}\\times(-${e})$의 값은?`,num,den,[[p*s-r*e*q,den],[p*s+r*q,den],[(p-r)*e,q*s],[num,den*2]],`곱셈을 먼저 하면 $-\\frac{${r}}{${s}}\\times(-${e})=+\\frac{${r*e}}{${s}}$이다. 따라서 $\\frac{${p}}{${q}}+\\frac{${r*e}}{${s}}=${fin(num,den)}$이다.`,'유리수의 혼합 계산')}];
+MG.n1c=[d=>{
+  if(d<=2){let a,c,x0,b,k;do{a=ri(2,7);c=ri(1,6);x0=ri(-5,8);b=ri(-9,9)}while(a===c);k=a*x0+b-c*x0;
+    return mkN(`일차방정식 $${a}x${sg(b)}=${co(c)}${sg(k)}$의 해는?`,x0,'',[-x0,x0+1,x0-1,x0*2||3],`x항은 좌변, 상수항은 우변으로 이항하면 $${co(a-c)}=${k-b}$이므로 $x=${x0}$이다.`,'일차방정식')}
+  let a,b,p,k,q;do{a=ri(2,6);b=ri(1,5);p=ri(1,6);k=ri(-4,6)}while(a===b);q=a*(k-p)-b*k;
+  return mkN(`x에 대한 일차방정식 $${a}(x-${p})=${co(b)}+m$의 해가 $x=${k}$일 때, 상수 m의 값은?`,q,'',[-q,q+p,q-a,a*k-p],`$x=${k}$를 대입하면 $${a}\\times(${k-p})=${b*k}+m$이므로 $m=${q}$이다.`,'해가 주어진 방정식')}];
+MG.n1d=[d=>{
+  if(d<=2){const p=pick([2,3,4,-2,-3]),a=pick([2,3,-2,-3,4]),r=pick([-5,-4,-3,3,4,5,6]);return mkN(`정비례 관계 $y=ax$의 그래프가 점 $(${p}, ${a*p})$를 지날 때, $x=${r}$에서의 y의 값은?`,a*r,'',[-a*r,a+r,a*r+a,a*p],`$${a*p}=a\\times(${p})$에서 $a=${a}$이다. 따라서 $y=${a}\\times(${r})=${a*r}$이다.`,'정비례')}
+  const A=pick([6,8,12,18,20,24,30,36]),p=pick(divs(A)),q=A/p;
+  if(d===3){const r=pick(divs(A).filter(x=>x!==p));return mkN(`반비례 관계 $y=\\frac{a}{x}$의 그래프가 점 $(${p}, ${q})$를 지날 때, $x=${r}$에서의 y의 값은?`,A/r,'',[r*A,q,A/r+1,A/r*2],`$a=${p}\\times ${q}=${A}$이므로 $y=\\frac{${A}}{${r}}=${A/r}$이다.`,'반비례')}
+  const n=2*divs(A).length;return mkN(`반비례 관계 $y=\\frac{a}{x}$의 그래프가 점 $(${p}, ${q})$를 지날 때, 이 그래프 위의 점 중 x좌표와 y좌표가 모두 정수인 점의 개수는?`,n,'개',[n/2,n+2,n-2,n*2],`$a=${A}$이다. x가 ${A}의 약수이거나 그 음수일 때 y도 정수이다. 양의 약수가 ${n/2}개이므로 모두 ${n}개이다.`,'반비례 그래프의 정수점')}];
+MG.n1e=[d=>{
+  if(d<=2){const a=ri(20,160);return mkN(`두 직선이 한 점에서 만나 생기는 네 각 중 한 각의 크기가 $${a}°$일 때, 이 각과 이웃한 각의 크기는?`,180-a,'°',[a,360-a,180-a+10,Math.abs(90-a)||45],`이웃한 두 각은 평각을 이루므로 $180°-${a}°=${180-a}°$이다.`,'맞꼭지각과 평각')}
+  const h=ri(1,11),m=ri(1,29)*2;let raw=Math.abs(30*h-5.5*m),ang=raw>180?360-raw:raw;
+  return mkN(`시계가 ${h}시 ${m}분을 가리킬 때, 시침과 분침이 이루는 각 중 작은 쪽 각의 크기는?`,ang,'°',[360-ang,Math.abs(30*h-6*m)%180,ang+15,Math.abs(ang-30)],`시침은 12시 방향에서 $30°\\times${h}+0.5°\\times${m}=${30*h+0.5*m}°$, 분침은 $6°\\times${m}=${6*m}°$ 위치에 있다. 두 바늘의 차가 $${raw}°$이므로 작은 쪽 각은 $${ang}°$이다.`,'시계의 각')}];
+MG.n1f=[d=>{
+  if(d<=2){const n=ri(5,15),v=n*(n-3)/2;return mkN(`${n}각형의 대각선의 개수는?`,v,'개',[n*(n-3),n*(n-2)/2,v+n,n-3],`한 꼭짓점에서 그을 수 있는 대각선은 $${n}-3=${n-3}$개이고, 중복을 빼면 $\\frac{${n}\\times${n-3}}{2}=${v}$개이다.`,'대각선의 개수')}
+  if(d===3){const n=pick([5,6,8,9,10,12,15,18,20]),v=180*(n-2)/n;return mkN(`정${n}각형의 한 내각의 크기는?`,v,'°',[360/n,180-v/2,v-10,v+10],`내각의 합은 $180°\\times(${n}-2)=${180*(n-2)}°$이므로 한 내각은 $${180*(n-2)}°\\div${n}=${v}°$이다.`,'다각형의 내각')}
+  const r=pick([2,3,4,6]),th=pick([60,90,120,135,150,240]),tp=(p,q)=>{[p,q]=red(p,q);return q===1?(p===1?'$\\pi$':`$${p}\\pi$`):`$\\frac{${p}}{${q}}\\pi$`};
+  const right=tp(r*r*th,360);
+  return mkT(`반지름의 길이가 ${r}이고 중심각의 크기가 $${th}°$인 부채꼴의 넓이는?`,right,[tp(r*th,360),tp(2*r*th,360),tp(r*r*(360-th),360),tp(r*r,1),tp(r*r*th,180),tp(r*th,180),tp(r,1),tp(2*r,1)],`부채꼴의 넓이는 $\\pi r^2\\times\\frac{${th}}{360}=\\pi\\times${r*r}\\times\\frac{${th}}{360}$이므로 ${right}이다.`,'부채꼴의 넓이',{noFill:true})}];
+MG.n1g=[d=>{
+  if(d<=2){const N=pick([20,25,50]),f=ri(1,N-1);return mkN(`전체 도수가 ${N}인 도수분포표에서 어떤 계급의 도수가 ${f}일 때, 이 계급의 상대도수는?`,f/N,'',[(N-f)/N,f/100,f/(2*N),Math.min(0.99,f/N+0.1)],`상대도수는 (그 계급의 도수)÷(도수의 총합) $=${f}\\div${N}=${fmt(f/N)}$이다.`,'상대도수')}
+  const r1=pick([0.2,0.25,0.3,0.4]),N1=pick([20,40,60,80]),r2=pick([0.15,0.2,0.35,0.45]),N2=pick([20,40,60,100]),v=Math.round(r1*N1+r2*N2);
+  return mkN(`A반 ${N1}명에서 어떤 계급의 상대도수는 ${r1}이고, B반 ${N2}명에서 같은 계급의 상대도수는 ${r2}이다. 두 반 전체에서 이 계급에 속하는 학생 수는?`,v,'명',[Math.round((r1+r2)*(N1+N2)/2),Math.round(r1*N2+r2*N1),v+2,Math.round((r1+r2)*100)],`A반은 $${r1}\\times${N1}=${Math.round(r1*N1)}$명, B반은 $${r2}\\times${N2}=${Math.round(r2*N2)}$명이므로 모두 ${v}명이다.`,'상대도수의 활용')}];
+MG.n2a=[d=>{
+  if(d<=2){let ab;do{ab=ri(1,98)}while(ab%11===0);return mkF(`순환소수 $0.\\dot{${Math.floor(ab/10)}}\\dot{${ab%10}}$를 기약분수로 나타내면?`,ab,99,[[ab,100],[ab,90],[ab,9],[ab+1,99]],`$0.\\dot{${Math.floor(ab/10)}}\\dot{${ab%10}}=\\frac{${ab}}{99}$이고, 약분하면 ${ftex(ab,99)}이다.`,'순환소수를 분수로')}
+  let a,b;do{a=ri(1,9);b=ri(1,9)}while(a===b);const n=9*a+b;return mkF(`순환소수 $0.${a}\\dot{${b}}$를 기약분수로 나타내면?`,n,90,[[10*a+b,90],[10*a+b,99],[n,99],[n,100]],`$0.${a}\\dot{${b}}=\\frac{${10*a+b}-${a}}{90}=\\frac{${n}}{90}$이고, 약분하면 ${ftex(n,90)}이다.`,'순환소수를 분수로')}];
+MG.n2b=[d=>{
+  if(d<=2){const a=ri(2,4),b=ri(2,4),c=ri(1,6),e=ri(1,5),k=a*b+c-e;return mkN(`$(x^{${a}})^{${b}}\\times x^{${c}}\\div x^{${e}}=x^{k}$일 때, k의 값은?`,k,'',[a+b+c-e,a*b+c+e,k+1,k-1],`$(x^{${a}})^{${b}}=x^{${a*b}}$이므로 지수는 $${a*b}+${c}-${e}=${k}$이다.`,'지수법칙')}
+  if(d===3){const a=ri(2,6),b=ri(1,4),c=ri(1,3),k=a+2*b-3*c;return mkN(`$2^{${a}}\\times4^{${b}}\\div8^{${c}}=2^{k}$일 때, k의 값은?`,k,'',[a+b-c,a+2*b-c,k+2,k-1],`$4^{${b}}=2^{${2*b}}$, $8^{${c}}=2^{${3*c}}$이므로 $k=${a}+${2*b}-${3*c}=${k}$이다.`,'지수법칙')}
+  const [cf,form]=pick([[3,'2^{x+1}+2^{x}'],[5,'2^{x+2}+2^{x}'],[6,'2^{x+2}+2^{x+1}'],[7,'2^{x+2}+2^{x+1}+2^{x}']]),x=ri(2,7);
+  return mkN(`$${form}=${cf*2**x}$일 때, 자연수 x의 값은?`,x,'',[x+1,x-1,x+2,cf],`좌변을 $2^{x}$로 묶으면 $${cf}\\times2^{x}=${cf*2**x}$, $2^{x}=${2**x}$이므로 $x=${x}$이다.`,'지수법칙의 활용')}];
+MG.n2c=[d=>{
+  let a,c,b,k,R;do{a=ri(3,9);c=ri(1,a-1);b=ri(1,10);k=ri(1,20);R=(k+b)/(a-c)}while(R<1.5||R>15);const n=Math.floor(R);
+  return mkN(`일차부등식 $${a}x-${b}\\le ${co(c)}+${k}$를 만족하는 자연수 x의 개수는?`,n,'개',[n+1,n-1,n+2,n*2],`$${a-c}x\\le ${k+b}$, $x\\le ${fin(k+b,a-c)}$이므로 자연수 x는 1부터 ${n}까지 ${n}개이다.`,'일차부등식')}];
+MG.n2d=[d=>{
+  let x,y,a,b,c,e;do{x=ri(-4,6);y=ri(-4,6);a=ri(1,4);b=ri(1,4);c=ri(1,5);e=-ri(1,4)}while(a*e-b*c===0);const p=a*x+b*y,q=c*x+e*y,ask=d<=2?['x+y',x+y]:['xy',x*y];
+  return mkN(`연립방정식 $\\begin{cases}${co(a)}+${co(b,'y')}=${p}\\\\${co(c)}${e===-1?'-y':`${e}y`}=${q}\\end{cases}$의 해를 $x=p$, $y=q$라 할 때, ${ask[0]==='x+y'?'$p+q$':'$pq$'}의 값은?`,ask[1],'',[x-y,ask[0]==='x+y'?x*y:x+y,ask[1]+1,-ask[1]],`가감법으로 풀면 $x=${x}$, $y=${y}$이므로 ${ask[0]==='x+y'?'$p+q$':'$pq$'}$=${ask[1]}$이다.`,'연립일차방정식')}];
+MG.n2e=[d=>{
+  if(d<=2){const m=pick([-3,-2,-1,1,2,3,4]),k=ri(-6,6),x1=ri(-3,2),x2=x1+ri(1,4);return mkN(`두 점 $(${x1}, ${m*x1+k})$, $(${x2}, ${m*x2+k})$를 지나는 직선을 그래프로 하는 일차함수의 y절편은?`,k,'',[m,-k,k+m,k-m],`기울기는 $\\frac{${m*x2+k}-(${m*x1+k})}{${x2}-(${x1})}=${m}$이다. $y=${co(m)}+b$에 $(${x1}, ${m*x1+k})$를 대입하면 $b=${k}$이다.`,'일차함수의 식')}
+  let a,b,c,e,X;do{a=ri(-3,3);c=ri(-3,3);b=ri(-6,8);e=ri(-6,8);X=(e-b)/(a-c)}while(a===c||a===0||c===0||b===e||!Number.isInteger(X)||X===0);
+  const S=Math.abs(b-e)*Math.abs(X)/2;return mkN(`두 일차함수 $y=${co(a)}${sg(b)}$, $y=${co(c)}${sg(e)}$의 그래프와 y축으로 둘러싸인 삼각형의 넓이는?`,S,'',[S*2,S+Math.abs(X),Math.abs(b*e)/2||S+1,S+1],`두 그래프의 교점의 x좌표는 $${X}$이고, y절편은 각각 $${b}$, $${e}$이다. 넓이는 $\\frac12\\times${Math.abs(b-e)}\\times${Math.abs(X)}=${fmt(S)}$이다.`,'일차함수와 넓이')}];
+MG.n2f=[d=>{
+  if(d<=2){const t=pick([20,30,36,40,50,56,70,80,100,120]);return mkN(`이등변삼각형의 꼭지각의 크기가 $${t}°$일 때, 한 밑각의 크기는?`,(180-t)/2,'°',[180-t,t/2,(180+t)/2,(180-t)/2+10],`두 밑각의 크기가 같으므로 $(180°-${t}°)\\div2=${(180-t)/2}°$이다.`,'이등변삼각형')}
+  const t=pick([40,60,80,100]),B=(180-t)/2,v=180-t-B/2;return mkN(`$\\overline{AB}=\\overline{AC}$인 이등변삼각형 ABC에서 $\\angle A=${t}°$이다. $\\angle B$의 이등분선이 $\\overline{AC}$와 만나는 점을 D라 할 때, $\\angle ADB$의 크기는?`,v,'°',[B,180-B/2,t+B/2,90],`$\\angle B=${B}°$이므로 $\\angle ABD=${B/2}°$이다. 삼각형 ABD에서 $\\angle ADB=180°-${t}°-${B/2}°=${v}°$이다.`,'이등변삼각형과 각의 이등분선')}];
+MG.n2g=[d=>{
+  const a=ri(1,4),b=a+ri(1,3);
+  if(d<=2){const S=a*a*ri(2,6);return mkN(`닮음비가 ${a} : ${b}인 두 닮은 평면도형에서 작은 도형의 넓이가 ${S}일 때, 큰 도형의 넓이는?`,S*b*b/(a*a),'',[S*b/a,S*b**3/a**3,S*b*b/(a*a)+S,S+b-a],`넓이의 비는 $${a}^2:${b}^2=${a*a}:${b*b}$이므로 $${S}\\times\\frac{${b*b}}{${a*a}}=${fmt(S*b*b/(a*a))}$이다.`,'닮음비와 넓이의 비')}
+  const V=a**3*ri(1,4);return mkN(`닮음비가 ${a} : ${b}인 두 닮은 입체도형에서 작은 입체의 부피가 ${V}일 때, 큰 입체의 부피는?`,V*b**3/a**3,'',[V*b*b/(a*a),V*b/a,V*b**3/a**3+V,V*(b-a)**3||V+1],`부피의 비는 $${a}^3:${b}^3$이므로 $${V}\\times\\frac{${b**3}}{${a**3}}=${fmt(V*b**3/a**3)}$이다.`,'닮음비와 부피의 비')}];
+MG.n2h=[d=>{
+  const [p,q,r]=pick(TRI),k=d<=2?1:ri(1,3);
+  if(d<=2)return mkN(`직각을 낀 두 변의 길이가 ${p}, ${q}인 직각삼각형의 빗변의 길이는?`,r,'',[p+q,r+1,r-1,r*2],`$\\sqrt{${p}^2+${q}^2}=\\sqrt{${r*r}}=${r}$이다.`,'피타고라스 정리');
+  if(d===3)return mkN(`빗변의 길이가 ${r*k}이고 한 변의 길이가 ${p*k}인 직각삼각형의 넓이는?`,p*q*k*k/2,'',[p*q*k*k,p*r*k*k/2,q*r*k*k/2,p*q*k*k/2+k],`나머지 한 변은 $\\sqrt{${(r*k)**2}-${(p*k)**2}}=${q*k}$이므로 넓이는 $\\frac12\\times${p*k}\\times${q*k}=${p*q*k*k/2}$이다.`,'피타고라스 정리의 활용');
+  const a=ri(2,9);return mkN(`한 모서리의 길이가 ${a}인 정육면체의 대각선의 길이를 l이라 할 때, $l^2$의 값은?`,3*a*a,'',[2*a*a,a*a,4*a*a,3*a],`정육면체의 대각선은 $\\sqrt{${a}^2+${a}^2+${a}^2}=${a}\\sqrt3$이므로 $l^2=${3*a*a}$이다.`,'입체에서의 피타고라스 정리')}];
+MG.n2i=[d=>{
+  const ev=d<=2?pick([['두 눈의 수의 합이 S',(x,y,S)=>x+y===S,ri(4,10)],['두 눈의 수의 차가 S',(x,y,S)=>Math.abs(x-y)===S,ri(1,4)]]):pick([['두 눈의 수의 곱이 S의 배수',(x,y,S)=>(x*y)%S===0,pick([3,4,6])],['두 눈의 수의 합이 S 이상',(x,y,S)=>x+y>=S,ri(8,11)],['적어도 한 개의 주사위의 눈이 S',(x,y,S)=>x===S||y===S,ri(1,6)]]);
+  const S=ev[2];let n=0;for(let x=1;x<=6;x++)for(let y=1;y<=6;y++)if(ev[1](x,y,S))n++;
+  return mkF(`서로 다른 두 개의 주사위를 동시에 던질 때, ${ev[0].replace('S',S)}일 확률은?`,n,36,[[n+1,36],[n-1,36],[n,12],[36-n,36]],`모든 경우는 36가지이고 조건을 만족하는 경우는 ${n}가지이므로 확률은 ${ftex(n,36)}이다.`,'주사위의 확률')}];
+MG.n3a=[d=>{
+  if(d<=2){const a=ri(2,6),b=pick([2,3,5,6,7]),N=a*a*b;return mkN(`$\\sqrt{${N}}=a\\sqrt{b}$ (b는 가장 작은 자연수)일 때, $a+b$의 값은?`,a+b,'',[a*b,a+b+1,a*a+b,a+b-1],`$${N}=${a}^2\\times${b}$이므로 $\\sqrt{${N}}=${a}\\sqrt{${b}}$, $a+b=${a+b}$이다.`,'근호 밖으로 꺼내기')}
+  let a,b,c,N;do{a=ri(1,4);b=ri(0,3);c=ri(0,2);N=2**a*3**b*5**c}while(N>2000||N<20||(a%2===0&&b%2===0&&c%2===0));const k=(a%2?2:1)*(b%2?3:1)*(c%2?5:1);
+  return mkN(`$\\sqrt{${N}x}$가 자연수가 되게 하는 가장 작은 자연수 x는?`,k,'',[k*2,k*4,k+1,k*3],`$${N}=${tx23(a,b,c)}$이므로 지수가 홀수인 소인수를 곱해 $x=${k}$이다.`,'제곱근이 자연수가 될 조건')}];
+MG.n3b=[d=>{
+  if(d<=2){let a,b;do{a=ri(-7,7);b=ri(-7,7)}while(!a||!b||a===b);return mkN(`$x^2${lin(a+b)}${sg(a*b)}$을 $(x+a)(x+b)$ 꼴로 인수분해할 때, $a^2+b^2$의 값은?`,a*a+b*b,'',[(a+b)**2||1,Math.abs(2*a*b),a*a+b*b+2,Math.abs(a*b)],`곱이 ${a*b}, 합이 ${a+b}인 두 정수는 ${a}, ${b}이므로 $a^2+b^2=${a*a+b*b}$이다.`,'인수분해')}
+  const N=pick([6,8,10,12,18,20,24,28,30,36]),pos=divs(N).filter(x=>x*x<=N).length,n=2*pos;
+  return mkN(`$x^2+kx+${N}$이 $(x+a)(x+b)$ (a, b는 정수) 꼴로 인수분해되도록 하는 정수 k의 개수는?`,n,'개',[pos,n+2,divs(N).length===n?n+1:divs(N).length,n-1],`곱이 ${N}인 정수 쌍은 양수끼리 ${pos}쌍, 음수끼리 ${pos}쌍이고 합 a+b가 모두 다르므로 k는 ${n}개이다.`,'인수분해 조건')}];
+MG.n3c=[d=>{
+  let r1,r2;do{r1=ri(-6,8);r2=ri(-6,8)}while(r1===r2);const s=r1+r2,p=r1*r2,eq=`x^2${lin(-s)}${sg(p)}=0`;
+  if(d<=2)return mkN(`이차방정식 $${eq}$의 두 근 중 큰 근은?`,Math.max(r1,r2),'',[Math.min(r1,r2),-Math.max(r1,r2),s,p],`$(x${sg(-r1)})(x${sg(-r2)})=0$이므로 $x=${r1}$ 또는 $x=${r2}$이다.`,'이차방정식의 풀이');
+  return mkN(`이차방정식 $${eq}$의 두 근을 α, β라 할 때, $\\alpha^2+\\beta^2$의 값은?`,r1*r1+r2*r2,'',[s*s,s*s+2*p,Math.abs(p)*2||1,r1*r1+r2*r2+1],`인수분해하면 두 근은 ${r1}, ${r2}이므로 $\\alpha^2+\\beta^2=${r1*r1}+${r2*r2}=${r1*r1+r2*r2}$이다.`,'이차방정식의 근')}];
+MG.n3d=[d=>{
+  if(d<=2){const p=ri(-5,5),q=ri(-8,8),b=-2*p,c=p*p+q;return mkN(`이차함수 $y=x^2${lin(b)}${sg(c)}$의 그래프의 꼭짓점의 y좌표는?`,q,'',[c,-q,p,q+p*p||q+1],`$y=(x${sg(-p)})^2${sg(q)}$이므로 꼭짓점은 $(${p}, ${q})$이다.`,'이차함수의 꼭짓점')}
+  let a,p,q,r;do{a=pick([-3,-2,-1,1,2,3]);p=ri(-4,4);q=ri(-6,6);r=ri(-4,4)}while(r===p);const s=a*(r-p)**2+q;
+  return mkN(`꼭짓점의 좌표가 $(${p}, ${q})$이고 점 $(${r}, ${s})$를 지나는 포물선이 $y=a(x-m)^2+n$의 그래프일 때, 상수 a의 값은?`,a,'',[-a,a*2,a+1,s-q===a?a+2:s-q],`$${s}=a(${r}-(${p}))^2+(${q})$에서 $${s-q}=${(r-p)**2}a$이므로 $a=${a}$이다.`,'이차함수의 식')}];
+MG.n3e=[d=>{
+  const [p,q,r]=pick(TRI.slice(0,5));
+  if(d<=2)return mkF(`$\\angle C=90°$인 직각삼각형 ABC에서 $\\overline{BC}=${p}$, $\\overline{AC}=${q}$, $\\overline{AB}=${r}$일 때, $\\sin A$의 값은?`,p,r,[[q,r],[p,q],[q,p],[r,p]],`$\\sin A=\\frac{\\overline{BC}}{\\overline{AB}}=${fin(p,r)}$이다.`,'삼각비의 뜻');
+  return mkF(`$\\angle C=90°$인 직각삼각형 ABC에서 $\\tan A=${fin(p,q)}$일 때, $\\sin A+\\cos A$의 값은?`,p+q,r,[[p,r],[q,r],[p+q,q],[r,p+q]],`$\\overline{BC}=${p}k$, $\\overline{AC}=${q}k$로 놓으면 $\\overline{AB}=${r}k$이므로 $\\sin A+\\cos A=\\frac{${p}+${q}}{${r}}=${fin(p+q,r)}$이다.`,'삼각비 사이의 관계')}];
+MG.n3f=[d=>{
+  if(d<=2){const t=pick([60,80,100,120,140,160,200,240]);return mkN(`한 원에서 호 AB에 대한 중심각의 크기가 $${t}°$일 때, 호 AB에 대한 원주각의 크기는?`,t/2,'°',[t,180-t/2,t/4,t/2+30],`원주각의 크기는 중심각의 크기의 $\\frac12$이므로 $${t/2}°$이다.`,'원주각과 중심각')}
+  if(d===3){const t=ri(50,130);return mkN(`원에 내접하는 사각형 ABCD에서 $\\angle A=${t}°$일 때, $\\angle C$의 크기는?`,180-t,'°',[t,360-t,180-t/2,90],`원에 내접하는 사각형의 대각의 크기의 합은 $180°$이므로 $\\angle C=${180-t}°$이다.`,'원에 내접하는 사각형')}
+  const [p,q,r]=pick(TRI);return mkN(`반지름의 길이가 ${p}인 원의 중심 O에서 ${r}만큼 떨어진 점 P에서 원에 그은 접선의 접점을 T라 할 때, $\\overline{PT}$의 길이는?`,q,'',[r-p,p+r,q+1,q-1],`$\\overline{OT}\\perp\\overline{PT}$이므로 $\\overline{PT}=\\sqrt{${r}^2-${p}^2}=${q}$이다.`,'원의 접선')}];
+MG.n3g=[d=>{
+  const [dev,v]=pick([[[-2,-1,0,1,2],2],[[-3,-1,0,1,3],4],[[-4,-2,0,2,4],8],[[-3,-3,0,3,3],7.2],[[-1,-1,0,1,1],0.8],[[-5,-1,0,1,5],10.4]]),m=ri(5,20),data=shuffle(dev.map(x=>x+m));
+  if(d<=2)return mkN(`다음 자료의 분산은?\n${data.join(', ')}`,v,'',[Math.sqrt(v),v*5,v/5,v+1],`평균은 ${m}이고 편차는 ${dev.join(', ')}이다. 분산은 편차의 제곱의 평균인 $\\frac{${dev.map(x=>x*x).join('+')}}{5}=${fmt(v)}$이다.`,'분산');
+  return mkN(`자료 ${data.join(', ')}의 각 값을 2배 하고 3을 더해 만든 새 자료의 분산은?`,4*v,'',[2*v,2*v+3,4*v+3,v],`원래 분산은 ${fmt(v)}이다. 모든 값에 3을 더해도 분산은 변하지 않고, 2배 하면 분산은 $2^2$배가 되므로 $${fmt(4*v)}$이다.`,'분산의 성질')}];
+MG.p1a=[d=>{
+  if(d<=2){const a=ri(-4,4),b=ri(-6,6),c=ri(-9,9),k=pick([-2,-1,1,2,3]),v=k**3+a*k*k+b*k+c;return mkN(`다항식 $x^3${lin(a,'x^2')}${lin(b)}${sg(c)}$을 $x${sg(-k)}$로 나눈 나머지는?`,v,'',[-v,v+k,(-k)**3+a*k*k-b*k+c===v?v+2:(-k)**3+a*k*k-b*k+c,v-1],`나머지정리에 의해 나머지는 $f(${k})=${v}$이다.`,'나머지정리')}
+  let r1,r2,r3;do{r1=ri(-4,4);r2=ri(-4,4);r3=-(r1+r2)}while(r1===r2||!r1||!r2||r3===r1||r3===r2);const A=r1*r2+r1*r3+r2*r3,B=-r1*r2*r3;
+  return mkN(`다항식 $x^3+ax+b$가 $x${sg(-r1)}$, $x${sg(-r2)}$로 모두 나누어떨어질 때, $a+b$의 값은?`,A+B,'',[A-B,B-A,A+B+1,A*B],`인수정리에 의해 $f(${r1})=0$, $f(${r2})=0$이다. 연립하면 $a=${A}$, $b=${B}$이므로 $a+b=${A+B}$이다.`,'인수정리')}];
+MG.p1b=[d=>{
+  let s,p;do{s=ri(-5,6);p=ri(-6,6)}while(!p||!s);const eq=`x^2${lin(-s)}${sg(p)}=0`;
+  if(d<=2)return mkN(`이차방정식 $${eq}$의 두 근을 α, β라 할 때, $\\alpha^2+\\beta^2$의 값은?`,s*s-2*p,'',[s*s+2*p,s*s,s*s-p,2*p-s*s],`$\\alpha+\\beta=${s}$, $\\alpha\\beta=${p}$이므로 $(\\alpha+\\beta)^2-2\\alpha\\beta=${s*s-2*p}$이다.`,'근과 계수의 관계');
+  if(d===3)return mkF(`이차방정식 $${eq}$의 두 근을 α, β라 할 때, $\\frac{1}{\\alpha}+\\frac{1}{\\beta}$의 값은?`,s,p,[[p,s],[-s,p],[s,-p],[s*s-2*p,p]],`$\\frac{1}{\\alpha}+\\frac{1}{\\beta}=\\frac{\\alpha+\\beta}{\\alpha\\beta}=${fin(s,p)}$이다.`,'근과 계수의 관계');
+  return mkN(`이차방정식 $${eq}$의 두 근을 α, β라 할 때, $\\alpha^3+\\beta^3$의 값은?`,s**3-3*p*s,'',[s**3+3*p*s,s**3,s**3-p*s,s*s-2*p],`$\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)=${s**3}-3\\times(${p})\\times(${s})=${s**3-3*p*s}$이다.`,'근과 계수의 관계')}];
+MG.p1c=[d=>{
+  const n=ri(5,9),r=ri(2,4);
+  if(d<=2)return mkN(`$_{${n}}\\mathrm{C}_{${r}}$의 값은?`,nC(n,r),'',[nP(n,r),nC(n,r-1),nC(n,r+1),n*r],`$_{${n}}\\mathrm{C}_{${r}}=\\frac{${n}!}{${r}!\\,${n-r}!}=${nC(n,r)}$이다.`,'조합');
+  if(d===3){const m=ri(4,7);return mkN(`서로 다른 ${m}명이 한 줄로 설 때, 특정한 두 사람 A, B가 이웃하여 서는 경우의 수는?`,2*fact(m-1),'',[fact(m-1),fact(m),fact(m)-2*fact(m-1),2*fact(m-2)],`A, B를 한 묶음으로 보면 $${m-1}!$가지이고, 묶음 안에서 순서가 2가지이므로 $2\\times${m-1}!=${2*fact(m-1)}$이다.`,'이웃하는 순열')}
+  const m=ri(5,8),k=ri(2,3),T=m+k+2;return mkN(`남학생 ${m}명, 여학생 ${k+2}명 중에서 3명을 뽑을 때, 여학생이 적어도 한 명 포함되는 경우의 수는?`,nC(T,3)-nC(m,3),'',[nC(T,3),(k+2)*nC(T-1,2),nC(T,3)-nC(k+2,3),nC(m,3)],`전체 $_{${T}}\\mathrm{C}_3=${nC(T,3)}$에서 남학생만 뽑는 $_{${m}}\\mathrm{C}_3=${nC(m,3)}$을 빼면 ${nC(T,3)-nC(m,3)}이다.`,'여사건을 이용한 조합')}];
+MG.p1d=[d=>{
+  const A=[ri(-3,4),ri(-3,4),ri(-3,4),ri(-3,4)],B=[ri(-3,4),ri(-3,4),ri(-3,4),ri(-3,4)];
+  if(d<=2){const k=ri(2,3),v=k*A[1]-B[1];return mkN(`두 행렬 $A=${mat(...A)}$, $B=${mat(...B)}$에 대하여 행렬 $${k}A-B$의 (1, 2) 성분은?`,v,'',[k*A[1]+B[1],A[1]-B[1],-v,v+1],`(1, 2) 성분은 $${k}\\times(${A[1]})-(${B[1]})=${v}$이다.`,'행렬의 연산')}
+  const i=ri(0,1),j=ri(0,1),v=A[2*i]*B[j]+A[2*i+1]*B[2+j];return mkN(`두 행렬 $A=${mat(...A)}$, $B=${mat(...B)}$에 대하여 행렬 $AB$의 (${i+1}, ${j+1}) 성분은?`,v,'',[A[2*i]*B[2*j]+A[2*i+1]*B[2*j+1],A[2*i+j]*B[2*i+j],B[2*i]*A[j]+B[2*i+1]*A[2+j],v+1],`A의 ${i+1}행과 B의 ${j+1}열을 곱해 더하면 $(${A[2*i]})(${B[j]})+(${A[2*i+1]})(${B[2+j]})=${v}$이다.`,'행렬의 곱셈')}];
+MG.p2a=[d=>{
+  const [p,q,r]=pick(TRI),x1=ri(-5,5),y1=ri(-5,5),sx=pick([1,-1]),sy=pick([1,-1]);
+  if(d<=2)return mkN(`두 점 $A(${x1}, ${y1})$, $B(${x1+sx*p}, ${y1+sy*q})$ 사이의 거리는?`,r,'',[p+q,r+1,Math.abs(p-q)||r+2,r-1],`$\\sqrt{${p}^2+${q}^2}=${r}$이다.`,'두 점 사이의 거리');
+  const [a,b,c]=pick([[3,4,5],[5,12,13],[4,3,5],[8,6,10]]),k=ri(1,4),x0=ri(-4,4),y0=ri(-4,4),cc=k*c-a*x0-b*y0;
+  return mkN(`점 $(${x0}, ${y0})$과 직선 $${a}x+${b}y${sg(cc)}=0$ 사이의 거리는?`,k,'',[k*c,k+1,Math.abs(cc)/c===k?k+2:Math.abs(cc)/c,k*2],`$\\frac{|${a}\\times(${x0})+${b}\\times(${y0})${sg(cc)}|}{\\sqrt{${a}^2+${b}^2}}=\\frac{${k*c}}{${c}}=${k}$이다.`,'점과 직선 사이의 거리')}];
+MG.p2b=[d=>{
+  const a=ri(10,30),b=ri(8,25),c=ri(2,Math.min(a,b)-1);
+  if(d<=2)return mkN(`두 집합 A, B에 대하여 $n(A)=${a}$, $n(B)=${b}$, $n(A\\cap B)=${c}$일 때, $n(A\\cup B)$의 값은?`,a+b-c,'',[a+b,a+b-2*c,a+b+c,a-c],`$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)=${a+b-c}$이다.`,'합집합의 원소의 개수');
+  const u=a+b-c+ri(3,15);return mkN(`전체집합 U의 두 부분집합 A, B에 대하여 $n(U)=${u}$, $n(A)=${a}$, $n(B)=${b}$, $n(A\\cap B)=${c}$일 때, $n(A^C\\cap B^C)$의 값은?`,u-(a+b-c),'',[u-a-b>0?u-a-b:u-a-b+2*c+1,u-c,a+b-c,u-(a+b)+2*c],`드모르간 법칙에 의해 $A^C\\cap B^C=(A\\cup B)^C$이므로 $${u}-${a+b-c}=${u-a-b+c}$이다.`,'드모르간 법칙')}];
+MG.p2c=[d=>{
+  const a=pick([-3,-2,2,3,4]),b=ri(-5,5),c=pick([-2,2,3,-1]),e=ri(-4,4),k=ri(-3,3);
+  if(d<=2){const v=a*(c*k+e)+b;return mkN(`두 함수 $f(x)=${co(a)}${sg(b)}$, $g(x)=${co(c)}${sg(e)}$에 대하여 $(f\\circ g)(${k})$의 값은?`,v,'',[c*(a*k+b)+e===v?v+3:c*(a*k+b)+e,a*k+b+c*k+e,-v,v+a],`$g(${k})=${c*k+e}$이므로 $f(${c*k+e})=${v}$이다.`,'합성함수')}
+  const t=ri(-6,8);return mkF(`함수 $f(x)=${co(a)}${sg(b)}$의 역함수를 $f^{-1}(x)$라 할 때, $f^{-1}(${t})$의 값은?`,t-b,a,[[t+b,a],[a*t+b,1],[t,a],[b-t,a]],`$f(x)=${t}$에서 $${a}x=${t-b}$이므로 $f^{-1}(${t})=${fin(t-b,a)}$이다.`,'역함수')}];
+MG.p3a=[d=>{
+  if(d<=2){const a=pick([2,3,5]),m=ri(2,5),b=pick([2,3,7].filter(x=>x!==a)),n=ri(1,4);return mkN(`$\\log_{${a}}${a**m}+\\log_{${b}}${b**n}$의 값은?`,m+n,'',[m*n,Math.abs(m-n)||m+n+2,m+n+1,a+b],`$\\log_{${a}}${a}^{${m}}=${m}$, $\\log_{${b}}${b}^{${n}}=${n}$이므로 합은 ${m+n}이다.`,'로그의 정의')}
+  if(d===3){const k=ri(2,5),m=pick([3,5,7]);return mkN(`$\\log_2 ${2**k*m}-\\log_2 ${m}$의 값은?`,k,'',[k+1,k-1,k*m,2**k],`$\\log_2\\frac{${2**k*m}}{${m}}=\\log_2 ${2**k}=${k}$이다.`,'로그의 성질')}
+  const m=pick([3,5,6,7]);return mkN(`$2^x=${m}$일 때, $4^x+2^{x+1}$의 값은?`,m*m+2*m,'',[m*m+m,2*m*m,m*m+2,6*m],`$4^x=(2^x)^2=${m*m}$, $2^{x+1}=2\\times2^x=${2*m}$이므로 합은 ${m*m+2*m}이다.`,'지수의 성질')}];
+MG.p3b=[d=>{
+  if(d<=2){const [p,q,r]=pick(TRI.slice(0,5));return mkF(`$0<\\theta<\\frac{\\pi}{2}$이고 $\\sin\\theta=${fin(p,r)}$일 때, $\\tan\\theta$의 값은?`,p,q,[[q,p],[q,r],[p,r],[r,q]],`$\\cos\\theta=\\sqrt{1-\\sin^2\\theta}=${fin(q,r)}$이므로 $\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}=${fin(p,q)}$이다.`,'삼각함수 사이의 관계')}
+  const b=pick([2,3,4,6]),k=ri(2,5),per={2:'$\\pi$',3:'$\\frac{2}{3}\\pi$',4:'$\\frac{\\pi}{2}$',6:'$\\frac{\\pi}{3}$'};
+  return mkT(`함수 $y=${k}\\sin ${b}x+1$의 주기는?`,per[b],['$\\pi$','$\\frac{2}{3}\\pi$','$\\frac{\\pi}{2}$','$\\frac{\\pi}{3}$','$2\\pi$','$4\\pi$','$\\frac{\\pi}{4}$'].filter(x=>x!==per[b]),`$y=a\\sin bx+c$의 주기는 $\\frac{2\\pi}{|b|}$이므로 $\\frac{2\\pi}{${b}}$, 곧 ${per[b]}이다.`,'삼각함수의 주기',{noFill:true})}];
+MG.p3c=[d=>{
+  const a=ri(-5,8),r=pick([-3,-2,2,3,4,5]),n=ri(6,15);
+  if(d<=2)return mkN(`첫째항이 ${a}, 공차가 ${r}인 등차수열의 제${n}항은?`,a+(n-1)*r,'',[a+n*r,a+(n-2)*r,(n-1)*r,a+(n+1)*r],`$a_{${n}}=${a}+(${n}-1)\\times(${r})=${a+(n-1)*r}$이다.`,'등차수열의 일반항');
+  if(d===3)return mkN(`첫째항이 ${a}, 공차가 ${r}인 등차수열의 첫째항부터 제${n}항까지의 합은?`,n*(2*a+(n-1)*r)/2,'',[n*(a+(n-1)*r),n*(2*a+n*r)/2,(n-1)*(2*a+(n-2)*r)/2,n*(2*a+(n-1)*r)],`$S_{${n}}=\\frac{${n}\\{2\\times${a}+(${n}-1)\\times${r}\\}}{2}=${n*(2*a+(n-1)*r)/2}$이다.`,'등차수열의 합');
+  const g=pick([2,3]),aa=ri(1,4),m=ri(4,7),S=aa*(g**m-1)/(g-1);return mkN(`첫째항이 ${aa}, 공비가 ${g}인 등비수열의 첫째항부터 제${m}항까지의 합은?`,S,'',[aa*(g**(m+1)-1)/(g-1),aa*g**(m-1),aa*g**m,S-aa],`$S_{${m}}=\\frac{${aa}(${g}^{${m}}-1)}{${g}-1}=${S}$이다.`,'등비수열의 합')}];
+MG.p4a=[d=>{
+  const a=pick([-4,-3,-2,-1,1,2,3,4,5]);
+  if(d<=2)return mkN(`$\\lim_{x\\to${a}}\\frac{x^2-${a*a}}{x${sg(-a)}}$의 값은?`,2*a,'',[a,a*a,-2*a,2*a+1],`분자를 인수분해하면 $(x${sg(-a)})(x${sg(a)})$이므로 극한값은 $${a}+(${a})=${2*a}$이다.`,'0/0 꼴의 극한');
+  const b=ri(-6,8),p=b-2*a,q=-a*a-p*a;return mkN(`$\\lim_{x\\to${a}}\\frac{x^2+px+q}{x${sg(-a)}}=${b}$일 때, 상수 q의 값은?`,q,'',[p,-q,p+q,q+a],`$x\\to${a}$일 때 (분모)→0이므로 (분자)→0이어야 한다. 분자는 $(x${sg(-a)})(x${sg(a)}+p)$ 꼴이고 극한값은 $${2*a}+p=${b}$이므로 $p=${p}$이다. $${a*a}+(${a})p+q=0$에서 $q=${q}$이다.`,'극한값의 조건')}];
+MG.p4b=[d=>{
+  const a=pick([-2,-1,1,2,3]),b=ri(-4,4),c=ri(-6,6),k=ri(-2,3);
+  if(d<=2){const v=3*a*k*k+2*b*k+c;return mkN(`함수 $f(x)=${co(a,'x^3')}${lin(b,'x^2')}${lin(c)}+5$에 대하여 $f'(${k})$의 값은?`,v,'',[a*k**3+b*k*k+c*k+5,3*a*k*k+b*k+c===v?v+2:3*a*k*k+b*k+c,v+5,v-1],`$f'(x)=${co(3*a,'x^2')}${lin(2*b)}${sg(c)}$이므로 $f'(${k})=${v}$이다.`,'미분계수')}
+  const m=ri(1,3);return mkN(`함수 $f(x)=x^3-${3*m*m}x$의 극댓값은?`,2*m**3,'',[-2*m**3,m**3,4*m**3,3*m*m],`$f'(x)=3x^2-${3*m*m}=3(x+${m})(x-${m})$이고 $x=-${m}$에서 증가하다가 감소하므로 극댓값은 $f(-${m})=${2*m**3}$이다.`,'극값')}];
+MG.p4c=[d=>{
+  if(d<=2){const a=pick([2,4,6]),b=ri(-3,5),k=ri(1,4),v=a*k*k/2+b*k;return mkN(`$\\int_0^{${k}}(${a}x${sg(b)})\\,dx$의 값은?`,v,'',[a*k+b,a*k*k+b*k,v+b===v?v+1:v+b,a*k*k/2],`$\\left[${co(a/2,'x^2')}${lin(b)}\\right]_0^{${k}}=${v}$이다.`,'정적분')}
+  const a=pick([3,6]),b=ri(-3,4),k=ri(1,3),v=2*(a*k**3/3+b*k);return mkN(`$\\int_{-${k}}^{${k}}(x^3+${a}x^2${sg(b)})\\,dx$의 값은?`,v,'',[v/2,2*a*k**3/3,v+k**4/2,v+1],`$x^3$은 기함수라 적분값이 0이고, 나머지 부분은 우함수이므로 $2\\int_0^{${k}}(${a}x^2${sg(b)})\\,dx=${v}$이다.`,'우함수·기함수의 정적분')}];
+MG.p5a=[d=>{
+  if(d<=2){const n=ri(3,6),r=ri(2,4);return mkN(`$_{${n}}\\mathrm{H}_{${r}}$의 값은?`,nC(n+r-1,r),'',[nC(n,r)||n,n**r,nC(n+r,r),nP(n,r)],`$_{${n}}\\mathrm{H}_{${r}}={}_{${n+r-1}}\\mathrm{C}_{${r}}=${nC(n+r-1,r)}$이다.`,'중복조합')}
+  const n=ri(6,12);if(d===3)return mkN(`방정식 $x+y+z=${n}$을 만족하는 음이 아닌 정수 x, y, z의 순서쌍 (x, y, z)의 개수는?`,nC(n+2,2),'',[nC(n-1,2),nC(n+3,3),n*n,nC(n+2,3)],`$_3\\mathrm{H}_{${n}}={}_{${n+2}}\\mathrm{C}_{2}=${nC(n+2,2)}$이다.`,'중복조합의 활용');
+  return mkN(`방정식 $x+y+z+w=${n}$을 만족하는 자연수 x, y, z, w의 순서쌍의 개수는?`,nC(n-1,3),'',[nC(n+3,3),nC(n-1,4),nC(n,3),nC(n-2,3)],`각 변수에서 1씩 빼면 음이 아닌 정수해의 개수 $_4\\mathrm{H}_{${n-4}}={}_{${n-1}}\\mathrm{C}_3=${nC(n-1,3)}$과 같다.`,'중복조합의 활용')}];
+MG.p5b=[d=>{
+  if(d<=2){const n=ri(3,6),k=ri(1,n-1);return mkF(`동전 한 개를 ${n}번 던질 때, 앞면이 정확히 ${k}번 나올 확률은?`,nC(n,k),2**n,[[1,2**n],[k,n],[nC(n,k),2**(n-1)],[nC(n,k-1)+1,2**n]],`$_{${n}}\\mathrm{C}_{${k}}\\left(\\frac12\\right)^{${n}}=${fin(nC(n,k),2**n)}$이다.`,'독립시행의 확률')}
+  const r=ri(3,6),w=ri(2,6);return mkF(`빨간 공 ${r}개와 흰 공 ${w}개가 들어 있는 주머니에서 공 2개를 동시에 꺼낼 때, 2개 모두 빨간 공일 확률은?`,nC(r,2),nC(r+w,2),[[r*r,(r+w)**2],[r,r+w],[nC(r,2),2*nC(r+w,2)],[nC(w,2)||1,nC(r+w,2)]],`$\\frac{{}_{${r}}\\mathrm{C}_2}{{}_{${r+w}}\\mathrm{C}_2}=\\frac{${nC(r,2)}}{${nC(r+w,2)}}=${fin(nC(r,2),nC(r+w,2))}$이다.`,'조합을 이용한 확률')}];
+MG.p5c=[d=>{
+  const [n,pn,pd]=pick([[100,1,2],[50,1,5],[80,1,4],[200,1,10],[90,2,3],[400,1,2]]),m=n*pn/pd,v=m*(pd-pn)/pd,B=`B\\left(${n}, ${fin(pn,pd)}\\right)`;
+  if(d<=2)return mkN(`확률변수 X가 이항분포 $${B}$를 따를 때, $V(X)$의 값은?`,v,'',[m,v*2,Math.sqrt(v),m+v],`$V(X)=np(1-p)=${n}\\times${fin(pn,pd)}\\times${fin(pd-pn,pd)}=${fmt(v)}$이다.`,'이항분포의 분산');
+  return mkN(`확률변수 X가 이항분포 $${B}$를 따를 때, $V(2X+1)$의 값은?`,4*v,'',[2*v,2*v+1,4*v+1,v],`$V(X)=${fmt(v)}$이고 $V(aX+b)=a^2V(X)$이므로 $V(2X+1)=4\\times${fmt(v)}=${fmt(4*v)}$이다.`,'확률변수의 변환')}];
+MG.p6a=[d=>{
+  if(d<=2){const a=ri(1,6),b=ri(-5,5),c=ri(1,6),e=ri(-5,5);return mkF(`$\\lim_{n\\to\\infty}\\frac{${co(a,'n^2')}${lin(b,'n')}+1}{${co(c,'n^2')}${sg(e)}}$의 값은?`,a,c,[[c,a],[a+1,c],[a,c+1],[a,2*c]],`분모와 분자를 $n^2$으로 나누면 최고차항의 계수의 비인 ${ftex(a,c)}로 수렴한다.`,'수열의 극한')}
+  const a=pick([2,3,4,5,6]);return mkF(`$\\lim_{n\\to\\infty}\\left(\\sqrt{n^2+${a}n}-n\\right)$의 값은?`,a,2,[[a,1],[a,4],[1,2],[0,1]],`분자를 유리화하면 $\\frac{${a}n}{\\sqrt{n^2+${a}n}+n}$이 되어 $\\frac{${a}}{2}$로 수렴한다.`,'∞−∞ 꼴의 극한')}];
+MG.p6b=[d=>{
+  if(d<=2){const a=ri(1,5),b=ri(1,6),k=ri(0,4);return mkF(`함수 $f(x)=\\ln(${co(a)}+${b})$에 대하여 $f'(${k})$의 값은?`,a,a*k+b,[[1,a*k+b],[a,b],[a*k+b,a],[a,(a*k+b)**2]],`$f'(x)=\\frac{${a}}{${co(a)}+${b}}$이므로 $f'(${k})=${fin(a,a*k+b)}$이다.`,'로그함수의 미분')}
+  const a=ri(-4,6);return mkN(`함수 $f(x)=(x^2${sg(a)})e^{x}$에 대하여 $f'(0)$의 값은?`,a,'',[a+2,2,a-1,-a===a?3:-a],`$f'(x)=(x^2+2x${sg(a)})e^{x}$이므로 $f'(0)=${a}$이다.`,'곱의 미분법')}];
+MG.p6c=[d=>{
+  if(d<=2){const m=ri(2,6),k=ri(1,4);return mkN(`$\\int_1^{e^{${k}}}\\frac{${m}}{x}\\,dx$의 값은?`,m*k,'',[m,k===m?k+1:k,m*k+1,m*k-1],`$\\left[${m}\\ln x\\right]_1^{e^{${k}}}=${m}\\times${k}=${m*k}$이다.`,'1/x의 정적분')}
+  const a=ri(1,6),b=ri(1,6);return mkN(`$\\int_0^{\\frac{\\pi}{2}}(${a}\\sin x+${b}\\cos x)\\,dx$의 값은?`,a+b,'',[Math.abs(a-b)||a+b+2,a*b===a+b?a+b+1:a*b,a+b+1,a+b-1],`$\\left[-${a}\\cos x+${b}\\sin x\\right]_0^{\\frac{\\pi}{2}}=${b}+${a}=${a+b}$이다.`,'삼각함수의 정적분')}];
+MG.p7a=[d=>{
+  if(d<=2){const [b,c,a]=pick([[3,4,5],[5,12,13],[6,8,10],[8,15,17]]);return mkN(`타원 $\\frac{x^2}{${a*a}}+\\frac{y^2}{${b*b}}=1$의 두 초점 사이의 거리는?`,2*c,'',[c,2*a,2*b,a+b],`$c^2=${a*a}-${b*b}=${c*c}$이므로 $c=${c}$이고, 두 초점 사이의 거리는 ${2*c}이다.`,'타원의 초점')}
+  const [p,q,r]=pick(TRI.slice(0,4));return mkN(`쌍곡선 $\\frac{x^2}{${p*p}}-\\frac{y^2}{${q*q}}=1$의 두 초점 사이의 거리는?`,2*r,'',[r,2*p,2*q,p+q],`$c^2=${p*p}+${q*q}=${r*r}$이므로 $c=${r}$이고, 두 초점 사이의 거리는 ${2*r}이다.`,'쌍곡선의 초점')}];
+MG.p7b=[d=>{
+  if(d<=2){const a=[ri(-4,5),ri(-4,5)],b=[ri(-4,5),ri(-4,5)],v=a[0]*b[0]+a[1]*b[1];return mkN(`두 벡터 $\\vec{a}=(${a[0]}, ${a[1]})$, $\\vec{b}=(${b[0]}, ${b[1]})$에 대하여 $\\vec{a}\\cdot\\vec{b}$의 값은?`,v,'',[a[0]*b[1]+a[1]*b[0]===v?v+2:a[0]*b[1]+a[1]*b[0],a[0]+b[0]+a[1]+b[1],-v===v?v+1:-v,v+1],`$${a[0]}\\times(${b[0]})+${a[1]}\\times(${b[1]})=${v}$이다.`,'벡터의 내적')}
+  const [p,q,r]=pick(TRI.slice(0,4)),x=ri(-3,3),y=ri(-3,3);return mkN(`두 벡터 $\\vec{a}=(${x}, ${y})$, $\\vec{b}=(${p-x}, ${q-y})$에 대하여 $|\\vec{a}+\\vec{b}|$의 값은?`,r,'',[p+q,r+1,r*r,r-1],`$\\vec{a}+\\vec{b}=(${p}, ${q})$이므로 크기는 $\\sqrt{${p}^2+${q}^2}=${r}$이다.`,'벡터의 크기')}];
+MG.p7c=[d=>{
+  if(d<=2){const [p,q,s,r]=pick([[1,2,2,3],[2,3,6,7],[1,4,8,9],[2,6,9,11],[4,4,7,9]]),x=ri(-3,3),y=ri(-3,3),z=ri(-3,3),o=shuffle([p,q,s]);return mkN(`좌표공간의 두 점 $A(${x}, ${y}, ${z})$, $B(${x+o[0]}, ${y-o[1]}, ${z+o[2]})$ 사이의 거리는?`,r,'',[p+q+s,r+1,r*r,r-1],`$\\sqrt{${o[0]}^2+${o[1]}^2+${o[2]}^2}=\\sqrt{${r*r}}=${r}$이다.`,'공간에서 두 점 사이의 거리')}
+  const R=ri(3,7),c=[ri(-3,3),ri(-3,3),ri(-(R-1),R-1)];return mkN(`구 $(x${sg(-c[0])})^2+(y${sg(-c[1])})^2+(z${sg(-c[2])})^2=${R*R}$이 xy평면과 만나서 생기는 원의 넓이가 $k\\pi$일 때, k의 값은?`,R*R-c[2]*c[2],'',[R*R,c[2]*c[2]||1,R*R+c[2]*c[2]+1,R*R-Math.abs(c[2])===R*R-c[2]*c[2]?R*R-1:R*R-Math.abs(c[2])],`구의 중심에서 xy평면까지의 거리는 $|${c[2]}|$이므로 원의 반지름의 제곱은 $${R*R}-${c[2]*c[2]}=${R*R-c[2]*c[2]}$이다.`,'구와 평면')}];
+/* 과학 데이터 묶음 + 수학 데이터 묶음 */
+const SUBJ_DATA={
+  sci:{UNITS,U,GROUPS,DIFF,BANK,WBANK,OXB,MATB,FILB,GEN},
+  math:{UNITS:MUNITS,U:MU,GROUPS:MGROUPS,DIFF:MDIFF,BANK:{},WBANK:MWBANK,OXB:MOXB,MATB:MMATB,FILB:{},GEN:MG},
+};
+function applySubject(s){({UNITS,U,GROUPS,DIFF,BANK,WBANK,OXB,MATB,FILB,GEN}=SUBJ_DATA[s]||SUBJ_DATA.sci)}
+const subjName=()=>state.subject==='math'?'수학':'과학';
+const subjAdv=()=>state.subject==='math'?'수학적':'과학적';
+function fmtRule(){return state.subject==='math'
+  ?'- 수식은 반드시 LaTeX로 쓰고 $...$로 감싼다(예: $\\frac{1}{2}$, $x^2$, $\\sqrt{3}$, $\\int_0^1 f(x)\\,dx$). 선택지와 해설 안의 수식도 같다. JSON 문자열 안에서는 백슬래시를 두 번 쓴다(예: "$\\\\frac{1}{2}$"). 표가 필요하면 data에 "|항목|값|" 형태로 한 행씩 \\n으로 구분한다.\n- 서술형은 풀이 과정을 단계별로 쓰게 하고 채점 기준을 풀이 단계별로 나눈다. 논술형은 증명이나 긴 추론을 요구한다. 주관식 수치 답은 number에 값(분수면 소수 근삿값이 아닌 정확한 값을 answer에 LaTeX로, number에는 소수 값)을 넣는다.'
+  :'- 화학식·단위는 유니코드 아래/위 첨자: H₂O, m/s², 10⁻³, Ca²⁺. 표가 필요하면 data에 "|항목|값|" 형태로 한 행씩 \\n으로 구분한다.'}
+
+/* ===================== 수식(MathJax) ===================== */
+let mjState='none',mjTimer=0,mjBusy=false;
+function ensureMJ(){
+  if(mjState!=='none')return;mjState='loading';
+  window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},svg:{fontCache:'global'},
+    startup:{typeset:false,ready(){MathJax.startup.defaultReady();mjState='ready';queueTypeset()}}};
+  const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js';s.async=true;
+  s.onerror=()=>{mjState='failed'};document.head.appendChild(s);
+}
+function queueTypeset(){
+  if(state.subject!=='math'||mjState!=='ready')return;clearTimeout(mjTimer);
+  mjTimer=setTimeout(async()=>{if(mjBusy){queueTypeset();return}mjBusy=true;const app=document.getElementById('app');
+    try{MathJax.typesetClear();await MathJax.typesetPromise([app])}catch(e){}mjBusy=false;try{drawLines()}catch(e){}},30);
+}
+(function(){const app=document.getElementById('app');if(!app||typeof MutationObserver==='undefined')return;
+  new MutationObserver(recs=>{if(state.subject!=='math')return;for(const r of recs)for(const n of r.addedNodes){const t=n.textContent;if(t&&(t.includes('$')||t.includes('\\(')||t.includes('\\['))){queueTypeset();return}}})
+    .observe(app,{childList:true,subtree:true});})();
+/* AI 답의 JSON 안 LaTeX 백슬래시 고치기 */
+function fixJSON(s){return s.replace(/\\\\|\\(?:(?=[A-Za-z]{2})(?!u[0-9a-fA-F]{4})|(?=[^"\\/bfnrtu]))/g,m=>m.length===2?m:'\\\\')}
+function parseLoose(t){
+  t=String(t||'').trim();const f=t.match(/```(?:json)?\s*([\s\S]*?)```/);if(f)t=f[1].trim();
+  const tries=[t];const i=Math.min(...['{','['].map(c=>{const k=t.indexOf(c);return k<0?1e9:k})),j=Math.max(t.lastIndexOf('}'),t.lastIndexOf(']'));
+  if(i<1e9&&j>i)tries.push(t.slice(i,j+1));
+  for(const s of tries)for(const x of[fixJSON(s),s]){try{return JSON.parse(x)}catch(e){}}
+  throw{code:'invalid_json',text:t};
+}
+async function askJSON(prompt,opts){const{text}=await sample(prompt+'\n\n출력은 JSON만 쓴다. 다른 문장이나 코드 블록 표시는 쓰지 않는다.',opts);return parseLoose(text)}
+function switchSubject(s){
+  if(s===state.subject||!SUBJ_DATA[s])return;state.mem=state.mem||{};state.mem[state.subject]={sel:state.sel,lv:state.lv,grp:state.grp};
+  state.subject=s;applySubject(s);const m=state.mem[s];
+  if(m){state.lv=m.lv==='h'?'h':'m';state.sel=(m.sel||[]).filter(id=>U[id]);state.grp=GROUPS[state.lv].includes(m.grp)?m.grp:GROUPS[state.lv][0]}
+  else{state.lv='m';state.grp=GROUPS.m[1]||GROUPS.m[0];state.sel=UNITS.filter(u=>u.grp===state.grp).slice(0,2).map(u=>u.id)}
+  if(state.diff>DIFF.length)state.diff=DIFF.length;state.err='';if(s==='math')ensureMJ();savePrefs();render();
+}
+const MPH={ai:'문제를 붙여 넣으세요. 선택지, 정답, 내 답이 있으면 함께 쓰면 더 정확해요. 여러 문제를 넣어도 돼요.',ox:'예) 모든 순환소수는 유리수이다.',match:'예) 함수와 그 도함수를 선으로 연결하시오.',
+  box:'예) 함수 $f(x)=x^3-3x$에 대한 설명으로 옳은 것만을 <보기>에서 있는 대로 고른 것은?',mc:'예) 이차방정식 $x^2-5x+3=0$의 두 근을 α, β라 할 때, $\\alpha^2+\\beta^2$의 값은?',
+  fill:'예) $\\log_2 32$의 값을 구하시오.',short:'예) 함수 $f(x)=x^3-3x$의 극댓값과 극솟값을 구하는 과정을 서술하시오.',essay:'예) $\\sqrt{2}$가 무리수임을 귀류법으로 증명하시오.'};
+const MHINTS=['실생활 문제','도형','규칙 찾기','그래프 해석','수학사','퍼즐','게임과 전략','건축과 디자인','경제와 금융','스포츠 기록','여행과 거리','데이터 분석','달력과 시계','암호'];
+
 /* ===================== 상태 ===================== */
 const LS='sciTest.v1';
-let state={view:'setup',lv:'m',grp:'중2',sel:['m2a','m2b'],diff:2,count:10,types:['ox','mc','fill','short'],mode:'ai',exam:null,quitAsk:false,submitAsk:false,err:''};
+let state={subject:'sci',mem:{},view:'setup',lv:'m',grp:'중2',sel:['m2a','m2b'],diff:2,count:10,types:['ox','mc','fill','short'],mode:'ai',exam:null,quitAsk:false,submitAsk:false,err:'',tab:'exam',lvlCount:10,cForm:cfDefault(),gForm:gfDefault(),gRes:null,gBusy:false,gErr:'',tlimit:0,tcustom:false,cKind:'similar',cCount:5,cDiff:0,cLv:'m',cTypes:[],cSrcType:'',pickMult:2,level:null};
 let history=[];
 try{history=JSON.parse(localStorage.getItem(LS+'.hist')||'[]')||[]}catch(e){history=[]}
-try{const p=JSON.parse(localStorage.getItem(LS+'.prefs')||'null');if(p)Object.assign(state,{lv:p.lv||state.lv,grp:p.grp||state.grp,sel:Array.isArray(p.sel)?p.sel.filter(id=>U[id]):state.sel,diff:p.diff||state.diff,count:p.count||state.count,types:Array.isArray(p.types)&&p.types.filter(t=>TYPES[t]).length?p.types.filter(t=>TYPES[t]):state.types})}catch(e){}
-function savePrefs(){try{localStorage.setItem(LS+'.prefs',JSON.stringify({lv:state.lv,grp:state.grp,sel:state.sel,diff:state.diff,count:state.count,types:state.types}))}catch(e){}}
+try{const p=JSON.parse(localStorage.getItem(LS+'.prefs')||'null');if(p&&p.subject==='math'){state.subject='math';applySubject('math')}if(p)Object.assign(state,{mem:p.mem&&typeof p.mem==='object'?p.mem:{},lv:p.lv==='h'?'h':'m',grp:p.grp||state.grp,sel:Array.isArray(p.sel)?p.sel.filter(id=>U[id]):state.sel,diff:p.diff||state.diff,count:p.count||state.count,types:Array.isArray(p.types)&&p.types.filter(t=>TYPES[t]).length?p.types.filter(t=>TYPES[t]):state.types,tab:['exam','level','custom','grade'].includes(p.tab)?p.tab:'exam',gForm:gfLoad(p.gForm),tlimit:p.tlimit>=0&&p.tlimit<=180?Math.round(p.tlimit):0,tcustom:!!p.tcustom,lvlCount:[7,10,15].includes(p.lvlCount)?p.lvlCount:10,cForm:cfLoad(p.cForm,p.cText),cKind:p.cKind==='deep'?'deep':'similar',cCount:[3,5,10].includes(p.cCount)?p.cCount:5,cDiff:p.cDiff>=0&&p.cDiff<=6?p.cDiff:0,cLv:p.cLv==='h'?'h':'m',cTypes:Array.isArray(p.cTypes)?p.cTypes.filter(t=>TYPES[t]):[],cSrcType:TYPES[p.cSrcType]?p.cSrcType:''})}catch(e){}
+if(!GROUPS[state.lv].includes(state.grp))state.grp=GROUPS[state.lv][0];state.sel=state.sel.filter(id=>U[id]);if(state.diff>DIFF.length)state.diff=DIFF.length;if(state.subject==='math')ensureMJ();
+function savePrefs(){try{localStorage.setItem(LS+'.prefs',JSON.stringify({subject:state.subject,mem:state.mem,lv:state.lv,grp:state.grp,sel:state.sel,diff:state.diff,count:state.count,types:state.types,tab:state.tab,lvlCount:state.lvlCount,cForm:state.cForm,gForm:state.gForm,tlimit:state.tlimit,tcustom:state.tcustom,cKind:state.cKind,cCount:state.cCount,cDiff:state.cDiff,cLv:state.cLv,cTypes:state.cTypes,cSrcType:state.cSrcType}))}catch(e){}}
 function saveHist(){try{localStorage.setItem(LS+'.hist',JSON.stringify(history.slice(0,30)))}catch(e){}}
 
 let sample=null, aiState='checking', genCtl=null, gradeCtl=null, timer=null;
@@ -829,10 +1313,10 @@ Promise.resolve().then(async()=>{try{sample=window.claude?await window.claude.us
 
 /* ===================== 유틸 ===================== */
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const br=s=>esc(s).replace(/\\n|\n/g,'<br>');
+const br=s=>esc(s).replace(/\\n(?![A-Za-z])|\n/g,'<br>');
 const mmss=ms=>{const s=Math.max(0,Math.floor(ms/1000));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 function renderData(s){
-  if(!s)return'';const lines=String(s).replace(/\\n/g,'\n').split('\n').map(l=>l.trim()).filter(Boolean);
+  if(!s)return'';const lines=String(s).replace(/\\n(?![A-Za-z])/g,'\n').split('\n').map(l=>l.trim()).filter(Boolean);
   let html='',rows=[];const flush=()=>{if(!rows.length)return;const body=rows.filter(r=>!/^\|?\s*:?-{2,}/.test(r)).map(r=>r.replace(/^\||\|$/g,'').split('|').map(c=>c.trim()));
     html+='<table>'+body.map((r,i)=>'<tr>'+r.map((c,j)=>(i===0||j===0)?`<th>${esc(c)}</th>`:`<td>${esc(c)}</td>`).join('')+'</tr>').join('')+'</table>';rows=[]};
   for(const l of lines){if(l.startsWith('|'))rows.push(l);else{flush();html+=`<p>${esc(l)}</p>`}}flush();return html;
@@ -841,19 +1325,20 @@ const unitLabel=id=>U[id]?`${U[id].grp} ${U[id].name}`:'';
 function scopeLabel(ids){if(!ids.length)return'';const f=unitLabel(ids[0]);return ids.length>1?`${f} 외 ${ids.length-1}개`:f}
 
 /* ===================== 문제 구성 ===================== */
-const ORDER=['ox','match','mc','fill','short','essay'];
+const ORDER=['ox','match','mc','box','fill','short','essay'];
+const isMC=t=>t==='mc'||t==='box';
 const WR=t=>t==='short'||t==='essay';
 const AUTO=t=>!WR(t);
-const SECT={ox:'OX 퀴즈',match:'선 연결',mc:'선택형',fill:'주관식(단답형)',short:'서술형',essay:'논술형'};
-const ROMAN=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ'];
+const SECT={ox:'OX 퀴즈',match:'선 연결',mc:'선택형',box:'〈보기〉 선택형',fill:'주관식(단답형)',short:'서술형',essay:'논술형'};
+const ROMAN=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ','Ⅶ'];
 const LL='ABCDE',RL='㉠㉡㉢㉣㉤';
 function typeCounts(n,types){
   let t=ORDER.filter(x=>types.includes(x));if(!t.length)return{};
-  if(t.length>n){const keep=['mc','ox','fill','short','match','essay'].filter(x=>t.includes(x)).slice(0,n);t=ORDER.filter(x=>keep.includes(x))}
+  if(t.length>n){const keep=['mc','ox','fill','box','short','match','essay'].filter(x=>t.includes(x)).slice(0,n);t=ORDER.filter(x=>keep.includes(x))}
   if(t.length===1)return{[t[0]]:n};
-  const w={ox:3,match:1,mc:6,fill:3,short:3,essay:1.4},sum=t.reduce((a,x)=>a+w[x],0),out={};
+  const w={ox:3,match:1,mc:6,box:2,fill:3,short:3,essay:1.4},sum=t.reduce((a,x)=>a+w[x],0),out={};
   t.forEach(x=>out[x]=Math.max(1,Math.round(n*w[x]/sum)));
-  let tot=t.reduce((a,x)=>a+out[x],0);const pri=['mc','ox','fill','short','match','essay'].filter(x=>t.includes(x));
+  let tot=t.reduce((a,x)=>a+out[x],0);const pri=['mc','ox','fill','box','short','match','essay'].filter(x=>t.includes(x));
   while(tot>n){const k=[...t].sort((a,b)=>out[b]-out[a])[0];if(out[k]<=1)break;out[k]--;tot--}
   while(tot<n){out[pri[0]]++;tot++}
   return out;
@@ -865,7 +1350,8 @@ function fromStatic(id,s){
 }
 function fromGen(id,r){return{type:'mc',q:r.q,box:r.b||[],data:r.data||'',choices:r.c,answer:r.a,exp:r.e,unit:unitLabel(id),concept:r.concept||'',pts:TYPES.mc.pts}}
 function genToFill(id,r){
-  if(r.num!=null){const u=(r.unit||'').trim();return{type:'fill',q:r.q+(u?` (단위: ${u})`:''),data:r.data||'',box:[],accept:[fmt(r.num)+(u?' '+u:'')],num:r.num,exp:r.e,unit:unitLabel(id),concept:r.concept||'',pts:TYPES.fill.pts}}
+  if(r.noFill||(r.num==null&&r.ans!=null&&/[$\\]/.test(r.ans)))return null;
+  if(r.num!=null){const u=(r.unit||'').trim();return{type:'fill',q:r.q+(u?` (단위: ${u})`:''),data:r.data||'',box:[],accept:[r.ans!=null&&/[$\\]/.test(r.ans)?r.ans:fmt(r.num)+(u?' '+u:'')],num:r.num,exp:r.e,unit:unitLabel(id),concept:r.concept||'',pts:TYPES.fill.pts}}
   if(r.ans!=null)return{type:'fill',q:r.q,data:r.data||'',box:[],accept:[r.ans],num:null,exp:r.e,unit:unitLabel(id),concept:r.concept||'',pts:TYPES.fill.pts};
   return null;
 }
@@ -877,13 +1363,15 @@ function buildBank(ids,diff,n,types){
   const want=typeCounts(n,types),out={},notes=[],target=Math.min(diff,4),gens=ids.filter(id=>GEN[id]);
   for(const t of ORDER){if(!want[t])continue;const k=want[t];let got=[];
     if(t==='mc'){
-      const pool=[];for(const id of ids)for(const s of(BANK[id]||[]))pool.push({id,s,w:Math.abs(s.d-target)+Math.random()*1.3});
+      const pool=[];for(const id of ids)for(const s of(BANK[id]||[])){if(s.b&&want.box)continue;pool.push({id,s,w:Math.abs(s.d-target)+Math.random()*1.3})}
       pool.sort((a,b)=>a.w-b.w);
       let nGen=gens.length?Math.max(1,Math.round(k*Math.min(.6,.2+.5*gens.length/ids.length))):0;
       let nSt=gens.length?Math.min(pool.length,k-nGen):Math.min(pool.length,k);
       got=pool.slice(0,nSt).map(p=>fromStatic(p.id,p.s));const seen=new Set(got.map(q=>q.q));let tries=0;
       while(got.length<k&&gens.length&&tries<k*15){tries++;const id=gens[tries%gens.length];const r=pick(GEN[id])(diff);if(seen.has(r.q))continue;seen.add(r.q);got.push(fromGen(id,r))}
       got=shuffle(got);
+    }else if(t==='box'){
+      const pool=[];for(const id of ids)for(const s of(BANK[id]||[]))if(s.b)pool.push(Object.assign(fromStatic(id,s),{type:'box'}));got=shuffle(pool).slice(0,k);
     }else if(t==='ox'){
       const pool=[];for(const id of ids)for(const o of(OXB[id]||[]))pool.push(fromOX(id,o));got=shuffle(pool).slice(0,k);
     }else if(t==='match'){
@@ -909,7 +1397,8 @@ const HINTS=['일상생활','실험실 탐구','산업·기술','자연 현상',
 const FORMATS={
  ox:`- OX 줄(배점 2점): {"type":"ox","q":"참·거짓을 판단할 진술문 한 문장","answer":"O" 또는 "X","explanation":"왜 맞거나 틀린지 1~2문장","unit":"단원명","concept":"핵심 개념"} — O와 X가 비슷한 비율이 되게 하고, 높은 난이도에서는 미묘하게 틀린 진술(조건 바꾸기, 인과 뒤집기)을 쓴다.`,
  match:`- 선 연결 줄(배점 4점, 4쌍): {"type":"match","q":"지시문","left":["항목1","항목2","항목3","항목4"],"right":["항목1의 짝","항목2의 짝","항목3의 짝","항목4의 짝"],"explanation":"연결 근거 1~2문장","unit":"단원명","concept":"핵심 개념"} — right는 left와 같은 순서의 짝으로 쓴다(화면에서 섞는다). 짝은 일대일로 하나씩만 맞아야 하며, 높은 난이도에서는 헷갈리기 쉬운 짝을 고른다.`,
- mc:`- 객관식 줄(배점 3점): {"type":"mc","q":"발문","data":"자료(없으면 빈 문자열)","box":["ㄱ. …","ㄴ. …","ㄷ. …"](보기형일 때만, 아니면 []),"choices":[5개 문자열, 번호 기호 없이],"answer":정답 번호 1~5,"explanation":"단계별 풀이 2~5문장","unit":"단원명","concept":"핵심 개념"} — 정답 번호는 고르게 분포. 보기형이면 choices는 "ㄱ", "ㄴ", "ㄱ, ㄴ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"처럼 쓴다.`,
+ box:`- 〈보기〉 선택형 줄(배점 3점): {"type":"box","q":"발문(예: …에 대한 설명으로 옳은 것만을 <보기>에서 있는 대로 고른 것은?)","data":"자료(없으면 빈 문자열)","box":["ㄱ. …","ㄴ. …","ㄷ. …"](3~4개),"choices":["ㄱ","ㄴ","ㄱ, ㄷ","ㄴ, ㄷ","ㄱ, ㄴ, ㄷ"]처럼 보기 조합 5개,"answer":정답 번호 1~5,"explanation":"보기마다 옳고 그른 근거","unit":"단원명","concept":"핵심 개념"} — 보기 하나하나가 독립된 판단이 되게 하고, 옳은 보기 조합이 정답 하나로만 정해져야 한다.`,
+ mc:`- 객관식 줄(배점 3점): {"type":"mc","q":"발문","data":"자료(없으면 빈 문자열)","box":["ㄱ. …","ㄴ. …","ㄷ. …"](보기형일 때만, 아니면 []. 〈보기〉 선택형이 따로 요청되면 mc에서는 쓰지 않는다),"choices":[5개 문자열, 번호 기호 없이],"answer":정답 번호 1~5,"explanation":"단계별 풀이 2~5문장","unit":"단원명","concept":"핵심 개념"} — 정답 번호는 고르게 분포. 보기형이면 choices는 "ㄱ", "ㄴ", "ㄱ, ㄴ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"처럼 쓴다.`,
  fill:`- 주관식(단답형) 줄(배점 3점): {"type":"fill","q":"빈칸 (    )을 포함한 문장, 또는 한 단어·한 수치로 답하는 질문","data":"","answer":"대표 정답","accept":["띄어쓰기·표기만 다른 허용 답안들"],"number":수치 답이면 단위를 뺀 숫자 값, 아니면 null,"unitText":"수치 답의 단위(없으면 빈 문자열)","explanation":"풀이 1~3문장","unit":"단원명","concept":"핵심 개념"} — 정답이 한 단어나 한 수치로 유일하게 정해져야 한다. 수치 답이면 발문에 단위와 반올림 자릿수를 밝힌다.`,
  short:`- 서술형 줄(배점 5점, 2~4문장 답): {"type":"short","q":"발문","data":"","box":[],"answer":"모범 답안","rubric":[{"c":"채점 요소","p":점수}](2~4개, 합계 5),"unit":"단원명","concept":"핵심 개념"}`,
  essay:`- 논술형 줄(배점 10점, 한 문단 이상의 논증): {"type":"essay","q":"발문(무엇을 근거로 어떤 관점에서 논술할지 명확히)","data":"","box":[],"answer":"모범 답안","rubric":[{"c":"채점 요소","p":점수}](3~5개, 합계 10, 마지막 요소는 논리적 구성과 과학 용어),"unit":"단원명","concept":"핵심 개념"}`,
@@ -919,10 +1408,10 @@ function buildPrompt(ids,diff,n,types){
   const units=ids.map(id=>`- ${U[id].grp} · ${U[id].name} (핵심: ${U[id].kw})`).join('\n');
   const used=ORDER.filter(t=>want[t]);
   const plan=used.map(t=>`${TYPES[t].name} ${want[t]}개`).join(', ');
-  const nonce=Math.random().toString(36).slice(2,8),hints=shuffle(HINTS).slice(0,4).join(', ');
-  return `너는 대한민국 ${LVN[lv]} 과학 시험 출제위원이다. 아래 조건으로 새 시험지를 출제하라.
+  const nonce=Math.random().toString(36).slice(2,8),hints=shuffle(state.subject==='math'?MHINTS:HINTS).slice(0,4).join(', ');
+  return `너는 대한민국 ${LVN[lv]} ${subjName()} 시험 출제위원이다. 아래 조건으로 새 시험지를 출제하라.
 
-[출제 범위] (대한민국 ${LVN[lv]} 과학 교육과정, 해당 학년 교과서 범위)
+[출제 범위] (대한민국 ${LVN[lv]} ${subjName()} 교육과정, 해당 학년 교과서 범위)
 ${units}
 
 [문항 구성] 총 ${n}문항: ${plan}. 반드시 ${used.map(t=>TYPES[t].name).join(' → ')} 순서로 출력한다. 여러 단원이면 단원별로 고르게 배분한다.
@@ -937,14 +1426,15 @@ ${units}
 [출력 형식] JSON Lines: 한 줄에 문항 하나씩 정확히 ${n}줄. 다른 문장, 번호, 코드 블록 표시는 쓰지 않는다. 문자열 안 줄바꿈은 \\n으로 쓴다.
 ${used.map(t=>FORMATS[t]).join('\n')}
 - 표가 필요하면 data에 "|항목|값1|값2|" 형태로 한 행씩 \\n으로 구분한다.
-- 화학식·단위는 유니코드 아래/위 첨자: H₂O, m/s², 10⁻³, Ca²⁺.
+${fmtRule()}
 - unit은 위 출제 범위의 단원명 하나를 그대로 쓴다.`;
 }
 function normAI(o){
   if(!o||typeof o!=='object'||!o.q)return null;
   const t=TYPES[o.type]?o.type:'mc';
   const base={type:t,q:String(o.q),data:String(o.data||''),box:Array.isArray(o.box)?o.box.map(String).filter(Boolean):[],unit:String(o.unit||''),concept:String(o.concept||''),pts:TYPES[t].pts,exp:String(o.explanation||'')};
-  if(t==='mc'){if(!Array.isArray(o.choices)||o.choices.length!==5)return null;let a=o.answer;if(typeof a==='string'){const k=CN.indexOf(a.trim());a=k>=0?k+1:parseInt(a,10)}a=Number(a)-1;if(!(a>=0&&a<5))return null;
+  if(o.from!=null&&Number(o.from)>0)base.from=Number(o.from);
+  if(isMC(t)){if(!Array.isArray(o.choices)||o.choices.length!==5)return null;if(t==='box'&&base.box.length<2)base.type='mc';let a=o.answer;if(typeof a==='string'){const k=CN.indexOf(a.trim());a=k>=0?k+1:parseInt(a,10)}a=Number(a)-1;if(!(a>=0&&a<5))return null;
     return Object.assign(base,{choices:o.choices.map(c=>String(c).replace(/^[①②③④⑤]\s*/,'')),answer:a})}
   if(t==='ox'){const a=String(o.answer).trim().toUpperCase();if(!['O','X','TRUE','FALSE','참','거짓'].includes(a))return null;return Object.assign(base,{answer:a==='O'||a==='TRUE'||a==='참'})}
   if(t==='match'){const L=Array.isArray(o.left)?o.left.map(String):[],R=Array.isArray(o.right)?o.right.map(String):[];if(L.length<3||L.length>5||L.length!==R.length)return null;
@@ -960,9 +1450,9 @@ async function genAI(){
   const ex=state.exam;const ctl=new AbortController();genCtl=ctl;ex.generating=true;ex.genErr='';updateGen();
   let pending='';
   const eat=line=>{line=line.trim();if(!line)return;const i=line.indexOf('{'),j=line.lastIndexOf('}');if(i<0||j<=i)return;
-    try{const q=normAI(JSON.parse(line.slice(i,j+1)));if(q&&ex.questions.length<ex.count){ex.questions.push(q);addQuestion()}}catch(e){}};
+    try{const q=normAI(parseLoose(line.slice(i,j+1)));if(q&&ex.questions.length<ex.count){ex.questions.push(q);addQuestion()}}catch(e){}};
   try{
-    await sample(buildPrompt(ex.units,ex.diff,ex.count,ex.types),{signal:ctl.signal,cache:false,modelTier:ex.diff>=4?'complex':'default',
+    await sample(ex.mode==='similar'?buildSimilarPrompt(ex):buildPrompt(ex.units,ex.diff,ex.count,ex.types),{signal:ctl.signal,cache:false,modelTier:ex.diff>=4||ex.kind==='deep'?'complex':'default',
       onText:({delta})=>{if(ex!==state.exam)return;const ls=(pending+delta).split('\n');pending=ls.pop();ls.forEach(eat);updateGen()}});
     if(pending)eat(pending);
   }catch(e){if(pending)eat(pending);const c=e&&e.code;
@@ -972,30 +1462,109 @@ async function genAI(){
   if(!ex.questions.length&&!ex.genErr)ex.genErr='문제를 받지 못했어요. 다시 시도하거나 기본 문제은행으로 풀어 보세요.';
   if(ex.questions.length&&ex.questions.length<ex.count&&!ex.genErr)ex.genNote=`${ex.questions.length}문항이 출제됐어요.`;
   /* keep the type order even if the model mixed it */
-  const order=ex.questions.map((q,i)=>({q,i,a:ex.answers[i]})).sort((x,y)=>ORDER.indexOf(x.q.type)-ORDER.indexOf(y.q.type)||x.i-y.i);
-  ex.questions=order.map(o=>o.q);ex.answers={};order.forEach((o,k)=>{if(o.a!==undefined)ex.answers[k]=o.a});
+  if(!ex.submitted){const order=ex.questions.map((q,i)=>({q,i,a:ex.answers[i]})).sort((x,y)=>ORDER.indexOf(x.q.type)-ORDER.indexOf(y.q.type)||x.i-y.i);
+  ex.questions=order.map(o=>o.q);ex.answers={};order.forEach((o,k)=>{if(o.a!==undefined)ex.answers[k]=o.a})}
   ex.start=ex.start||Date.now();renderExam();
 }
+/* ---------- 틀린 문제 유사 문항 ---------- */
+function wrongOf(ex){return ex.questions.map((q,i)=>({q,n:i+1,a:ex.answers[i]??null,g:gradeQ(q,i,ex)})).filter(x=>x.g<x.q.pts-1e-9)}
+function descSrc(s){
+  const q=s.q,a=s.a,L=[];
+  L.push(`### 원래 ${s.n}번 (${TYPES[q.type].name}, 단원: ${q.unit||'미상'}${q.concept?', 개념: '+q.concept:''})`);
+  L.push('발문: '+q.q);
+  if(q.data)L.push('자료: '+q.data);
+  if(q.box&&q.box.length)L.push('<보기> '+q.box.join(' / '));
+  if(isMC(q.type)){if(q.type==='box'&&q.box&&q.box.length&&!q.box.some(b=>/^[ㄱ-ㅎ]\./.test(b)))L.push('<보기> '+q.box.join(' / '));L.push('선택지: '+q.choices.map((c,k)=>CN[k]+' '+c).join('  '));L.push(`정답: ${CN[q.answer]} / 학생 답: ${a==null?'무응답':CN[a]}`)}
+  else if(q.type==='ox')L.push(`정답: ${q.answer?'O':'X'} / 학생 답: ${a==null?'무응답':a?'O':'X'}`);
+  else if(q.type==='match'){L.push('올바른 짝: '+q.left.map((l,k)=>l+' – '+q.right[k]).join('; '));
+    const bad=q.left.map((l,k)=>{const d=a&&a[k];if(d==null)return l+' – (연결 안 함)';const r=q.rOrder[d];return r===k?null:l+' – '+q.right[r]}).filter(Boolean);
+    L.push('학생이 틀린 연결: '+bad.join('; '))}
+  else if(q.type==='fill')L.push(`정답: ${q.num!=null?fmt(q.num)+(q.numUnit?' '+q.numUnit:''):q.accept[0]} / 학생 답: ${String(a||'').trim()||'무응답'}`);
+  else{L.push('모범 답안: '+q.model);L.push('채점 기준: '+q.rubric.map(r=>`${r.c}(${fmt(r.p)}점)`).join(' / '));
+    L.push(`학생 답안 (${fmt(s.g)}/${fmt(q.pts)}점): ${String(a||'').trim().slice(0,600)||'무응답'}`)}
+  if(q.exp)L.push('해설: '+q.exp);
+  return L.join('\n');
+}
+function exLv(ex){return ex.lv||(ex.units&&ex.units.length?U[ex.units[0]].lv:'m')}
+function exScope(ex){return ex.title||scopeLabel(ex.units||[])}
+function exScopeFull(ex){return ex.title||(ex.units||[]).map(unitLabel).join(', ')}
+function dName(d){return d?DIFF[d-1].name:'원래 문제 기준'}
+function buildSimilarPrompt(ex){
+  const lv=exLv(ex),D=ex.diff?DIFF[ex.diff-1]:null,src=ex.src,m=ex.mult,deep=ex.kind==='deep';
+  const n=ex.custom?ex.count:src.length*m;
+  const nonce=Math.random().toString(36).slice(2,8);
+  const ct=ex.ctypes&&ex.ctypes.length?ex.ctypes:null;
+  let used;
+  const st=ex.custom&&TYPES[ex.srcType]?ex.srcType:'',stn=st?TYPES[st].name:'';
+  if(ex.custom)used=ct?ORDER.filter(t=>ct.includes(t)):st?(deep?ORDER.filter(t=>t===st||['mc','fill','short'].includes(t)):[st]):ORDER.slice();
+  else{used=ORDER.filter(t=>src.some(s=>s.q.type===t));if(deep)used=ORDER.filter(t=>used.includes(t)||['mc','box','fill','short'].includes(t))}
+  const kn=deep?'심화 유형':'유사 문항';
+  const head=ex.custom
+    ?`아래는 학생이 직접 입력한 ${subjName()} 문제다. 이 문제를 바탕으로 ${kn}을 모두 ${n}개 출제하라.`
+    :`아래는 학생이 시험에서 푼 문항들과 학생의 답이다. 문항 하나마다 ${kn}을 정확히 ${m}개씩, 모두 ${n}개 출제하라.`;
+  const typeRule=ex.custom
+    ?(ct?`- 유형은 ${ct.map(t=>TYPES[t].name).join(', ')} 중에서 고르게 섞는다.`:st?(deep?`- 입력한 문제는 ${stn} 문제다. 심화 유형도 ${stn}(type "${st}")으로 내는 것을 기본으로 하되, ${st==='ox'||st==='match'?'더 깊이 묻기 어렵다면 객관식·주관식·서술형으로 바꿔도 된다.':'꼭 필요할 때만 다른 유형으로 바꾼다.'}`:`- 입력한 문제는 ${stn} 문제다. 유사 문항도 모두 ${stn}(type "${st}")으로 낸다.`):(deep?'- 유형은 원래 문제와 같게 하되, 원래 문제가 OX나 선 연결이면 심화하기 좋은 객관식·주관식·서술형으로 바꿔도 된다.':'- 유형은 원래 문제와 같게 한다. 원래 문제 형식이 아래 형식에 딱 맞지 않으면 가장 가까운 유형을 쓴다.'))
+    :(deep?'- 유형은 원래와 같게 하되, 원래 문항이 OX나 선 연결이면 객관식·주관식·서술형 중 심화에 알맞은 것으로 바꿔도 된다.':'- 유형(type)은 원래 문항과 같게 한다.');
+  const rules=deep?[
+    '- 원래 문항과 같은 핵심 개념을 쓰되, 원래 문항보다 확실히 어렵게 만든다. 예: 조건이나 변인 늘리기, 풀이 단계 늘리기, 결과에서 조건을 거꾸로 추론하기, 같은 단원의 다른 개념과 결합하기, 수치 자료나 표를 해석하게 하기, 일반화하거나 극단적인 상황에 적용하기.',
+    '- 원래 문항을 제대로 이해했다면 실마리를 찾을 수 있는 "다음 단계" 문제여야 한다. 전혀 다른 주제로 넘어가지 않는다.',
+    '- 같은 원래 문항에서 나온 심화 문항끼리는 서로 다른 방향으로 심화한다.',
+    D?`- 목표 난이도는 ${D.name}이다: ${D.ai} 그래도 원래 문항보다는 반드시 어려워야 한다.`:'- 원래 문항보다 한두 단계 높은 난이도로 낸다.',
+    typeRule,
+  ]:[
+    '- 원래 문항과 같은 단원, 같은 핵심 개념으로 낸다.',
+    typeRule,
+    '- 학생의 답이 주어져 있고 틀렸다면, 그 오답에서 드러난 오개념이나 실수를 다시 점검할 수 있게 그 함정을 다른 모습으로 다시 넣는다.',
+    '- 원래 문항을 베끼지 않는다. 수치, 상황, 소재, 선택지 구성, 묻는 방향을 바꾼다. 유사 문항끼리도 서로 달라야 한다. 첫 번째는 원래와 비슷한 수준, 나머지는 조금 다른 각도나 한 단계 응용으로 묻는다.',
+    D?`- 난이도 기준(${D.name})을 유지한다: ${D.ai}`:'- 원래 문제와 같은 수준을 유지한다.',
+  ];
+  if(ex.custom)rules.push('- 입력에 정답이 없으면 먼저 직접 풀어 정답을 확정한 뒤 출제한다. 입력에 문제가 여러 개면 고르게 나누어 출제한다.','- 입력에 학생의 답이 있으면 그 답의 오류를 점검하도록 만든다.','- 입력에 정답이 적혀 있으면 그것을 기준으로 하되, '+subjAdv()+'으로 틀렸다고 판단되면 올바른 정답을 기준으로 출제한다.','- 입력에 표가 있으면 그 자료의 구조를 활용하되 수치나 항목을 바꾼 표를 data에 넣어 출제한다.');
+  const srcTxt=ex.custom?`[학생이 입력한 문제]${st?` (유형: ${stn})`:''}\n"""\n${String(src[0].text||'').slice(0,6000)}\n"""`:`[원래 문항과 학생의 답]\n${src.map(descSrc).join('\n\n')}`;
+  return `너는 대한민국 ${LVN[lv]} ${subjName()} 교사다. ${head}
+
+[${kn} 원칙]
+${rules.join('\n')}
+- 문항을 쓰기 전에 직접 풀어 보고 계산은 검산한다. 정답은 정확히 하나. 교육과정에 맞는 용어를 쓴다. (출제 번호 #${nonce})
+
+${srcTxt}
+
+[출력 형식] JSON Lines: 한 줄에 문항 하나씩 정확히 ${n}줄. 다른 문장, 번호, 코드 블록 표시는 쓰지 않는다. 문자열 안 줄바꿈은 \\n으로 쓴다.
+${ex.custom?'':'모든 줄에 "from": 원래 문항 번호(숫자)를 넣는다.\n'}${used.map(t=>FORMATS[t]).join('\n')}
+- 표가 필요하면 data에 "|항목|값1|값2|" 형태로 한 행씩 \\n으로 구분한다.
+${fmtRule()}
+- unit은 ${ex.custom?'문제가 속한 '+subjName()+' 단원명을 짧게 쓴다.':'원래 문항의 단원명을 그대로 쓴다.'}`;
+}
+function startSimilar(o){
+  if(!sample||aiState==='none'||!o||!o.src||!o.src.length)return;
+  state.submitAsk=false;state.quitAsk=false;mSel=null;state.err='';
+  const src=JSON.parse(JSON.stringify(o.src));
+  const types=o.custom?(o.ctypes&&o.ctypes.length?o.ctypes.slice():[]):[...new Set(src.map(s=>s.q.type))];
+  const ex=newExam({units:o.units||[],diff:o.diff||0,count:o.custom?o.count:src.length*o.mult,types,mode:'similar',kind:o.kind||'similar',src,mult:o.mult||1,lv:o.lv,title:o.title||'',custom:!!o.custom,ctypes:o.ctypes||[],srcType:o.srcType||'',sim:Object.assign({},o,{src})});
+  state.exam=ex;state.view='exam';render();window.scrollTo(0,0);genAI();
+}
+function simLabel(ex){const k=ex.kind==='deep'?'심화 유형':'유사 문항';return ex.custom?`AI ${k} · 입력한 문제로 ${ex.count}문항`:`AI ${k} (${ex.src.length}문항 × ${ex.mult})`}
+const chosenOf=ex=>Object.keys(ex.chosen||{}).filter(k=>ex.chosen[k]).map(Number).sort((a,b)=>a-b);
+const srcOf=(ex,i)=>({q:ex.questions[i],n:i+1,a:ex.answers[i]??null,g:gradeQ(ex.questions[i],i,ex)});
 function errCopy(c){return({not_granted:'AI 사용이 허용되지 않았어요. 기본 문제은행으로 풀 수 있어요.',sampling_disabled:'이 계정에서는 AI 출제를 쓸 수 없어요. 기본 문제은행으로 풀어 보세요.',not_declared:'AI 출제를 쓸 수 없는 화면이에요.',capability_disabled:'이 화면에서는 AI를 쓸 수 없어요.',
   rate_limited:'AI 사용량 한도에 걸렸어요. 잠시 뒤 다시 시도하거나 기본 문제은행을 쓰세요.',session_expired:'로그인이 만료됐어요. 다시 로그인한 뒤 시도하세요.',refused:'이 요청으로는 문제가 만들어지지 않았어요. 단원이나 난이도를 바꿔 보세요.',
   invalid_json:'AI 답을 읽지 못했어요. 다시 시도해 주세요.',empty_completion:'AI가 빈 답을 보냈어요. 다시 시도해 주세요.'})[c]||'출제 중 연결이 끊겼어요. 다시 시도해 주세요.'}
 
 /* ===================== 채점 ===================== */
-const normTxt=s=>String(s||'').toLowerCase().replace(/[\s·.,。()（）'"`~!?]/g,'');
-function parseNum(s){s=String(s||'').replace(/,/g,'');const f=s.match(/(-?\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)/);if(f&&Number(f[2]))return Number(f[1])/Number(f[2]);const m=s.match(/-?\d+(?:\.\d+)?/);return m?Number(m[0]):null}
+const normTxt=s=>String(s||'').toLowerCase().replace(/[\s·.,。()（）'"`~!?$]/g,'');
+function parseNum(s){s=String(s||'').replace(/,/g,'').replace(/[−–]/g,'-');const f=s.match(/(-?\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)/);if(f&&Number(f[2]))return Number(f[1])/Number(f[2]);const m=s.match(/-?\d+(?:\.\d+)?/);return m?Number(m[0]):null}
 function fillOK(q,a){
   if(!String(a||'').trim())return false;
   if(q.num!=null){const x=parseNum(a);if(x!=null&&Math.abs(x-q.num)<=Math.max(Math.abs(q.num)*0.01,0.005))return true}
   const n=normTxt(a);return (q.accept||[]).some(acc=>{const m=normTxt(acc);return m&&(n===m||(q.num==null&&n.replace(/(이다|입니다|임)$/,'')===m))});
 }
 function isAnswered(q,a){
-  if(q.type==='mc'||q.type==='ox')return a!=null;
+  if(isMC(q.type)||q.type==='ox')return a!=null;
   if(q.type==='match')return !!a&&Object.keys(a).length===q.left.length;
   return String(a||'').trim()!=='';
 }
 function gradeQ(q,i,ex){
   const a=ex.answers[i];
-  if(q.type==='mc')return a===q.answer?q.pts:0;
+  if(isMC(q.type))return a===q.answer?q.pts:0;
   if(q.type==='ox')return a===q.answer?q.pts:0;
   if(q.type==='match'){if(!a)return 0;const c=q.left.filter((x,l)=>a[l]!=null&&q.rOrder[a[l]]===l).length;return q.pts*c/q.left.length}
   if(q.type==='fill')return (ex.ovr[i]||fillOK(q,a))?q.pts:0;
@@ -1007,8 +1576,8 @@ async function gradeWritten(){
   if(!items.length){ex.grading='done';return}
   if(!sample||aiState==='none'){ex.grading='self';return}
   ex.grading='busy';
-  const prompt=`너는 대한민국 ${LVN[U[ex.units[0]].lv]} 과학 교사다. 학생의 서술형·논술형 답안을 채점 기준표에 따라 채점하라.
-원칙: 표현이 달라도 과학적으로 같은 뜻이면 인정한다. 틀린 개념이 섞이면 그 요소는 인정하지 않는다. 기준에 없는 내용으로 점수를 주지 않는다. 근거 없이 결론만 쓴 요소는 인정하지 않는다.
+  const prompt=`너는 대한민국 ${LVN[exLv(ex)]} ${subjName()} 교사다. 학생의 서술형·논술형 답안을 채점 기준표에 따라 채점하라.
+원칙: 표현이 달라도 ${subjAdv()}으로 같은 뜻이면 인정한다. 틀린 개념이 섞이면 그 요소는 인정하지 않는다. 기준에 없는 내용으로 점수를 주지 않는다. 근거 없이 결론만 쓴 요소는 인정하지 않는다.
 
 ${items.map(({q,i})=>`### 문항 ${i+1} (${TYPES[q.type].name}, ${q.pts}점)
 발문: ${q.q}
@@ -1018,7 +1587,7 @@ ${items.map(({q,i})=>`### 문항 ${i+1} (${TYPES[q.type].name}, ${q.pts}점)
 
 JSON 배열 하나로만 답하라: [{"n":문항 번호,"met":[충족한 기준 번호들],"feedback":"학생에게 주는 1~2문장 피드백(부족한 점 위주, '~해요'체)"}]`;
   const ctl=new AbortController();gradeCtl=ctl;
-  try{const res=await sample.json(prompt,{signal:ctl.signal,cache:false,modelTier:ex.diff>=4?'complex':'default'});
+  try{const res=await askJSON(prompt,{signal:ctl.signal,cache:false,modelTier:ex.diff>=4?'complex':'default'});
     if(ex!==state.exam)return;
     if(Array.isArray(res))for(const r of res){const i=Number(r.n)-1;const q=ex.questions[i];if(!q||!WR(q.type))continue;
       ex.met[i]=(Array.isArray(r.met)?r.met:[]).map(Number).filter(k=>k>=0&&k<q.rubric.length);ex.fb[i]=String(r.feedback||'');ex.aiGraded[i]=true}
@@ -1038,27 +1607,261 @@ function scoreOf(ex){
 /* ===================== 렌더: 설정 ===================== */
 function render(){
   clearInterval(timer);timer=null;
-  if(state.view==='setup')renderSetup();else renderExam();
+  if(state.view==='setup')renderSetup();else if(state.view==='level')renderLevel();else renderExam();
 }
-function renderSetup(){
+function stepScope(n){
   const units=UNITS.filter(u=>u.lv===state.lv&&u.grp===state.grp);
   const cnt=g=>state.sel.filter(id=>U[id].grp===g&&U[id].lv===state.lv).length;
-  const D=DIFF[state.diff-1];const want=typeCounts(state.count,state.types);
-  const aiOK=aiState!=='none';
-  document.getElementById('app').innerHTML=`
-  <header class="top"><div class="brand"><span class="seal">과</span><div><h1>과학 단원평가실</h1><p>중·고등 과학 단원을 골라 시험을 보고 바로 채점받아요</p></div></div></header>
-  <div class="grid">
-   <section class="paper form" aria-label="출제 신청서">
-    <div class="form-head"><span class="eyebrow">출제 신청서</span><h2>어떤 시험을 볼까요?</h2></div>
-    <div class="step"><div class="step-n">1</div><div class="step-body"><h3>시험 범위</h3>
+  return`<div class="step"><div class="step-n">${n}</div><div class="step-body"><h3>${state.tab==='level'?'테스트 범위':'시험 범위'}</h3>
       <div class="seg">${['m','h'].map(l=>`<button data-act="lv" data-v="${l}" aria-pressed="${state.lv===l}">${LVN[l]}</button>`).join('')}</div>
       <div class="chips">${GROUPS[state.lv].map(g=>`<button class="chip" data-act="grp" data-v="${g}" aria-pressed="${state.grp===g}">${g}${cnt(g)?`<span class="cnt">${cnt(g)}</span>`:''}</button>`).join('')}</div>
       <div class="units">${units.map(u=>{const on=state.sel.includes(u.id);return`<label class="unit${on?' on':''}"><input type="checkbox" id="u-${u.id}" data-act="unit" data-v="${u.id}" ${on?'checked':''}><span><b>${esc(u.name)}</b><small>${esc(u.kw)}</small></span></label>`}).join('')}</div>
       <div class="unit-actions"><button class="linkbtn" data-act="all">${esc(state.grp)} 전체 선택</button><button class="linkbtn" data-act="none">모두 해제</button><span>선택한 단원 ${state.sel.length}개</span></div>
       ${state.sel.length?`<div class="picked">${state.sel.map(id=>`<span class="pk">${esc(unitLabel(id))}<button data-act="unpick" data-v="${id}" aria-label="${esc(unitLabel(id))} 빼기">×</button></span>`).join('')}</div>`:''}
-    </div></div>
+    </div></div>`;
+}
+/* ---------- 문제로 만들기: 유형별 입력 폼 ---------- */
+const BOXDEF=['ㄱ','ㄴ','ㄱ, ㄷ','ㄴ, ㄷ','ㄱ, ㄴ, ㄷ'];
+const BOXL='ㄱㄴㄷㄹㅁ';
+function cfDefault(){return{stem:'',table:null,box:['','',''],choices:['','','','',''],pairs:[['',''],['',''],['',''],['','']],ansIdx:null,ansOx:null,ansText:'',model:'',rubric:'',mineIdx:null,mineOx:null,mineText:''}}
+function cfLoad(o,legacy){
+  const d=cfDefault();if(typeof legacy==='string')d.stem=legacy.slice(0,4000);if(!o||typeof o!=='object')return d;
+  for(const k of['stem','ansText','model','rubric','mineText'])if(typeof o[k]==='string')d[k]=o[k].slice(0,4000);
+  for(const k of['ansIdx','mineIdx'])if(Number.isInteger(o[k])&&o[k]>=0&&o[k]<5)d[k]=o[k];
+  for(const k of['ansOx','mineOx'])if(typeof o[k]==='boolean')d[k]=o[k];
+  if(Array.isArray(o.box)&&o.box.length>=2&&o.box.length<=5)d.box=o.box.map(x=>String(x??''));
+  if(Array.isArray(o.choices)&&o.choices.length===5)d.choices=o.choices.map(x=>String(x??''));
+  if(Array.isArray(o.pairs)&&o.pairs.length>=2&&o.pairs.length<=6)d.pairs=o.pairs.map(p=>[String((p&&p[0])??''),String((p&&p[1])??'')]);
+  if(Array.isArray(o.table)&&o.table.length>=2&&o.table.length<=10&&Array.isArray(o.table[0])&&o.table[0].length>=2){const w=Math.min(8,o.table[0].length);d.table=o.table.map(r=>Array.from({length:w},(x,i)=>String((Array.isArray(r)&&r[i])??'')))}
+  return d;
+}
+function cfTableStr(t){return t?t.filter(r=>r.some(c=>c.trim())).map(r=>'|'+r.map(c=>c.replace(/\|/g,'/').trim()).join('|')+'|').join('\n'):''}
+function cfPairs(f){return f.pairs.filter(p=>p[0].trim()&&p[1].trim())}
+function cReady(){const f=state.cForm;return state.cSrcType==='match'?cfPairs(f).length>=2:!!f.stem.trim()}
+function cNote(okAI,r){return!okAI?'이 기능은 AI가 필요해요. 이 화면에서는 AI를 쓸 수 없어요.':!r?(state.cSrcType==='match'?'짝을 두 개 이상 쓰세요.':'문제를 입력하세요.'):''}
+function cToQ(){
+  const f=state.cForm,st=state.cSrcType;if(!st)return null;
+  const q={type:st,q:f.stem.trim()||(st==='match'?'관련 있는 것끼리 선으로 연결하시오.':'(발문을 입력하세요)'),data:cfTableStr(f.table),box:[],unit:'',concept:'',pts:TYPES[st].pts,exp:''};
+  if(st==='box')q.box=f.box.map((b,k)=>b.trim()?`${BOXL[k]}. ${b.trim()}`:'').filter(Boolean);
+  if(isMC(st)){q.choices=f.choices.map((c,k)=>c.trim()||`(선택지 ${k+1})`);q.answer=f.ansIdx??-1}
+  if(st==='ox')q.answer=f.ansOx;
+  if(st==='match'){const p=cfPairs(f),pp=p.length>=2?p:[['(왼쪽 1)','(짝 1)'],['(왼쪽 2)','(짝 2)']];q.left=pp.map(x=>x[0].trim());q.right=pp.map(x=>x[1].trim());q.rOrder=pp.map((x,k)=>k)}
+  if(st==='fill'){q.accept=[f.ansText];q.num=null}
+  if(WR(st)){q.model=f.model;q.rubric=[{c:f.rubric||'모범 답안의 핵심 내용',p:TYPES[st].pts}]}
+  return q;
+}
+function cToText(){
+  const f=state.cForm,st=state.cSrcType,L=[];
+  if(st)L.push(`[유형] ${TYPES[st].name}`);
+  if(f.stem.trim())L.push((st==='ox'?'[진술문] ':st?'[발문] ':'')+f.stem.trim());
+  const tb=cfTableStr(f.table);if(tb)L.push('[자료(표), 첫 행과 첫 열은 제목]\n'+tb);
+  if(st==='box'){const b=f.box.map((x,k)=>x.trim()?`${BOXL[k]}. ${x.trim()}`:'').filter(Boolean);if(b.length)L.push('[<보기>]\n'+b.join('\n'))}
+  if(isMC(st)&&f.choices.some(c=>c.trim()))L.push('[선택지]\n'+f.choices.map((c,k)=>`${CN[k]} ${c.trim()}`).join('\n'));
+  if(st==='match')L.push('[올바른 짝]\n'+cfPairs(f).map(p=>`${p[0].trim()} – ${p[1].trim()}`).join('\n'));
+  let ans='';
+  if(isMC(st)){if(f.ansIdx!=null)ans=CN[f.ansIdx]}else if(st==='ox'){if(f.ansOx!=null)ans=f.ansOx?'O':'X'}else if(!WR(st)&&st!=='match'&&f.ansText.trim())ans=f.ansText.trim();
+  if(ans)L.push('[정답] '+ans);
+  if(WR(st)){if(f.model.trim())L.push('[모범 답안] '+f.model.trim());if(f.rubric.trim())L.push('[채점 기준] '+f.rubric.trim())}
+  let mine='';
+  if(isMC(st)){if(f.mineIdx!=null)mine=CN[f.mineIdx]}else if(st==='ox'){if(f.mineOx!=null)mine=f.mineOx?'O':'X'}else if(st!=='match'&&f.mineText.trim())mine=f.mineText.trim();
+  if(mine)L.push('[학생(나)의 답] '+mine);
+  return L.join('\n\n');
+}
+function previewHTML(){
+  const q=cToQ();if(!q)return'';const tmp=newExam({noPick:true});tmp.questions[0]=q;
+  if(isMC(q.type)&&q.answer>=0)tmp.answers[0]=q.answer;if(q.type==='ox'&&q.answer!=null)tmp.answers[0]=q.answer;
+  return`<ol class="qs one">${qHTML(q,0,tmp).replace(/ data-act="/g,' data-x="').replace(/ id="/g,' data-id="')}</ol>${isMC(q.type)||q.type==='ox'?`<p class="hint" style="margin:0">${(isMC(q.type)?q.answer>=0:q.answer!=null)?'칠해진 답이 정답이에요.':'정답을 고르면 칠해져요.'}</p>`:''}`;
+}
+function cUpdate(){
+  const okAI=aiState!=='none',r=cReady();const b=document.querySelector('[data-act="cstart"]'),n=document.getElementById('c-note'),p=document.getElementById('cf-preview');
+  if(b)b.disabled=!(okAI&&r);if(n)n.textContent=cNote(okAI,r);if(p)p.innerHTML=previewHTML();
+}
+function cfIn(f,val,ph,lab){return`<input class="cf-in" id="cf-${f.replace(/\./g,'-')}" data-act="cf" data-f="${f}" value="${esc(val)}" placeholder="${esc(ph)}" aria-label="${esc(lab)}" autocomplete="off">`}
+function cfChips(act,vals,cur,labels){return`<div class="chips" style="margin-top:0">${vals.map((v,k)=>`<button class="chip cf-chip" data-act="${act}" data-v="${v}" aria-pressed="${cur===v}">${labels[k]}</button>`).join('')}</div>`}
+function tableEd(t){
+  return`<div class="tbl-scroll"><table class="tbl-ed">${t.map((r,ri)=>`<tr>${r.map((c,ci)=>`<td><input class="tcell${ri===0||ci===0?' th':''}" id="cf-table-${ri}-${ci}" data-act="cf" data-f="table.${ri}.${ci}" value="${esc(c)}" aria-label="표 ${ri+1}행 ${ci+1}열" autocomplete="off"></td>`).join('')}</tr>`).join('')}</table></div>
+  <div class="simrow"><button class="ghost" data-act="cfadd" data-v="row" ${t.length>=10?'disabled':''}>+ 행</button><button class="ghost" data-act="cfadd" data-v="col" ${t[0].length>=8?'disabled':''}>+ 열</button><button class="ghost" data-act="cfdel" data-v="row" ${t.length<=2?'disabled':''}>− 행</button><button class="ghost" data-act="cfdel" data-v="col" ${t[0].length<=2?'disabled':''}>− 열</button><button class="linkbtn" data-act="cftable" data-v="off">표 빼기</button></div>
+  <p class="hint" style="margin:0">첫 행과 첫 열은 제목 칸으로 보여요. 빈 행은 빠져요.</p>`;
+}
+function customSteps(aiOK){
+  const f=state.cForm,st=state.cSrcType,ok=aiOK&&cReady();
+  const stemLab=!st?'문제':st==='ox'?'진술문':st==='match'?'지시문 (선택)':'발문';
+  let stemPh=!st?'문제를 붙여 넣으세요. 선택지, 자료, 정답, 내 답이 있으면 함께 쓰면 더 정확해요. 여러 문제를 넣어도 돼요.'
+    :st==='ox'?'예) 병렬로 연결하는 저항의 수가 많을수록 전체 저항은 커진다.'
+    :st==='match'?'예) 상태 변화와 그 이름을 선으로 연결하시오.'
+    :st==='box'?'예) 이에 대한 설명으로 옳은 것만을 <보기>에서 있는 대로 고른 것은?'
+    :WR(st)?'예) 해안 지방에서 낮에 해풍이 부는 까닭을 비열과 관련지어 서술하시오.'
+    :st==='fill'?'예) 코일 주위에서 자석을 움직일 때 코일에 전류가 흐르는 현상을 (    )라고 한다.'
+    :'예) 질량 2 kg인 물체를 10 m 높이에서 가만히 떨어뜨렸다. 지면에 닿기 직전의 운동 에너지는?';
+  if(state.subject==='math')stemPh=MPH[st||'ai']||stemPh;
+  let sec=`<div class="cf-sec"><span class="cf-lab">자료 표</span>${f.table?tableEd(f.table):`<div><button class="ghost" data-act="cftable" data-v="on">+ 표 넣기</button></div>`}</div>`;
+  if(st==='box')sec+=`<div class="cf-sec"><span class="cf-lab">〈보기〉</span>${f.box.map((b,k)=>`<div class="cf-row"><span class="cf-pref">${BOXL[k]}.</span>${cfIn('box.'+k,b,`보기 ${BOXL[k]}의 내용`,`보기 ${BOXL[k]}`)}</div>`).join('')}
+    <div class="simrow"><button class="ghost" data-act="cfadd" data-v="box" ${f.box.length>=5?'disabled':''}>+ 보기 추가</button><button class="ghost" data-act="cfdel" data-v="box" ${f.box.length<=2?'disabled':''}>− 마지막 보기 빼기</button></div></div>`;
+  if(isMC(st))sec+=`<div class="cf-sec"><span class="cf-lab">선택지</span>${f.choices.map((c,k)=>`<div class="cf-row"><span class="cf-pref">${CN[k]}</span>${cfIn('choices.'+k,c,st==='box'?'예) ㄱ, ㄷ':`선택지 ${k+1}`,`선택지 ${k+1}`)}</div>`).join('')}</div>`;
+  if(st==='match')sec+=`<div class="cf-sec"><span class="cf-lab">짝 (같은 줄에 쓴 두 항목이 정답 짝이에요)</span>${f.pairs.map((p,k)=>`<div class="cf-row">${cfIn(`pairs.${k}.0`,p[0],`왼쪽 ${k+1}`,`왼쪽 항목 ${k+1}`)}<span class="cf-pref">—</span>${cfIn(`pairs.${k}.1`,p[1],'짝',`오른쪽 짝 ${k+1}`)}</div>`).join('')}
+    <div class="simrow"><button class="ghost" data-act="cfadd" data-v="pairs" ${f.pairs.length>=6?'disabled':''}>+ 짝 추가</button><button class="ghost" data-act="cfdel" data-v="pairs" ${f.pairs.length<=2?'disabled':''}>− 마지막 짝 빼기</button></div></div>`;
+  if(isMC(st))sec+=`<div class="cf-sec"><span class="cf-lab">정답</span>${cfChips('cfans',[0,1,2,3,4],f.ansIdx,CN)}</div>`;
+  else if(st==='ox')sec+=`<div class="cf-sec"><span class="cf-lab">정답</span>${cfChips('cfans',[1,0],f.ansOx==null?null:f.ansOx?1:0,['O','X'])}</div>`;
+  else if(WR(st))sec+=`<div class="cf-sec"><span class="cf-lab">모범 답안 (선택)</span><textarea class="ctext sm" id="cf-model" data-act="cf" data-f="model" placeholder="정답이 되는 답안을 쓰세요">${esc(f.model)}</textarea><span class="cf-lab">채점 기준 (선택)</span>${cfIn('rubric',f.rubric,'예) 비열 차이 언급 2점, 바람 방향 결론 3점','채점 기준')}</div>`;
+  else if(st!=='match')sec+=`<div class="cf-sec"><span class="cf-lab">정답${st==='fill'?'':' (선택)'}</span>${cfIn('ansText',f.ansText,st==='fill'?'예) 전자기 유도':'정답이 있으면 쓰세요','정답')}</div>`;
+  if(isMC(st))sec+=`<div class="cf-sec"><span class="cf-lab">내가 고른 답 (선택)</span>${cfChips('cfmine',[0,1,2,3,4],f.mineIdx,CN)}</div>`;
+  else if(st==='ox')sec+=`<div class="cf-sec"><span class="cf-lab">내가 고른 답 (선택)</span>${cfChips('cfmine',[1,0],f.mineOx==null?null:f.mineOx?1:0,['O','X'])}</div>`;
+  else if(st!=='match')sec+=`<div class="cf-sec"><span class="cf-lab">내 답 (선택)</span>${WR(st)?`<textarea class="ctext sm" id="cf-mineText" data-act="cf" data-f="mineText" placeholder="내가 쓴 답안을 쓰면 부족한 점을 점검하는 문제가 나와요">${esc(f.mineText)}</textarea>`:cfIn('mineText',f.mineText,'내가 쓴 답','내 답')}</div>`;
+  const pv=st?`<div class="cf-sec"><span class="cf-lab">미리보기</span><div class="preview" id="cf-preview">${previewHTML()}</div></div>`:'';
+  return`<div class="step"><div class="step-n">1</div><div class="step-body"><h3>문제 입력</h3>
+   <div class="seg">${['m','h'].map(l=>`<button data-act="clv" data-v="${l}" aria-pressed="${state.cLv===l}">${LVN[l]}</button>`).join('')}</div>
+   <div class="cf-sec"><span class="cf-lab">문제 유형</span>
+    <div class="chips" style="margin-top:0"><button class="chip" data-act="csrc" data-v="" aria-pressed="${!st}">AI가 판단</button>${ORDER.map(k=>`<button class="chip" data-act="csrc" data-v="${k}" aria-pressed="${st===k}">${TYPES[k].name}</button>`).join('')}</div>
+    ${state.subject==='math'?'<p class="hint" style="margin:0">수식은 <code>$</code> 기호 사이에 LaTeX로 쓰면 미리보기와 문제에 수식으로 보여요. 예) <code>$\\frac{1}{2}$</code>, <code>$x^2$</code>, <code>$\\sqrt{3}$</code>. 그냥 x², 1/2처럼 써도 돼요.</p>':''}<p class="hint" style="margin:0">${st?`${TYPES[st].name} 입력 칸이 나왔어요. 정답도 함께 적어 주세요.`:'유형을 고르면 그에 맞는 입력 칸(선택지, 〈보기〉, 짝, 정답 등)이 나와요. AI가 판단을 고르면 자유롭게 붙여 넣으면 돼요.'}</p></div>
+   <div class="cf-sec"><span class="cf-lab">${stemLab}</span><textarea class="ctext${st?' sm':''}" id="c-text" data-act="cf" data-f="stem" maxlength="4000" placeholder="${esc(stemPh)}">${esc(f.stem)}</textarea></div>
+   ${sec}
+   ${pv}
+  </div></div>
+  <div class="step"><div class="step-n">2</div><div class="step-body"><h3>만들 문제</h3>
+   <div class="modes">${[['similar','유사 문항','같은 개념을 비슷한 수준으로, 숫자와 상황을 바꿔서 내요.'],['deep','심화 유형','같은 개념을 더 어렵게 내요. 조건 추가, 다단계 풀이, 거꾸로 추론, 다른 개념과 결합.']].map(([k,b,s])=>`<button class="mode" data-act="ckind" data-v="${k}" aria-pressed="${state.cKind===k}"><b>${b}</b><span>${s}</span></button>`).join('')}</div>
+   <div class="seg" style="margin-top:12px">${[3,5,10].map(n=>`<button data-act="ccount" data-v="${n}" aria-pressed="${state.cCount===n}">${n}문항</button>`).join('')}</div>
+  </div></div>
+  <div class="step"><div class="step-n">3</div><div class="step-body"><h3>만들 문제의 유형과 난이도</h3>
+   <div class="chips" style="margin-top:0"><button class="chip" data-act="ctype" data-v="" aria-pressed="${!state.cTypes.length}">원래 유형 따르기${st?` (${TYPES[st].name})`:''}</button>${ORDER.map(k=>`<button class="chip" data-act="ctype" data-v="${k}" aria-pressed="${state.cTypes.includes(k)}">${TYPES[k].name}</button>`).join('')}</div>
+   <div class="chips"><button class="chip" data-act="cdiff" data-v="0" aria-pressed="${state.cDiff===0}">난이도 자동</button>${DIFF.map((d,k)=>`<button class="chip" data-act="cdiff" data-v="${k+1}" aria-pressed="${state.cDiff===k+1}">${d.name}</button>`).join('')}</div>
+   <p class="diff-desc">${state.cDiff?esc(DIFF[state.cDiff-1].desc):state.cKind==='deep'?'자동: 입력한 문제보다 한두 단계 어렵게 내요.':'자동: 입력한 문제와 같은 수준으로 내요.'}</p>
+  </div></div>
+  <div class="step"><div class="step-n">4</div><div class="step-body">
+   <div class="go" style="margin-top:0"><button class="btn" data-act="cstart" ${ok?'':'disabled'}>문제 만들기</button><span class="note" id="c-note">${cNote(aiOK,cReady())}</span></div>
+  </div></div>`;
+}
+/* ---------- 문제 채점하기 (서술·논술 AI 채점) ---------- */
+function gfDefault(){return{lv:'m',type:'short',pts:5,stem:'',model:'',rubric:'',mine:''}}
+function gfLoad(o){const d=gfDefault();if(!o||typeof o!=='object')return d;
+  if(o.lv==='h')d.lv='h';if(o.type==='essay')d.type='essay';const p=Math.round(+o.pts);if(p>=1&&p<=100)d.pts=p;
+  for(const k of['stem','model','rubric','mine'])if(typeof o[k]==='string')d[k]=o[k].slice(0,4000);return d}
+let gCtl=null;
+function gReady(){const g=state.gForm;return!!(g.stem.trim()&&g.mine.trim())}
+function gNote(aiOK){const g=state.gForm;return!aiOK?'채점은 AI가 필요해요. 이 화면에서는 AI를 쓸 수 없어요.':!g.stem.trim()?'발문을 입력하세요.':!g.mine.trim()?'내 답안을 입력하세요.':''}
+function gUpdate(){const okAI=aiState!=='none';const b=document.querySelector('[data-act="gstart"]'),n=document.getElementById('g-note'),c=document.getElementById('gf-count');
+  if(b&&!state.gBusy)b.disabled=!(okAI&&gReady());if(n)n.textContent=gNote(okAI);if(c)c.textContent=state.gForm.mine.length+'자'}
+function gradeSteps(aiOK){
+  const g=state.gForm,ok=aiOK&&gReady()&&!state.gBusy;
+  return`<div class="step"><div class="step-n">1</div><div class="step-body"><h3>문제</h3>
+   <div class="simrow" style="align-items:center">
+    <div class="seg">${['m','h'].map(l=>`<button data-act="glv" data-v="${l}" aria-pressed="${g.lv===l}">${LVN[l]}</button>`).join('')}</div>
+    <div class="seg">${['short','essay'].map(t=>`<button data-act="gtype" data-v="${t}" aria-pressed="${g.type===t}">${TYPES[t].name}</button>`).join('')}</div>
+    <span class="cf-row" style="width:auto"><span class="lbl2">배점</span><input class="cf-in" type="number" id="gf-pts" data-act="gf" data-f="pts" min="1" max="100" value="${g.pts}" style="width:76px;flex:none" inputmode="numeric" aria-label="배점"><span class="lbl2">점</span></span>
+   </div>
+   <div class="cf-sec"><span class="cf-lab">발문</span><textarea class="ctext sm" id="gf-stem" data-act="gf" data-f="stem" maxlength="4000" placeholder="${state.subject==='math'?'예) 함수 f(x)=x³−3x의 극댓값과 극솟값을 구하는 과정을 서술하시오.':'예) 맑은 날 낮에 해안 지방에서 바다에서 육지 쪽으로 바람이 부는 까닭을 비열과 관련지어 서술하시오.'}">${esc(g.stem)}</textarea></div>
+  </div></div>
+  <div class="step"><div class="step-n">2</div><div class="step-body"><h3>모범 답안과 채점 기준</h3>
+   <p class="hint">둘 다 비워 두면 AI가 모범 답안과 채점 기준을 먼저 만든 뒤 채점해요.</p>
+   <div class="cf-sec" style="margin-top:0"><span class="cf-lab">모범 답안 (선택)</span><textarea class="ctext sm" id="gf-model" data-act="gf" data-f="model" maxlength="4000" placeholder="교과서나 해설지의 모범 답안">${esc(g.model)}</textarea>
+    <span class="cf-lab">채점 기준 (선택)</span><textarea class="ctext sm" id="gf-rubric" data-act="gf" data-f="rubric" maxlength="2000" placeholder="${state.subject==='math'?'한 줄에 하나씩 쓰세요.&#10;예) 도함수를 바르게 구함 2점&#10;부호 변화로 극대·극소 판정 2점&#10;극값 계산 1점':'한 줄에 하나씩 쓰세요.&#10;예) 육지의 비열이 바다보다 작다 2점&#10;낮에 육지가 더 빨리 데워져 기압이 낮아진다 2점&#10;바다에서 육지로 바람이 분다 1점'}">${esc(g.rubric)}</textarea></div>
+  </div></div>
+  <div class="step"><div class="step-n">3</div><div class="step-body"><h3>내 답안</h3>
+   <textarea class="ctext" id="gf-mine" data-act="gf" data-f="mine" maxlength="4000" placeholder="내가 쓴 답안을 그대로 옮겨 쓰세요.">${esc(g.mine)}</textarea>
+   <div class="tcount" id="gf-count" style="margin-left:0">${g.mine.length}자</div>
+   <div class="go"><button class="btn red" data-act="gstart" ${ok?'':'disabled'}>${state.gBusy?'채점 중…':'채점하기'}</button><span class="note" id="g-note">${gNote(aiOK)}</span></div>
+  </div></div>`;
+}
+function gPrompt(g){
+  return`너는 대한민국 ${LVN[g.lv]} ${subjName()} 교사이자 공정한 채점자다. 학생의 ${TYPES[g.type].name} 답안을 채점하고, 학생의 답이 맞다고 인정받을 수 있는지 판단하라.
+
+[문제] (배점 ${g.pts}점)
+${g.stem}
+
+[모범 답안] ${g.model.trim()||'(주어지지 않음: 먼저 교육과정에 맞는 모범 답안을 직접 작성하라)'}
+[채점 기준] ${g.rubric.trim()?'\n'+g.rubric.trim():`(주어지지 않음: 모범 답안의 핵심 요소로 채점 기준 2~5개를 직접 만들고, 점수 합이 ${g.pts}점이 되게 하라)`}
+
+[학생 답안]
+"""
+${g.mine}
+"""
+
+[채점 원칙]
+- 표현이 달라도 ${subjAdv()}으로 같은 뜻이면 인정한다. 모범 답안과 다른 접근이라도 ${subjAdv()}으로 타당하고 문제가 요구한 내용을 다 담았으면 인정한다.
+- 틀린 개념, 인과 관계가 뒤바뀐 서술, 근거 없이 결론만 쓴 부분은 인정하지 않는다. 문제가 요구한 조건(예: "~와 관련지어", "~을 이용하여")을 지키지 않으면 감점한다.
+- 주어진 채점 기준의 점수 합이 배점과 다르면 배점에 맞게 비율을 조정한다.
+- 모범 답안이나 채점 기준 자체에 ${subjAdv()} 오류가 있으면 note에 밝히고, ${subjAdv()}으로 옳은 기준으로 채점한다.
+- 실제 학교 채점처럼 엄정하게 하되, 학생에게 유리한 해석이 합리적으로 가능하면 그 가능성을 acceptReason에 적는다.
+
+JSON 객체 하나로만 답하라:
+{"score":받은 점수(0~${g.pts}, 0.5 단위),"verdict":"정답" 또는 "부분 정답" 또는 "오답","acceptable":"인정됨" 또는 "이의 제기 가능" 또는 "인정 어려움","acceptReason":"내 답이 맞다고 인정받을 수 있는지와 그 이유 2~4문장. 이의 제기 가능이면 어떤 근거로 주장할 수 있는지","criteria":[{"c":"채점 요소","p":배점,"got":받은 점수,"comment":"판단 이유 1문장"}],"match":["모범 답안과 같은 뜻으로 쓴 내용"],"missing":["빠진 내용"],"wrong":["틀리거나 부정확한 내용과 왜 틀렸는지"],"model":"모범 답안(주어졌으면 그대로, 없었으면 작성한 것)","improved":"학생 답안을 최소한으로 고쳐 만점이 되게 다시 쓴 답안","tip":"다음에 비슷한 문제를 쓸 때의 조언 1~2문장('~해요'체)","note":"모범 답안·채점 기준에 대한 참고 사항(없으면 빈 문자열)"}`;
+}
+function normGrade(r,g){
+  if(!r||typeof r!=='object'||Array.isArray(r))return null;const arr=x=>Array.isArray(x)?x.map(String).filter(s=>s.trim()):[];
+  const crit=Array.isArray(r.criteria)?r.criteria.map(c=>({c:String(c&&c.c||''),p:Number(c&&c.p)||0,got:Number(c&&c.got)||0,comment:String(c&&c.comment||'')})).filter(c=>c.c):[];
+  let score=Number(r.score);if(!isFinite(score))score=crit.reduce((s,c)=>s+c.got,0);if(!isFinite(score))return null;score=Math.max(0,Math.min(g.pts,score));
+  return{score,pts:g.pts,verdict:String(r.verdict||''),acceptable:String(r.acceptable||''),acceptReason:String(r.acceptReason||''),criteria:crit,match:arr(r.match),missing:arr(r.missing),wrong:arr(r.wrong),
+    model:String(r.model||''),improved:String(r.improved||''),tip:String(r.tip||''),note:String(r.note||''),modelGiven:!!g.model.trim(),mine:g.mine};
+}
+async function runGrade(){
+  if(!sample||aiState==='none'||!gReady()||state.gBusy)return;
+  const g=JSON.parse(JSON.stringify(state.gForm));g.pts=Math.min(100,Math.max(1,Math.round(+g.pts)||TYPES[g.type].pts));
+  state.gBusy=true;state.gErr='';state.gRes=null;keepScroll();document.getElementById('gres')?.scrollIntoView({block:'center',behavior:'smooth'});
+  const ctl=new AbortController();gCtl=ctl;
+  try{const r=await askJSON(gPrompt(g),{signal:ctl.signal,cache:false,modelTier:'complex'});const res=normGrade(r,g);if(!res)throw{code:'invalid_json'};state.gRes=res}
+  catch(e){const c=e&&e.code;if(c!=='cancelled')state.gErr=c==='invalid_json'?'채점 결과를 읽지 못했어요. 다시 채점해 주세요.':errCopy(c);if(['not_granted','sampling_disabled'].includes(c))aiState='none'}
+  state.gBusy=false;gCtl=null;
+  if(state.view==='setup'&&state.tab==='grade'){keepScroll();document.getElementById('gres')?.scrollIntoView({block:'start',behavior:'smooth'})}
+}
+function gResultHTML(){
+  const wrap=b=>`<div class="step" id="gres"><div class="step-n">4</div><div class="step-body"><h3>채점 결과</h3>${b}</div></div>`;
+  if(state.gBusy)return wrap(`<div class="lv-load"><span class="dot"></span><span>모범 답안과 비교하며 채점하고 있어요. 1분 안팎 걸릴 수 있어요.</span><button class="ghost" data-act="gstop">멈추기</button></div>`);
+  if(state.gErr)return wrap(`<p class="err" style="margin:0">${esc(state.gErr)}</p>`);
+  const r=state.gRes;if(!r)return'';
+  const pct=r.pts?r.score/r.pts:0,acc=r.acceptable==='인정됨'?'ok':r.acceptable==='이의 제기 가능'?'mid':'no';
+  const list=(t,a,cls)=>a.length?`<div class="gl ${cls}"><span class="cf-lab">${t}</span><ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
+  return wrap(`<div class="gscore"><div class="lvbig">${fmt(r.score)}<small> / ${fmt(r.pts)}점</small></div><span class="gtag">${esc(r.verdict||(pct>=1?'정답':pct>0?'부분 정답':'오답'))}</span></div>
+   <div class="gacc ${acc}"><b>내 답이 맞다고 인정받을 수 있을까? · ${esc(r.acceptable||'판단 없음')}</b><p>${br(r.acceptReason)}</p></div>
+   ${r.criteria.length?`<div class="tbl-scroll"><table class="gtab"><thead><tr><th>채점 요소</th><th>배점</th><th>득점</th><th>판단</th></tr></thead><tbody>${r.criteria.map(c=>`<tr><td>${esc(c.c)}</td><td class="n">${fmt(c.p)}</td><td class="n ${c.got>=c.p?'ok':c.got>0?'mid':'no'}">${fmt(c.got)}</td><td>${esc(c.comment)}</td></tr>`).join('')}</tbody></table></div>`:''}
+   <div class="glists">${list('모범 답안과 같은 내용',r.match,'ok')}${list('빠진 내용',r.missing,'mid')}${list('틀리거나 부정확한 내용',r.wrong,'no')}</div>
+   <div class="gcomp"><div><span class="cf-lab">내 답안</span><p>${br(r.mine)}</p></div><div><span class="cf-lab">모범 답안${r.modelGiven?'':' (AI 작성)'}</span><p>${br(r.model)}</p></div></div>
+   ${r.improved?`<div class="cf-sec"><span class="cf-lab">내 답을 고쳐 쓴 만점 답안</span><p class="gimp">${br(r.improved)}</p></div>`:''}
+   ${r.tip?`<div class="fb">${esc(r.tip)}</div>`:''}
+   ${r.note?`<p class="note" style="margin:8px 0 0">참고: ${esc(r.note)}</p>`:''}
+   <div class="simrow" style="margin-top:14px"><button class="btn sm" data-act="gstart">다시 채점</button><button class="ghost" data-act="g2c">이 문제로 유사 문항 만들기</button></div>
+   <p class="note" style="margin:10px 0 0">AI 채점은 참고용이에요. 실제 학교의 채점 기준과 다를 수 있어요.</p>`);
+}
+/* ---------- 시험 시간 ---------- */
+function recMinutes(){const want=typeCounts(state.count,state.types),per={ox:.5,match:2,mc:1.5,box:2,fill:1,short:4,essay:10};let m=0;for(const k in want)m+=want[k]*(per[k]||1.5);m*=1+0.2*(state.diff-2);return Math.max(5,Math.round(m/5)*5)}
+function timeStep(n){
+  const rec=recMinutes(),opts=[0,10,20,30,45,50];
+  return`<div class="step"><div class="step-n">${n}</div><div class="step-body"><h3>시간 제한</h3>
+   <div class="chips" style="margin-top:0">${opts.map(m=>`<button class="chip" data-act="tl" data-v="${m}" aria-pressed="${!state.tcustom&&state.tlimit===m}">${m?m+'분':'제한 없음'}</button>`).join('')}${opts.includes(rec)?'':`<button class="chip" data-act="tl" data-v="rec" aria-pressed="${!state.tcustom&&state.tlimit===rec}">추천 ${rec}분</button>`}<button class="chip" data-act="tl" data-v="custom" aria-pressed="${!!state.tcustom}">직접 정하기</button></div>
+   ${state.tcustom?`<div class="cf-row" style="margin-top:10px;max-width:220px"><input class="cf-in" type="number" id="tl-custom" data-act="tlc" min="1" max="180" step="1" value="${state.tlimit||''}" inputmode="numeric" aria-label="시간 제한(분)" placeholder="예) 25"><span class="lbl2">분</span></div>`:''}
+   <p class="diff-desc" id="tl-desc">${tlDesc(rec)}</p>
+  </div></div>`;
+}
+function tlDesc(rec){return(state.tlimit?`${state.tlimit}분이 지나면 자동으로 제출돼요.`:'시간 제한 없이 걸린 시간만 재요.')+` 시험 중에 일시정지할 수 있어요. 이 구성의 추천 시간은 ${rec}분이에요.`}
+function elapsed(ex){if(!ex.start)return 0;const now=ex.end||(ex.paused?ex.pauseAt:Date.now());return Math.max(0,now-ex.start-(ex.pausedMs||0))}
+function remain(ex){return ex.limit?ex.limit-elapsed(ex):null}
+function clockText(ex){const r=remain(ex);return r==null?`경과 ${mmss(elapsed(ex))}`:`남은 시간 ${mmss(Math.max(0,r))}`}
+function tick(){
+  const ex=state.exam;if(!ex||ex.submitted||state.view!=='exam')return;const r=remain(ex);
+  for(const id of['clock','clock2','clock3']){const c=document.getElementById(id);if(c){c.textContent=clockText(ex);c.classList.toggle('low',r!=null&&r<=60000)}}
+  if(r!=null&&r<=0&&!ex.paused&&ex.start){ex.timeUp=true;if(genCtl)genCtl.abort();submitExam()}
+}
+function togglePause(ex){
+  if(!ex||ex.submitted)return;
+  if(!ex.paused){ex.paused=true;ex.pauseAt=Date.now()}
+  else{if(ex.start)ex.pausedMs=(ex.pausedMs||0)+Math.max(0,Date.now()-Math.max(ex.pauseAt,ex.start));ex.paused=false}
+  state.submitAsk=false;keepScroll();
+}
+function renderSetup(){
+  const tab=state.tab||'exam',aiOK=aiState!=='none';
+  const D=DIFF[state.diff-1];const want=typeCounts(state.count,state.types);
+  const heads={exam:['출제 신청서','어떤 시험을 볼까요?'],level:['레벨 테스트','내 실력은 어느 난이도일까요?'],custom:['문제로 만들기','가지고 있는 문제로 새 문제를 만들어요'],grade:['문제 채점하기','서술·논술 답안을 AI가 채점해요']};
+  const modeStep=(n,act,label,extra)=>`<div class="step"><div class="step-n">${n}</div><div class="step-body"><h3>출제 방식</h3>
+      <div class="modes">
+       <button class="mode" data-act="mode" data-v="ai" aria-pressed="${state.mode==='ai'}" ${aiOK?'':'disabled'}><b>AI 새 문제</b><span>${aiState==='checking'?'AI 연결 확인 중…':aiOK?(tab==='level'?'레벨에 맞춰 한 문제씩 새로 출제해요. 맞힐 때와 틀릴 때의 다음 문제를 미리 준비해서 기다림이 줄어요. 내 Claude 사용량을 써요.':'볼 때마다 새 문제를 출제하고 서술형도 AI가 채점해요. 내 Claude 사용량을 써요.'):'이 화면에서는 AI를 쓸 수 없어요.'}</span></button>
+       <button class="mode" data-act="mode" data-v="bank" aria-pressed="${state.mode==='bank'}"><b>기본 문제은행</b><span>${tab==='level'?'바로 시작해요. 문제은행 문항은 AI 출제보다 난이도 구분이 거칠어요.':'바로 시작해요. 계산 문제는 숫자가 매번 바뀌어요. 최상위권·극심화는 AI 출제를 권해요.'}</span></button>
+      </div>
+      <div class="go"><button class="btn" data-act="${act}" ${state.sel.length&&(tab!=='exam'||state.types.length)?'':'disabled'}>${label}</button>
+        <span class="note">${!state.sel.length?'단원을 하나 이상 고르세요.':tab==='exam'&&!state.types.length?'문항 유형을 하나 이상 고르세요.':extra}</span></div>
+      ${state.err?`<p class="err">${esc(state.err)}</p>`:''}
+    </div></div>`;
+  let steps;
+  if(tab==='exam')steps=stepScope(1)+`
     <div class="step"><div class="step-n">2</div><div class="step-body"><h3>난이도</h3>
-      <div class="diffs">${DIFF.map((x,i)=>`<button class="diff" data-act="diff" data-v="${i+1}" aria-pressed="${state.diff===i+1}"><b>${x.name}</b><span>${x.short}</span><i>${[0,1,2,3,4].map(k=>`<em class="${k<=i?'f':''}"></em>`).join('')}</i></button>`).join('')}</div>
+      <div class="diffs">${DIFF.map((x,i)=>`<button class="diff" data-act="diff" data-v="${i+1}" aria-pressed="${state.diff===i+1}"><b>${x.name}</b><span>${x.short}</span><i>${DIFF.map((z,k)=>`<em class="${k<=i?'f':''}"></em>`).join('')}</i></button>`).join('')}</div>
       <p class="diff-desc">${esc(D.desc)}</p>
     </div></div>
     <div class="step"><div class="step-n">3</div><div class="step-body"><h3>문항 유형과 수</h3>
@@ -1066,22 +1869,28 @@ function renderSetup(){
       <div class="types">${ORDER.map(k=>{const t=TYPES[k],on=state.types.includes(k);return`<label class="type${on?' on':''}"><input type="checkbox" id="t-${k}" data-act="type" data-v="${k}" ${on?'checked':''}><span><b>${t.name} <span class="pts">${t.pts}점</span></b><small>${t.sub}</small></span></label>`}).join('')}</div>
       <div style="margin-top:12px" class="seg">${[5,10,15,20].map(n=>`<button data-act="count" data-v="${n}" aria-pressed="${state.count===n}">${n}문항</button>`).join('')}</div>
       <p class="mix">${state.types.length?`구성: ${ORDER.filter(k=>want[k]).map(k=>`${TYPES[k].name} ${want[k]}`).join(' · ')} · 원점수 ${ORDER.reduce((s,k)=>s+(want[k]||0)*TYPES[k].pts,0)}점을 100점으로 환산`:'유형을 하나 이상 고르세요.'}</p>
-    </div></div>
-    <div class="step"><div class="step-n">4</div><div class="step-body"><h3>출제 방식</h3>
-      <div class="modes">
-       <button class="mode" data-act="mode" data-v="ai" aria-pressed="${state.mode==='ai'}" ${aiOK?'':'disabled'}><b>AI 새 문제</b><span>${aiState==='checking'?'AI 연결 확인 중…':aiOK?'볼 때마다 새 문제를 출제하고 서술형도 AI가 채점해요. 내 Claude 사용량을 써요.':'이 화면에서는 AI를 쓸 수 없어요.(제작자 화면만 ai 가능)'}</span></button>
-       <button class="mode" data-act="mode" data-v="bank" aria-pressed="${state.mode==='bank'}"><b>기본 문제은행</b><span>바로 시작해요. 계산 문제는 숫자가 매번 바뀌어요. 최상위권·극심화는 AI 출제를 권해요.</span></button>
-      </div>
-      <div class="go"><button class="btn" data-act="start" ${state.sel.length&&state.types.length?'':'disabled'}>시험지 받기</button>
-        <span class="note">${!state.sel.length?'단원을 하나 이상 고르세요.':!state.types.length?'문항 유형을 하나 이상 고르세요.':state.mode==='ai'&&state.diff>=4?'최상위권·극심화는 깊이 생각한 뒤 출제해서 첫 문항까지 1분 안팎 걸릴 수 있어요.':''}</span></div>
-      ${state.err?`<p class="err">${esc(state.err)}</p>`:''}
-    </div></div>
+    </div></div>`+timeStep(4)+modeStep(5,'start','시험지 받기',state.mode==='ai'&&state.diff>=4?'최상위권·극심화는 깊이 생각한 뒤 출제해서 첫 문항까지 1분 안팎 걸릴 수 있어요.':'');
+  else if(tab==='level')steps=stepScope(1)+`
+    <div class="step"><div class="step-n">2</div><div class="step-body"><h3>문항 수</h3>
+      <div class="seg">${[7,10,15].map(n=>`<button data-act="lcount" data-v="${n}" aria-pressed="${state.lvlCount===n}">${n}문항</button>`).join('')}</div>
+      <p class="diff-desc">첫 문제는 가운데인 레벨 3.5(어려움과 최상위권 사이)에서 시작해요. 맞히면 지금 레벨과 위쪽 끝의 가운데로, 틀리면 아래쪽 끝과의 가운데로 옮겨 가는 이분 탐색이에요. 범위가 문제마다 반으로 줄고, 마지막에 남은 범위의 가운데가 내 레벨이에요. 모르는 문제는 찍지 말고 '모르겠어요'를 누르면 결과가 더 정확해요.</p>
+    </div></div>`+modeStep(3,'lstart','레벨 테스트 시작','');
+  else if(tab==='custom')steps=customSteps(aiOK);
+  else steps=gradeSteps(aiOK)+gResultHTML();
+  document.getElementById('app').innerHTML=`
+  <header class="top"><div class="brand"><span class="seal">${state.subject==='math'?'수':'과'}</span><div><h1>${subjName()} 단원평가실</h1><p>중·고등 ${subjName()} 단원을 골라 시험을 보고 바로 채점받아요</p></div></div></header>
+  <div class="grid">
+   <section class="paper form" aria-label="${heads[tab][0]}">
+    <div class="subj">${[['sci','과학'],['math','수학']].map(([k,l])=>`<button class="subjb" data-act="subj" data-v="${k}" aria-pressed="${state.subject===k}">${l}</button>`).join('')}</div>
+    <div class="tabs">${[['exam','단원 시험'],['level','레벨 테스트'],['custom','문제로 만들기'],['grade','문제 채점하기']].map(([k,l])=>`<button class="tab" data-act="tab" data-v="${k}" aria-pressed="${tab===k}">${l}</button>`).join('')}</div>
+    <div class="form-head"><span class="eyebrow">${heads[tab][0]}</span><h2>${heads[tab][1]}</h2></div>
+    ${steps}
    </section>
    <aside class="side">
     <section class="paper card"><h3>최근 기록 <span class="note">${history.length?history.length+'회':''}</span></h3>
-      ${history.length?`<ul class="hist">${history.slice(0,8).map(h=>`<li><span class="s">${esc(h.scope)}</span><span class="m">${esc(h.date)} · ${esc(h.diff)} · ${esc(h.mode)}</span><span class="sc">${h.pct}</span></li>`).join('')}</ul>`:`<p class="empty">아직 본 시험이 없어요. 시험을 보면 여기에 점수가 쌓여요.</p>`}
+      ${history.length?`<ul class="hist">${history.slice(0,8).map(h=>`<li><span class="s">${h.subj==='math'?'[수학] ':h.subj==='sci'?'[과학] ':''}${esc(h.scope)}</span><span class="m">${esc(h.date)} · ${esc(h.diff)} · ${esc(h.mode)}</span><span class="sc">${esc(h.pct)}</span></li>`).join('')}</ul>`:`<p class="empty">아직 본 시험이 없어요. 시험을 보면 여기에 점수가 쌓여요.</p>`}
     </section>
-    <section class="paper card"><h3>난이도 기준</h3><div class="legend">${DIFF.map(x=>`<div><b>${x.name}</b>${esc(x.desc)}</div>`).join('')}</div></section>
+    <section class="paper card"><h3>난이도 기준</h3><div class="legend">${DIFF.map((x,i)=>`<div><b>${i+1} ${x.name}</b>${esc(x.desc)}</div>`).join('')}</div></section>
    </aside>
   </div>`;
 }
@@ -1093,11 +1902,11 @@ function qHTML(q,i,ex){
   let cls='q';
   if(done){const busy=WR(q.type)&&ex.grading==='busy'&&!ex.met[i];
     if(!busy){const g=gradeQ(q,i,ex);cls+=g>=q.pts-1e-9?' correct':g>0?' part':' wrong'}}
-  const head=`<div class="q-head"><span class="q-num">${i+1}.</span><div class="q-text">${br(q.q)} <span class="pts">[${fmt(q.pts)}점]</span></div></div>`;
+  const head=`<div class="q-head"><span class="q-num">${i+1}.</span><div class="q-text">${q.from&&!ex.custom?`<span class="simtag">원래 ${q.from}번 ${ex.kind==='deep'?'심화':'유사'}</span>`:''}${br(q.q)} <span class="pts">[${fmt(q.pts)}점]</span></div>${done&&!ex.noPick?`<button class="pickq" data-act="selq" data-q="${i}" aria-pressed="${!!(ex.chosen&&ex.chosen[i])}">${ex.chosen&&ex.chosen[i]?'✓ 고름':'고르기'}</button>`:''}</div>`;
   const data=q.data?`<div class="data">${renderData(q.data)}</div>`:'';
   const box=q.box&&q.box.length?`<div class="box">${q.box.map(b=>`<div>${esc(b)}</div>`).join('')}</div>`:'';
   let body='';
-  if(q.type==='mc'){
+  if(isMC(q.type)){
     body=`<div class="opts" role="radiogroup" aria-label="${i+1}번 선택지">${q.choices.map((c,k)=>`<button class="opt${done&&k===q.answer?' is-ans':''}" role="radio" aria-checked="${ans===k}" data-act="pick" data-q="${i}" data-o="${k}" ${done?'disabled':''}><span class="cn">${k+1}</span><span class="ct">${br(c)}</span></button>`).join('')}</div>`;
     if(done)body+=`<div class="review"><span class="verdict ${ans===q.answer?'okc':''}">${ans===q.answer?'정답':'오답'}</span> · 정답 ${CN[q.answer]} · 내 답 ${ans==null?'없음':CN[ans]}${q.exp?`<span class="lbl">해설</span><p>${br(q.exp)}</p>`:''}</div>`;
   }else if(q.type==='ox'){
@@ -1115,7 +1924,7 @@ function qHTML(q,i,ex){
   }else if(q.type==='fill'){
     const v=String(ans||'');
     body=`<input class="fillin" id="fi-${i}" data-act="fill" data-q="${i}" value="${esc(v)}" placeholder="답을 쓰세요" autocomplete="off" ${done?'disabled':''}>`;
-    if(done){const auto=fillOK(q,ans),ok=auto||ex.ovr[i];const shown=q.num!=null?`${fmt(q.num)}${q.numUnit?' '+q.numUnit:''}`:q.accept[0];
+    if(done){const auto=fillOK(q,ans),ok=auto||ex.ovr[i];const shown=q.accept&&q.accept[0]?q.accept[0]:`${fmt(q.num)}${q.numUnit?' '+q.numUnit:''}`;
       body+=`<div class="review"><span class="verdict ${ok?'okc':''}">${ok?'정답':'오답'}</span> · 정답 ${esc(shown)} · 내 답 ${v.trim()?esc(v):'없음'}${!auto&&v.trim()?`<button class="okbtn" data-act="ovr" data-q="${i}" aria-pressed="${!!ex.ovr[i]}">${ex.ovr[i]?'인정함 · 취소':'이 답도 맞아요'}</button>`:''}
        ${q.accept.length>1?`<span class="lbl">허용 답안</span><p>${q.accept.map(esc).join(', ')}</p>`:''}${q.exp?`<span class="lbl">해설</span><p>${br(q.exp)}</p>`:''}</div>`}
   }else{
@@ -1131,8 +1940,8 @@ function qHTML(q,i,ex){
 function answeredCount(ex){return ex.questions.filter((q,i)=>isAnswered(q,ex.answers[i])).length}
 function omrHTML(ex){
   const by=t=>ex.questions.map((q,i)=>({q,i})).filter(x=>x.q.type===t);
-  const oxs=by('ox'),mcs=by('mc'),rest=ex.questions.map((q,i)=>({q,i})).filter(x=>!['ox','mc'].includes(x.q.type));
-  return`<div class="omr-h">답안지<span>${answeredCount(ex)}/${ex.questions.length}</span></div>
+  const oxs=by('ox'),mcs=ex.questions.map((q,i)=>({q,i})).filter(x=>isMC(x.q.type)),rest=ex.questions.map((q,i)=>({q,i})).filter(x=>x.q.type!=='ox'&&!isMC(x.q.type));
+  return`<div class="omr-h">답안지<span>${answeredCount(ex)}/${ex.questions.length}</span></div>${ex.submitted?'':`<div class="omr-clock"><span id="clock2">${clockText(ex)}</span><button class="linkbtn" data-act="pause">일시정지</button></div>`}
   <div class="omr-body">
    ${oxs.length?`<div class="omr-sub">OX</div>${oxs.map(({q,i})=>`<div class="omr-ox"><span class="omr-n">${i+1}</span>${[true,false].map(v=>`<button class="bub${ex.answers[i]===v?' f':''}${ex.submitted&&q.answer===v?' a':''}" data-act="ox" data-q="${i}" data-v="${v?1:0}" aria-label="${i+1}번 ${v?'O':'X'}" ${ex.submitted?'disabled':''}>${v?'O':'X'}</button>`).join('')}</div>`).join('')}`:''}
    ${mcs.length?`${oxs.length?'<div class="omr-sub">선택형</div>':''}${mcs.map(({q,i})=>`<div class="omr-row"><span class="omr-n">${i+1}</span>${[0,1,2,3,4].map(k=>`<button class="bub${ex.answers[i]===k?' f':''}${ex.submitted&&k===q.answer?' a':''}" data-act="pick" data-q="${i}" data-o="${k}" aria-label="${i+1}번 ${k+1}" ${ex.submitted?'disabled':''}>${k+1}</button>`).join('')}</div>`).join('')}`:''}
@@ -1147,14 +1956,14 @@ function footHTML(ex){
 }
 function genHTML(ex){
   if(ex.generating)return`<div class="gen" id="gen"><span class="dot"></span><span>문제 출제 중 · ${ex.questions.length}/${ex.count}${ex.questions.length?' · 나온 문제부터 풀어도 돼요':''}</span><button class="ghost" data-act="stop">출제 멈추기</button></div>`;
-  if(ex.genErr)return`<div class="gen" id="gen"><span class="err">${esc(ex.genErr)}</span>${ex.questions.length?'':`<button class="ghost" data-act="retry">다시 출제</button><button class="ghost" data-act="tobank">문제은행으로 풀기</button>`}</div>`;
+  if(ex.genErr)return`<div class="gen" id="gen"><span class="err">${esc(ex.genErr)}</span>${ex.questions.length?'':`<button class="ghost" data-act="retry">다시 출제</button>${ex.mode==='similar'?'':'<button class="ghost" data-act="tobank">문제은행으로 풀기</button>'}`}</div>`;
   if(ex.genNote||ex.notes&&ex.notes.length)return`<div class="gen" id="gen"><span class="note">${esc([ex.genNote,...(ex.notes||[])].filter(Boolean).join(' · '))}</span></div>`;
   return'<div id="gen"></div>';
 }
 function listHTML(ex){
   const sec={};ex.questions.forEach((q,i)=>{(sec[q.type]=sec[q.type]||[]).push(qHTML(q,i,ex))});
   const used=ORDER.filter(t=>sec[t]);const multi=used.length>1;
-  return used.map((t,n)=>`${multi?`<h3 class="sect">${ROMAN[n]}. ${SECT[t]}</h3>`:''}<ol class="qs${['mc','ox','fill'].includes(t)?'':' one'}" id="qs-${t}">${sec[t].join('')}</ol>`).join('');
+  return used.map((t,n)=>`${multi?`<h3 class="sect">${ROMAN[n]}. ${SECT[t]}</h3>`:''}<ol class="qs${['mc','box','ox','fill'].includes(t)?'':' one'}" id="qs-${t}">${sec[t].join('')}</ol>`).join('');
 }
 function drawLines(){
   const ex=state.exam;if(!ex)return;
@@ -1174,32 +1983,34 @@ window.addEventListener('resize',()=>drawLines());
 try{document.fonts&&document.fonts.ready.then(()=>drawLines())}catch(e){}
 function renderExam(){
   const ex=state.exam;if(!ex){state.view='setup';return renderSetup()}
-  const lv=U[ex.units[0]].lv,sc=ex.submitted?scoreOf(ex):null;
+  const lv=exLv(ex),sc=ex.submitted?scoreOf(ex):null;
   const now=new Date();
   document.getElementById('app').innerHTML=`
-  <header class="top"><div class="brand"><span class="seal">과</span><div><h1>과학 단원평가실</h1><p>${esc(scopeLabel(ex.units))}</p></div></div>
-    <div>${ex.submitted?`<button class="ghost" data-act="home">설정으로</button>`:state.quitAsk?`<span class="note">시험을 그만둘까요? 답은 저장되지 않아요. </span><button class="ghost" data-act="quit-yes">그만두기</button> <button class="ghost" data-act="quit-no">계속</button>`:`<button class="ghost" data-act="quit">그만두기</button>`}</div></header>
+  <header class="top"><div class="brand"><span class="seal">${state.subject==='math'?'수':'과'}</span><div><h1>${subjName()} 단원평가실</h1><p>${esc(exScope(ex))}</p></div></div>
+    <div>${ex.submitted?`<button class="ghost" data-act="home">설정으로</button>`:state.quitAsk?`<span class="note">시험을 그만둘까요? 답은 저장되지 않아요. </span><button class="ghost" data-act="quit-yes">그만두기</button> <button class="ghost" data-act="quit-no">계속</button>`:`<button class="ghost" data-act="pause">${ex.paused?'▶ 계속하기':'❚❚ 일시정지'}</button> <button class="ghost" data-act="quit">그만두기</button>`}</div></header>
   <div class="grid">
    <article class="paper sheet">
     <div class="sheet-head">
-      <div class="sheet-meta"><span>${now.getFullYear()}학년도</span><span>${LVN[lv]} 과학</span></div>
-      <h2 class="sheet-title">과학 단원평가</h2>
-      <div class="info-scroll"><table class="sheet-info"><tr><th>범위</th><td>${esc(ex.units.map(unitLabel).join(', '))}</td></tr>
-       <tr><th>난이도</th><td>${esc(DIFF[ex.diff-1].name)} · ${ex.mode==='ai'?'AI 출제':ex.mode==='retry'?'틀린 문제 다시 풀기':'기본 문제은행'} · ${ex.questions.length||ex.count}문항 · 경과 <span id="clock">${mmss((ex.end||Date.now())-(ex.start||Date.now()))}</span></td></tr></table></div>
+      <div class="sheet-meta"><span>${now.getFullYear()}학년도</span><span>${LVN[lv]} ${subjName()}</span></div>
+      <h2 class="sheet-title">${subjName()} 단원평가</h2>
+      <div class="info-scroll"><table class="sheet-info"><tr><th>범위</th><td>${esc(exScopeFull(ex))}</td></tr>
+       <tr><th>난이도</th><td>${esc(dName(ex.diff))} · ${ex.mode==='ai'?'AI 출제':ex.mode==='similar'?simLabel(ex):ex.mode==='retry'?'틀린 문제 다시 풀기':'기본 문제은행'} · ${ex.questions.length||ex.count}문항 · ${ex.submitted?`걸린 시간 ${mmss(elapsed(ex))}${ex.limit?` / 제한 ${Math.round(ex.limit/60000)}분`:''}`:`<span id="clock">${clockText(ex)}</span>${ex.limit?` (제한 ${Math.round(ex.limit/60000)}분)`:''}`}</td></tr></table></div>
       ${sc&&ex.grading!=='busy'?`<div class="score-pen">${sc.pct}<small>점</small></div>`:''}
     </div>
     ${genHTML(ex)}
-    <div id="qlist">${listHTML(ex)}</div>
+    ${ex.timeUp?`<div class="gen"><span class="err">시간이 끝나 자동으로 제출했어요.</span></div>`:''}
+    ${ex.paused&&!ex.submitted?`<div class="pausebox"><b>일시정지 중</b><span class="note">시간이 멈췄어요. 문제는 계속하기를 누르면 다시 보여요.</span><span class="note">${clockText(ex)}</span><button class="btn red sm" data-act="pause">▶ 계속하기</button></div>`:''}
+    <div id="qlist" ${ex.paused&&!ex.submitted?'hidden':''}>${listHTML(ex)}</div>
    </article>
    <aside class="side ${ex.submitted?'result-side':'exam-side'}">
-    ${ex.submitted?resultHTML(ex,sc):`<section class="paper omr" id="omr">${omrHTML(ex)}</section>`}
+    ${ex.submitted?resultHTML(ex,sc):ex.paused?'':`<section class="paper omr" id="omr">${omrHTML(ex)}</section>`}
    </aside>
   </div>
-  ${ex.submitted?'':`<div class="mbar" id="mbar">${mbarHTML(ex)}</div>`}`;
+  ${ex.submitted||ex.paused?'':`<div class="mbar" id="mbar">${mbarHTML(ex)}</div>`}`;
   drawLines();
-  if(!ex.submitted){timer=setInterval(()=>{const c=document.getElementById('clock');if(c&&state.exam&&!state.exam.submitted)c.textContent=mmss(Date.now()-(state.exam.start||Date.now()))},1000)}
+  if(!ex.submitted){tick();timer=setInterval(tick,1000)}
 }
-function mbarHTML(ex){return`<span>${answeredCount(ex)}/${ex.questions.length}문항 답함</span><button class="btn red sm" data-act="submit" ${!ex.questions.length||ex.generating?'disabled':''}>답안 제출</button>`}
+function mbarHTML(ex){return`<span>${answeredCount(ex)}/${ex.questions.length}문항 답함</span><span id="clock3" class="mclock">${clockText(ex)}</span><button class="btn red sm" data-act="submit" ${!ex.questions.length||ex.generating?'disabled':''}>답안 제출</button>`}
 function resultHTML(ex,sc){
   const tag=sc.pct===100?'만점':sc.pct>=90?'최우수':sc.pct>=75?'우수':sc.pct>=55?'보통':'다시 도전';
   const wrong=ex.questions.some((q,i)=>AUTO(q.type)&&gradeQ(q,i,ex)<q.pts-1e-9);
@@ -1208,17 +2019,29 @@ function resultHTML(ex,sc){
    <dl class="kv">
     ${ORDER.filter(t=>sc.bt[t]).map(t=>{const b=sc.bt[t];return AUTO(t)&&t!=='match'?`<dt>${TYPES[t].name}</dt><dd>${b.r} / ${b.n}문항</dd>`:`<dt>${TYPES[t].name}</dt><dd>${fmt(b.g)} / ${fmt(b.t)}점</dd>`}).join('')}
     <dt>원점수</dt><dd>${fmt(sc.got)} / ${fmt(sc.tot)}점</dd>
-    <dt>난이도</dt><dd>${esc(DIFF[ex.diff-1].name)}</dd>
-    <dt>걸린 시간</dt><dd>${mmss(ex.end-ex.start)}</dd>
+    <dt>난이도</dt><dd>${esc(dName(ex.diff))}</dd>
+    <dt>걸린 시간</dt><dd>${mmss(elapsed(ex))}${ex.limit?` / ${Math.round(ex.limit/60000)}분`:''}</dd>${ex.timeUp?'<dt>제출</dt><dd>시간 종료 자동 제출</dd>':''}
    </dl>
    ${ex.gradeErr?`<p class="err" style="margin:10px 0 0">${esc(ex.gradeErr)}</p>`:''}
    ${ex.grading==='self'&&!ex.gradeErr?`<p class="note" style="margin:10px 0 0">서술형은 기준표의 항목을 체크하면 점수가 바로 반영돼요.</p>`:''}
    <div class="bars">${Object.entries(sc.by).map(([u,v])=>{const p=v.t?Math.round(v.g/v.t*100):0;return`<div><div class="bar-l"><span>${esc(u)}</span><span>${p}%</span></div><div class="bar-t"><i style="width:${p}%"></i></div></div>`}).join('')}</div>
+   ${simHTML(ex)}
    <div class="res-actions">
-    <button class="btn sm" data-act="again">같은 설정으로 새 시험</button>
+    <button class="btn sm" data-act="again">${ex.mode==='similar'?(ex.kind==='deep'?'심화 유형 새로 받기':'유사 문항 새로 받기'):'같은 설정으로 새 시험'}</button>
     ${wrong?`<button class="ghost" data-act="retrywrong">틀린 문제 다시 풀기</button>`:''}
     <button class="ghost" data-act="home">설정 바꾸기</button>
    </div></section>`;
+}
+function simHTML(ex){
+  if(ex.grading==='busy')return'';
+  const ok=!!sample&&aiState!=='none',wl=wrongOf(ex),ch=chosenOf(ex),m=state.pickMult;
+  return`<div class="simbox"><b>AI 연습 문제 만들기</b>
+   ${wl.length?`<p>틀린 ${wl.length}문항(부분 점수 포함)의 유사 문항</p><div class="simrow">${[2,3].map(k=>`<button class="btn red sm" data-act="similar" data-v="${k}" ${ok?'':'disabled'}>${k}배 · ${wl.length*k}문항</button>`).join('')}</div><hr>`:''}
+   <p>문제 번호 옆 <b style="font-size:13px">고르기</b>를 눌러 문제를 고른 뒤 유사 문항이나 심화 유형을 만들어요. 고른 문제: ${ch.length?ch.map(i=>(i+1)+'번').join(', '):'없음'}</p>
+   <div class="simrow"><span class="lbl2">문제당</span><div class="seg">${[1,2,3].map(k=>`<button data-act="pickmult" data-v="${k}" aria-pressed="${m===k}">${k}개</button>`).join('')}</div></div>
+   <div class="simrow"><button class="btn sm" data-act="selgen" data-v="similar" ${ok&&ch.length?'':'disabled'}>유사 문항${ch.length?` · ${ch.length*m}문항`:''}</button><button class="btn red sm" data-act="selgen" data-v="deep" ${ok&&ch.length?'':'disabled'}>심화 유형${ch.length?` · ${ch.length*m}문항`:''}</button></div>
+   <div class="simrow">${wl.length?`<button class="linkbtn" data-act="selwrong">틀린 문제 모두 고르기</button>`:''}<button class="linkbtn" data-act="selall">전체 고르기</button>${ch.length?`<button class="linkbtn" data-act="selnone">선택 해제</button>`:''}</div>
+   ${ok?'':'<p>이 화면에서는 AI를 쓸 수 없어서 연습 문제를 만들 수 없어요.</p>'}</div>`;
 }
 function rerenderList(){
   const ex=state.exam;const list=document.getElementById('qlist');if(!list)return;
@@ -1235,12 +2058,184 @@ function updateCounts(){const ex=state.exam;const o=document.querySelector('.omr
   const m=document.querySelector('#mbar span');if(m)m.textContent=answeredCount(ex)+'/'+ex.questions.length+'문항 답함';
   const f=document.getElementById('omr-foot');if(f&&f.querySelector('.confirm'))f.innerHTML=footHTML(ex)}
 
+/* ===================== 레벨 테스트 (이분 탐색) ===================== */
+let lvlRT={cur:null,pre:null};
+const LVL_LO=1,LVL_HI=6;
+const lvPos=x=>(x-LVL_LO)/(LVL_HI-LVL_LO)*100;
+const lv1=x=>(Math.round(x*10)/10).toFixed(1);
+function lvDesc(x){const r=Math.round(x);if(Math.abs(x-r)<0.2)return DIFF[Math.min(DIFF.length,Math.max(1,r))-1].name;const a=Math.floor(x),b=Math.ceil(x);return`${DIFF[a-1].name}~${DIFF[b-1].name}`}
+function lvlPrompt(L,unitId,avoid){
+  const u=U[unitId],a=Math.max(1,Math.floor(L)),b=Math.min(DIFF.length,Math.ceil(L)),A=DIFF[a-1],B=DIFF[b-1];
+  const near=a===b?`정확히 ${A.name} 수준이다.`:`${A.name}과 ${B.name} 사이이며, ${a}에서 ${b} 쪽으로 ${Math.round((L-a)*100)}% 지점이다.`;
+  return`너는 대한민국 ${LVN[u.lv]} ${subjName()} 출제위원이다. 학생의 실력을 재는 레벨 테스트 문항을 1개 출제하라.
+
+[단원] ${u.grp} · ${u.name} (핵심: ${u.kw})
+[난이도] 1~${DIFF.length} 척도에서 L=${L.toFixed(2)} (${DIFF.map((x,i)=>(i+1)+' '+x.name).join(', ')}). ${near}
+- ${A.name}: ${A.ai}${a!==b?`\n- ${B.name}: ${B.ai}`:''}
+[원칙]
+- 이 문항을 맞히는지로 학생이 이 수준에 도달했는지 가를 수 있어야 한다. 난이도를 정확히 맞춘다.
+- 찍어서 맞히기 어렵게 매력적인 오답 선지를 넣는다.
+- 직접 풀어 보고 검산한다. 정답은 정확히 하나.${avoid.length?`\n- 이미 낸 문항과 다른 개념·소재로 낸다. 이미 낸 문항: ${avoid.join(' / ')}`:''}
+(출제 번호 #${Math.random().toString(36).slice(2,8)})
+
+[출력] JSON 객체 하나만 쓴다. 객관식, 〈보기〉 선택형, 주관식(단답형) 중 내용에 알맞은 것으로 낸다.
+${FORMATS.mc}
+${FORMATS.box}
+${FORMATS.fill}
+${fmtRule()}
+- unit은 "${u.grp} ${u.name}"으로 쓴다.`;
+}
+function lvlBank(L,units,used){
+  const d=Math.min(DIFF.length,Math.max(1,Math.round(L))),gens=units.filter(id=>GEN[id]);
+  const st=[];for(const id of units)for(const s of(BANK[id]||[]))if(!used.has(s.q))st.push({id,s,w:Math.abs(s.d-L)});
+  st.sort((a,b)=>a.w-b.w);const best=st.length?st[0].w:9;
+  if(gens.length&&(L>=4.3||best>0.75||Math.random()<.35)){for(let k=0;k<25;k++){const id=pick(gens),r=pick(GEN[id])(d);if(!used.has(r.q)){used.add(r.q);return fromGen(id,r)}}}
+  if(st.length){const c=pick(st.filter(x=>x.w<=best+0.01));used.add(c.s.q);return fromStatic(c.id,c.s)}
+  return null;
+}
+async function genLevelQ(L,signal){
+  const lt=state.level;
+  if(lt.mode==='bank'){const used=new Set(lt.used||[]);const q=lvlBank(L,lt.units,used);lt.used=[...used];if(!q)throw{code:'bank_empty'};return q}
+  const unit=pick(lt.units);
+  const prev=lt.hist.map(h=>h.q).concat(lt.curQ?[lt.curQ]:[]);
+  const avoid=prev.map(q=>q.concept||q.q.slice(0,30)).slice(-12);
+  const o=await askJSON(lvlPrompt(L,unit,avoid),{signal,cache:false,modelTier:L>=4?'complex':'default'});
+  const q=normAI(Array.isArray(o)?o[0]:o);
+  if(!q||(!isMC(q.type)&&q.type!=='fill'))throw{code:'invalid_json'};
+  q.unit=q.unit||unitLabel(unit);return q;
+}
+function makeSlot(L){
+  const slot={L,q:null,err:'',ctl:new AbortController()};
+  slot.p=genLevelQ(L,slot.ctl.signal).then(q=>{slot.q=q;return q},e=>{slot.err=(e&&e.code)||'upstream_error';throw e});
+  slot.p.catch(()=>{});return slot;
+}
+function abortLevel(){try{lvlRT.cur&&lvlRT.cur.ctl.abort()}catch(e){}try{if(lvlRT.pre){lvlRT.pre.up.ctl.abort();lvlRT.pre.down.ctl.abort()}}catch(e){}lvlRT={cur:null,pre:null}}
+function startLevel(){
+  const ids=state.sel.slice();state.err='';if(!ids.length)return;
+  if(new Set(ids.map(id=>U[id].lv)).size>1){state.err='중학교와 고등학교 단원을 함께 고를 수 없어요. 한 학교급만 남겨 주세요.';return render()}
+  abortLevel();
+  const mode=state.mode==='ai'&&sample&&aiState!=='none'?'ai':'bank';
+  state.level={units:ids,mode,total:state.lvlCount,lo:LVL_LO,hi:LVL_HI,curL:(LVL_LO+LVL_HI)/2,hist:[],used:[],idx:0,curQ:null,answered:false,done:false,start:Date.now(),quitAsk:false,need:false,err:'',loading:true};
+  state.exam=null;state.view='level';
+  lvlRT.cur=makeSlot(state.level.curL);showCurrent();window.scrollTo(0,0);
+}
+function showCurrent(){
+  const lt=state.level,slot=lvlRT.cur;
+  state.exam=null;lt.loading=true;lt.err='';lt.curQ=null;lt.need=false;render();
+  slot.p.then(q=>{if(lvlRT.cur!==slot||state.level!==lt)return;lt.loading=false;lt.curQ=q;lt.idx=lt.hist.length;
+      const ex=newExam({units:lt.units,diff:Math.round(lt.curL),noPick:true,start:Date.now()});ex.questions[lt.idx]=q;state.exam=ex;render();prefetch()},
+    e=>{if(lvlRT.cur!==slot||state.level!==lt)return;lt.loading=false;const c=e&&e.code;
+      lt.err=c==='bank_empty'?'문제은행에서 더 낼 문항이 없어요. 단원을 늘리거나 AI 출제를 쓰세요.':errCopy(c);
+      if(['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].includes(c))aiState='none';render()});
+}
+function prefetch(){
+  const lt=state.level;if(!lt||lt.hist.length+1>=lt.total){lvlRT.pre=null;return}
+  const c=lt.curL;lvlRT.pre={up:makeSlot((c+lt.hi)/2),down:makeSlot((lt.lo+c)/2)};
+}
+function lvlAnswer(giveUp){
+  const lt=state.level,ex=state.exam;if(!lt||!ex||ex.submitted)return;
+  const i=lt.idx,q=ex.questions[i],a=ex.answers[i];
+  if(!giveUp&&!isAnswered(q,a)){lt.need=true;render();return}
+  lt.need=false;
+  const ok=!giveUp&&(isMC(q.type)?a===q.answer:fillOK(q,a));
+  ex.submitted=true;ex.end=Date.now();
+  lt.hist.push({L:lt.curL,q,a:giveUp?null:(a??null),ok,gave:!!giveUp,lo:lt.lo,hi:lt.hi});
+  if(ok)lt.lo=lt.curL;else lt.hi=lt.curL;
+  lt.answered=true;render();
+}
+function lvlNext(){
+  const lt=state.level;if(!lt)return;lt.answered=false;
+  if(lt.hist.length>=lt.total){lt.final=(lt.lo+lt.hi)/2;lt.done=true;lt.end=Date.now();abortLevel();state.exam=null;recordLevel(lt);render();window.scrollTo(0,0);return}
+  const last=lt.hist[lt.hist.length-1];lt.curL=(lt.lo+lt.hi)/2;
+  const pre=lvlRT.pre;let slot=null;
+  if(pre){slot=last.ok?pre.up:pre.down;const other=last.ok?pre.down:pre.up;try{other.ctl.abort()}catch(e){}
+    if(lt.mode==='bank'&&other.q)lt.used=lt.used.filter(x=>x!==other.q.q)}
+  if(!slot||Math.abs(slot.L-lt.curL)>1e-9||slot.err)slot=makeSlot(lt.curL);
+  lvlRT.pre=null;lvlRT.cur=slot;showCurrent();window.scrollTo(0,0);
+}
+function recordLevel(lt){
+  const d=new Date();
+  history.unshift({id:Math.random().toString(36).slice(2),subj:state.subject,scope:scopeLabel(lt.units),diff:'레벨 테스트 '+lt.total+'문항',mode:lt.mode==='ai'?'AI':'문제은행',pct:'Lv '+lv1(lt.final),date:`${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`});saveHist();
+}
+function meterHTML(lt){
+  const c=lt.done?lt.final:lt.curL;
+  return`<div class="meter" role="img" aria-label="레벨 범위 ${fmt(lt.lo)}~${fmt(lt.hi)}, 현재 ${fmt(c)}"><div class="mtrack"><div class="mband" style="left:${lvPos(lt.lo)}%;width:${lvPos(lt.hi)-lvPos(lt.lo)}%"></div><div class="mmark" style="left:${lvPos(c)}%"></div></div>
+   <div class="mticks">${DIFF.map((d,k)=>`<span style="left:${lvPos(k+1)}%">${k+1} ${d.name}</span>`).join('')}</div></div>`;
+}
+function chartHTML(lt){
+  const H=lt.hist;if(!H.length)return'';
+  const W=320,Ht=150,l=34,r=14,t=10,b=22,n=H.length+(lt.done?1:0);
+  const x=k=>l+(n>1?k*(W-l-r)/(n-1):(W-l-r)/2),y=L=>t+(LVL_HI-L)/(LVL_HI-LVL_LO)*(Ht-t-b);
+  let g='';for(let L=1;L<=LVL_HI;L++)g+=`<line x1="${l}" x2="${W-r}" y1="${y(L)}" y2="${y(L)}" style="stroke:var(--rule);stroke-width:1"/><text x="${l-8}" y="${y(L)+4}" text-anchor="end" style="fill:var(--muted);font-size:10px">${L}</text>`;
+  const pts=H.map((h,k)=>[x(k),y(h.L)]);if(lt.done)pts.push([x(H.length),y(lt.final)]);
+  g+=`<polyline points="${pts.map(p=>p.join(',')).join(' ')}" style="fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round"/>`;
+  H.forEach((h,k)=>{g+=`<circle cx="${x(k)}" cy="${y(h.L)}" r="5" style="fill:${h.ok?'var(--ok)':'var(--pen)'};stroke:var(--paper);stroke-width:1.5"/><text x="${x(k)}" y="${Ht-6}" text-anchor="middle" style="fill:var(--muted);font-size:9.5px">${k+1}</text>`});
+  if(lt.done)g+=`<circle cx="${x(H.length)}" cy="${y(lt.final)}" r="6" style="fill:var(--paper);stroke:var(--omr);stroke-width:2.5"/><text x="${x(H.length)}" y="${Ht-6}" text-anchor="middle" style="fill:var(--omr);font-size:9.5px;font-weight:700">결과</text>`;
+  return`<svg class="lvchart" viewBox="0 0 ${W} ${Ht}" role="img" aria-label="문항별 레벨 변화. 초록은 맞힘, 빨강은 틀림">${g}</svg>`;
+}
+function renderLevel(){
+  const lt=state.level;if(!lt){state.view='setup';return renderSetup()}
+  const ex=state.exam,okAI=!!sample&&aiState!=='none';
+  const header=`<header class="top"><div class="brand"><span class="seal">${state.subject==='math'?'수':'과'}</span><div><h1>${subjName()} 단원평가실</h1><p>레벨 테스트 · ${esc(scopeLabel(lt.units))}</p></div></div><div>${lt.done?`<button class="ghost" data-act="lhome">설정으로</button>`:lt.quitAsk?`<span class="note">레벨 테스트를 그만둘까요? </span><button class="ghost" data-act="lquit-yes">그만두기</button> <button class="ghost" data-act="lquit-no">계속</button>`:`<button class="ghost" data-act="lquit">그만두기</button>`}</div></header>`;
+  if(lt.done){document.getElementById('app').innerHTML=header+levelResultHTML(lt,okAI);return}
+  let body;
+  if(lt.err)body=`<div class="gen"><span class="err">${esc(lt.err)}</span><button class="ghost" data-act="lretry">다시 출제</button>${lt.mode==='ai'?'<button class="ghost" data-act="lbank">문제은행으로 계속</button>':''}</div>`;
+  else if(lt.loading||!ex)body=`<div class="lv-load"><span class="dot"></span><span>레벨 ${fmt(lt.curL)} (${esc(lvDesc(lt.curL))}) 문제를 ${lt.mode==='ai'?'출제하고':'고르고'} 있어요${lt.mode==='ai'&&lt.curL>=4?'. 높은 난이도는 1분 안팎 걸릴 수 있어요':''}</span></div>`;
+  else{
+    const h=lt.answered?lt.hist[lt.hist.length-1]:null;
+    body=`<ol class="qs one">${qHTML(ex.questions[lt.idx],lt.idx,ex)}</ol>`+(h
+      ?`<div class="lv-ctrl"><span style="font-weight:600;color:${h.ok?'var(--ok)':'var(--pen)'}">${h.ok?'맞혔어요. 레벨을 올려요.':h.gave?'모르는 문제라 레벨을 내려요.':'틀렸어요. 레벨을 내려요.'}</span><span class="note">범위 ${fmt(lt.lo)} ~ ${fmt(lt.hi)}</span><button class="btn sm" data-act="lnext">${lt.hist.length>=lt.total?'결과 보기':'다음 문제'}</button></div>`
+      :`<div class="lv-ctrl"><button class="btn red sm" data-act="lcheck">확인</button><button class="ghost" data-act="lgiveup">모르겠어요</button>${lt.need?'<span class="err">답을 고르거나 쓴 뒤 확인을 누르세요.</span>':''}</div>`);
+  }
+  const step=Math.min(lt.total,lt.hist.length+(lt.answered?0:1));
+  document.getElementById('app').innerHTML=header+`<div class="grid">
+   <article class="paper sheet">
+    <div class="sheet-head" style="text-align:left;padding-bottom:10px">
+      <div class="sheet-meta"><span>레벨 테스트 · ${lt.mode==='ai'?'AI 출제':'기본 문제은행'}</span><span style="font-variant-numeric:tabular-nums">${step} / ${lt.total}</span></div>
+      <h2 class="sheet-title" style="margin:6px 0 2px;font-size:24px;letter-spacing:.02em">지금 레벨 ${fmt(lt.curL)} · ${esc(lvDesc(lt.curL))}</h2>
+    </div>
+    ${meterHTML(lt)}
+    ${body}
+   </article>
+   <aside class="side">
+    <section class="paper card"><h3>진행 <span class="note">${lt.hist.length}/${lt.total}</span></h3>
+     ${lt.hist.length?`<ul class="lvlist">${lt.hist.map((h,k)=>`<li><span class="${h.ok?'ok':'no'}">${h.ok?'O':'X'}</span><span>${k+1}번 · ${esc(lvDesc(h.L))}</span><span class="lvv">${fmt(h.L)}</span></li>`).join('')}</ul>${chartHTML(lt)}`:'<p class="empty">문제를 풀면 여기에 기록돼요.</p>'}
+    </section>
+    <section class="paper card"><h3>이분 탐색</h3><p class="note" style="margin:0">맞히면 지금 레벨과 위쪽 끝의 가운데로, 틀리면 아래쪽 끝과의 가운데로 옮겨요. 범위가 반씩 줄고 마지막 범위의 가운데가 내 레벨이에요.</p></section>
+   </aside></div>`;
+  drawLines();
+}
+function levelResultHTML(lt,okAI){
+  const L=lt.final,rec=Math.min(DIFF.length,Math.max(1,Math.round(L))),okN=lt.hist.filter(h=>h.ok).length,wrongN=lt.total-okN;
+  return`<div class="grid"><article class="paper sheet">
+   <span class="eyebrow">레벨 테스트 결과</span>
+   <div style="display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap;margin-top:8px"><div class="lvbig">${lv1(L)}<small> / ${LVL_HI}</small></div>
+    <div style="min-width:0"><div style="font-family:var(--f-paper);font-size:22px;font-weight:700">${esc(lvDesc(L))}</div><div class="note">${esc(scopeLabel(lt.units))} · ${lt.total}문항 중 ${okN}문항 맞힘 · ${mmss(lt.end-lt.start)}</div></div></div>
+   ${meterHTML(lt)}
+   ${chartHTML(lt)}
+   <div class="lvrev">${lt.hist.map((h,k)=>{const tmp=newExam({submitted:true,noPick:true});tmp.questions[k]=h.q;tmp.answers[k]=h.a;tmp.ovr[k]=h.ok&&h.q.type==='fill'&&!fillOK(h.q,h.a);
+     return`<details><summary><span class="${h.ok?'ok':'no'}">${h.ok?'O':'X'}</span><span>${k+1}번 · 레벨 ${fmt(h.L)} (${esc(lvDesc(h.L))})${h.gave?' · 모르겠어요':''}</span></summary><ol class="qs one">${qHTML(h.q,k,tmp).replace(/data-act="ovr"/g,'data-act="noop" hidden')}</ol></details>`}).join('')}</div>
+  </article>
+  <aside class="side"><section class="paper res">
+   <h3 style="font-size:14px;margin-bottom:8px">다음 단계</h3>
+   <p class="note" style="margin:0 0 4px">내 레벨에 가장 가까운 난이도는 <b>${DIFF[rec-1].name}</b>이에요.</p>
+   <div class="res-actions">
+    <button class="btn sm" data-act="lexam" data-v="${rec}">${DIFF[rec-1].name} 난이도로 단원 시험 보기</button>
+    ${wrongN?`<button class="btn red sm" data-act="lsim" ${okAI?'':'disabled'}>틀린 ${wrongN}문항 유사 문항 · ${wrongN*2}문항</button>`:''}
+    ${okN?`<button class="ghost" data-act="ldeep" ${okAI?'':'disabled'}>맞힌 ${okN}문항 심화 유형</button>`:''}
+    <button class="ghost" data-act="lagain">레벨 테스트 다시 하기</button>
+    <button class="ghost" data-act="lhome">설정으로</button>
+   </div>${okAI?'':'<p class="note">유사 문항과 심화 유형은 AI가 필요해요.</p>'}</section></aside></div>`;
+}
+function levelSrc(lt,ok){return lt.hist.map((h,k)=>({q:h.q,n:k+1,a:h.a,g:h.ok?h.q.pts:0,ok:h.ok})).filter(s=>s.ok===ok)}
+
 /* ===================== 동작 ===================== */
-function newExam(o){return Object.assign({units:[],diff:2,count:10,types:[],mode:'bank',questions:[],answers:{},met:{},fb:{},aiGraded:{},ovr:{},start:0,end:0,submitted:false,grading:'',generating:false,notes:[]},o)}
+function keepScroll(){const y=window.scrollY;render();window.scrollTo(0,y)}
+function newExam(o){return Object.assign({subj:state.subject,units:[],diff:2,count:10,types:[],mode:'bank',questions:[],answers:{},met:{},fb:{},aiGraded:{},ovr:{},start:0,end:0,submitted:false,grading:'',generating:false,notes:[]},o)}
 function startExam(mode){
   const ids=state.sel.slice();state.err='';state.quitAsk=false;state.submitAsk=false;mSel=null;
   const lvs=new Set(ids.map(id=>U[id].lv));if(lvs.size>1){state.err='중학교와 고등학교 단원을 함께 고를 수 없어요. 한 학교급만 남겨 주세요.';return render()}
-  const ex=newExam({units:ids,diff:state.diff,count:state.count,types:state.types.slice(),mode});
+  const ex=newExam({units:ids,diff:state.diff,count:state.count,types:state.types.slice(),mode,limit:(state.tlimit||0)*60000});
   state.exam=ex;state.view='exam';
   if(mode==='ai'&&sample&&aiState!=='none'){render();window.scrollTo(0,0);genAI()}
   else{const r=buildBank(ids,state.diff,state.count,state.types);ex.questions=r.qs;ex.notes=r.notes;ex.count=r.qs.length||state.count;ex.mode='bank';ex.start=Date.now();
@@ -1254,7 +2249,7 @@ async function submitExam(){
 }
 function recordHistory(ex){
   const sc=scoreOf(ex);const d=new Date();
-  const entry={id:ex.id||(ex.id=Math.random().toString(36).slice(2)),scope:scopeLabel(ex.units),diff:DIFF[ex.diff-1].name,mode:ex.mode==='ai'?'AI':ex.mode==='retry'?'오답':'문제은행',pct:sc.pct,date:`${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`};
+  const entry={id:ex.id||(ex.id=Math.random().toString(36).slice(2)),subj:ex.subj||state.subject,scope:exScope(ex),diff:dName(ex.diff),mode:ex.mode==='ai'?'AI':ex.mode==='similar'?(ex.kind==='deep'?'심화':'유사'):ex.mode==='retry'?'오답':'문제은행',pct:sc.pct,date:`${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`};
   const k=history.findIndex(h=>h.id===entry.id);if(k>=0)history[k]=entry;else history.unshift(entry);saveHist();
 }
 function connect(i,l,d){
@@ -1288,7 +2283,9 @@ document.addEventListener('click',e=>{
      else mSel={q:i,side,k};
      refreshQ(i);document.querySelector(`#q-${i} [data-act="${a}"][data-k="${k}"]`)?.focus({preventScroll:true});state.submitAsk=false;refreshOMR();break}
    case'mclear':{const i=+t.dataset.q;ex.answers[i]={};mSel=null;refreshQ(i);refreshOMR();break}
-   case'ovr':{const i=+t.dataset.q;ex.ovr[i]=!ex.ovr[i];const y=window.scrollY;render();window.scrollTo(0,y);recordHistory(ex);break}
+   case'ovr':{if(!ex)break;const i=+t.dataset.q;ex.ovr[i]=!ex.ovr[i];
+     if(state.view==='level'){const lt=state.level,h=lt.hist[lt.hist.length-1];h.ok=fillOK(h.q,h.a)||!!ex.ovr[i];lt.lo=h.lo;lt.hi=h.hi;if(h.ok)lt.lo=h.L;else lt.hi=h.L;keepScroll();break}
+     const y=window.scrollY;render();window.scrollTo(0,y);recordHistory(ex);break}
    case'jump':{const i=t.dataset.q;const el=document.getElementById('ta-'+i)||document.getElementById('fi-'+i)||document.getElementById('mt-'+i)||document.getElementById('q-'+i);
      if(el){el.scrollIntoView({block:'center',behavior:'smooth'});if(el.focus&&(el.tagName==='TEXTAREA'||el.tagName==='INPUT'))el.focus({preventScroll:true})}break}
    case'submit':state.submitAsk=true;{const f=document.getElementById('omr-foot');if(f){f.innerHTML=footHTML(ex);if(window.innerWidth<=900)f.scrollIntoView({block:'center',behavior:'smooth'})}}break;
@@ -1296,13 +2293,61 @@ document.addEventListener('click',e=>{
    case'submit-yes':submitExam();break;
    case'stop':genCtl&&genCtl.abort();break;
    case'stopgrade':gradeCtl&&gradeCtl.abort();break;
-   case'retry':startExam('ai');break;
+   case'retry':ex&&ex.mode==='similar'?startSimilar(ex.sim):startExam('ai');break;
+   case'similar':startSimilar({src:wrongOf(ex),mult:+v,units:ex.units,diff:ex.diff,kind:'similar',lv:exLv(ex),title:ex.title});break;
+   case'selq':{const i=+t.dataset.q;ex.chosen=ex.chosen||{};ex.chosen[i]=!ex.chosen[i];keepScroll();document.querySelector(`#q-${i} .pickq`)?.focus({preventScroll:true});break}
+   case'selwrong':ex.chosen={};wrongOf(ex).forEach(w=>ex.chosen[w.n-1]=true);keepScroll();break;
+   case'selall':ex.chosen={};ex.questions.forEach((q,i)=>ex.chosen[i]=true);keepScroll();break;
+   case'selnone':ex.chosen={};keepScroll();break;
+   case'pickmult':state.pickMult=+v;keepScroll();break;
+   case'selgen':{const src=chosenOf(ex).map(i=>srcOf(ex,i));if(!src.length)break;
+     startSimilar({src,mult:state.pickMult,units:ex.units,diff:v==='deep'?(ex.diff?Math.min(DIFF.length,ex.diff+1):0):ex.diff,kind:v,lv:exLv(ex),title:ex.title});break}
+   case'subj':switchSubject(v);window.scrollTo(0,0);break;
+   case'tab':state.tab=v;state.err='';savePrefs();render();break;
+   case'pause':togglePause(ex);break;
+   case'tl':{if(v==='custom'){state.tcustom=true;if(!state.tlimit)state.tlimit=recMinutes()}else{state.tcustom=false;state.tlimit=v==='rec'?recMinutes():+v}savePrefs();keepScroll();if(v==='custom'){const i=document.getElementById('tl-custom');if(i){i.focus({preventScroll:true});i.select()}}break}
+   case'glv':state.gForm.lv=v;savePrefs();keepScroll();break;
+   case'gtype':{const gf=state.gForm;if(gf.pts===TYPES[gf.type].pts)gf.pts=TYPES[v].pts;gf.type=v;savePrefs();keepScroll();break}
+   case'gstart':runGrade();break;
+   case'gstop':gCtl&&gCtl.abort();break;
+   case'g2c':{const gf=state.gForm,f=cfDefault();f.stem=gf.stem;f.model=gf.model;f.rubric=gf.rubric;f.mineText=gf.mine;state.cForm=f;state.cSrcType=gf.type;state.cLv=gf.lv;state.cKind='similar';state.tab='custom';savePrefs();render();window.scrollTo(0,0);break}
+   case'lcount':state.lvlCount=+v;savePrefs();render();break;
+   case'lstart':startLevel();break;
+   case'lcheck':lvlAnswer(false);break;
+   case'lgiveup':lvlAnswer(true);break;
+   case'lnext':lvlNext();break;
+   case'lretry':{const lt=state.level;if(!lt)break;lvlRT.cur=makeSlot(lt.curL);showCurrent();break}
+   case'lbank':{const lt=state.level;if(!lt)break;lt.mode='bank';abortLevel();lvlRT.cur=makeSlot(lt.curL);showCurrent();break}
+   case'lquit':state.level.quitAsk=true;render();break;
+   case'lquit-no':state.level.quitAsk=false;render();break;
+   case'lquit-yes':case'lhome':abortLevel();state.level=null;state.exam=null;state.view='setup';render();window.scrollTo(0,0);break;
+   case'lagain':{const lt=state.level;state.sel=lt.units.slice();state.mode=lt.mode;startLevel();break}
+   case'lexam':{const lt=state.level;state.diff=+v;state.sel=lt.units.slice();state.tab='exam';state.level=null;state.exam=null;state.view='setup';savePrefs();render();window.scrollTo(0,0);break}
+   case'lsim':case'ldeep':{const lt=state.level,rec=Math.min(DIFF.length,Math.max(1,Math.round(lt.final))),deep=a==='ldeep';
+     startSimilar({src:levelSrc(lt,deep),mult:deep?1:2,units:lt.units,diff:deep?Math.min(DIFF.length,rec+1):rec,kind:deep?'deep':'similar',lv:U[lt.units[0]].lv});break}
+   case'clv':state.cLv=v;savePrefs();render();break;
+   case'ckind':state.cKind=v;savePrefs();render();break;
+   case'ccount':state.cCount=+v;savePrefs();render();break;
+   case'cdiff':state.cDiff=+v;savePrefs();render();break;
+   case'csrc':{const f=state.cForm,prev=state.cSrcType;state.cSrcType=v||'';
+     if(state.cSrcType==='box'&&f.choices.every(c=>!c.trim()))f.choices=BOXDEF.slice();
+     else if(prev==='box'&&state.cSrcType!=='box'&&f.choices.every((c,k)=>c===BOXDEF[k]))f.choices=['','','','',''];
+     savePrefs();keepScroll();break}
+   case'cfans':{const f=state.cForm;if(isMC(state.cSrcType))f.ansIdx=f.ansIdx===+v?null:+v;else{const b=v==='1';f.ansOx=f.ansOx===b?null:b}savePrefs();keepScroll();break}
+   case'cfmine':{const f=state.cForm;if(isMC(state.cSrcType))f.mineIdx=f.mineIdx===+v?null:+v;else{const b=v==='1';f.mineOx=f.mineOx===b?null:b}savePrefs();keepScroll();break}
+   case'cftable':state.cForm.table=v==='on'?[['','',''],['','',''],['','','']]:null;savePrefs();keepScroll();if(v==='on')document.getElementById('cf-table-0-0')?.focus({preventScroll:true});break;
+   case'cfadd':{const f=state.cForm;if(v==='box'&&f.box.length<5)f.box.push('');if(v==='pairs'&&f.pairs.length<6)f.pairs.push(['','']);
+     if(v==='row'&&f.table&&f.table.length<10)f.table.push(f.table[0].map(()=>''));if(v==='col'&&f.table&&f.table[0].length<8)f.table.forEach(r=>r.push(''));savePrefs();keepScroll();break}
+   case'cfdel':{const f=state.cForm;if(v==='box'&&f.box.length>2)f.box.pop();if(v==='pairs'&&f.pairs.length>2)f.pairs.pop();
+     if(v==='row'&&f.table&&f.table.length>2)f.table.pop();if(v==='col'&&f.table&&f.table[0].length>2)f.table.forEach(r=>r.pop());savePrefs();keepScroll();break}
+   case'ctype':{if(!v)state.cTypes=[];else state.cTypes=state.cTypes.includes(v)?state.cTypes.filter(x=>x!==v):[...state.cTypes,v];savePrefs();render();break}
+   case'cstart':{if(!cReady())break;startSimilar({src:[{text:cToText()}],count:state.cCount,mult:state.cCount,units:[],diff:state.cDiff,kind:state.cKind,lv:state.cLv,title:'입력한 문제',custom:true,ctypes:state.cTypes.slice(),srcType:state.cSrcType});break}
    case'tobank':startExam('bank');break;
    case'quit':state.quitAsk=true;renderExam();break;
    case'quit-no':state.quitAsk=false;renderExam();break;
    case'quit-yes':genCtl&&genCtl.abort();state.exam=null;state.view='setup';state.quitAsk=false;render();break;
    case'home':gradeCtl&&gradeCtl.abort();state.exam=null;state.view='setup';render();window.scrollTo(0,0);break;
-   case'again':startExam(ex.mode==='retry'?'bank':ex.mode);break;
+   case'again':ex.mode==='similar'?startSimilar(ex.sim):startExam(ex.mode==='retry'?'bank':ex.mode);break;
    case'retrywrong':{const qs=ex.questions.filter((q,i)=>AUTO(q.type)&&gradeQ(q,i,ex)<q.pts-1e-9).map(q=>{const c=Object.assign({},q);if(c.type==='match')c.rOrder=shuffle(c.left.map((x,k)=>k));return c});
      state.exam=newExam({units:ex.units,diff:ex.diff,count:qs.length,types:[...new Set(qs.map(q=>q.type))],mode:'retry',questions:qs,start:Date.now()});state.submitAsk=false;mSel=null;render();window.scrollTo(0,0);break}
   }
@@ -1315,21 +2360,23 @@ document.addEventListener('change',e=>{
     const y=window.scrollY;render();window.scrollTo(0,y);document.getElementById(`rb-${i}-${k}`)?.focus({preventScroll:true});recordHistory(ex)}
 });
 document.addEventListener('input',e=>{
-  const t=e.target;const act=t.dataset&&t.dataset.act;if(act!=='write'&&act!=='fill')return;
+  const t=e.target;const act=t.dataset&&t.dataset.act;
+  if(act==='gf'){const k=t.dataset.f;state.gForm[k]=k==='pts'?(Math.round(+t.value)||''):t.value;savePrefs();gUpdate();return}
+  if(act==='tlc'){const m=Math.round(+t.value);state.tlimit=m>=1&&m<=180?m:0;savePrefs();const d=document.getElementById('tl-desc');if(d)d.textContent=tlDesc(recMinutes());return}
+  if(act==='cf'){const path=t.dataset.f.split('.');let o=state.cForm;for(let k=0;k<path.length-1&&o;k++)o=o[path[k]];if(o){o[path[path.length-1]]=t.value;savePrefs();cUpdate()}return}
+  if(act!=='write'&&act!=='fill')return;
   const ex=state.exam;if(!ex||ex.submitted)return;const i=+t.dataset.q;ex.answers[i]=t.value;state.submitAsk=false;
   if(act==='write'){const c=document.getElementById('tc-'+i);if(c)c.textContent=t.value.length+'자'}
   const w=document.querySelector(`.wchip[data-q="${i}"]`);if(w)w.classList.toggle('f',!!t.value.trim());
   updateCounts();
 });
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.act==='fill'){e.preventDefault();const all=[...document.querySelectorAll('.fillin,.ta')];const k=all.indexOf(e.target);if(all[k+1])all[k+1].focus()}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.act==='fill'){e.preventDefault();if(state.view==='level'){lvlAnswer(false);return}const all=[...document.querySelectorAll('.fillin,.ta')];const k=all.indexOf(e.target);if(all[k+1])all[k+1].focus()}});
 
 /* hot update: keep an exam in progress */
 function boot(data){
-  if(data&&data.state){try{Object.assign(state,data.state);if(state.exam){state.exam=newExam(state.exam);if(state.exam.generating){state.exam.generating=false;state.exam.genNote='페이지가 업데이트되어 출제가 멈췄어요.'}if(state.exam.grading==='busy')state.exam.grading='self'}}catch(e){}}
+  if(data&&data.state){try{Object.assign(state,data.state);applySubject(state.subject||'sci');if(state.subject==='math')ensureMJ();if(state.exam){state.exam=newExam(state.exam);if(state.exam.generating){state.exam.generating=false;state.exam.genNote='페이지가 업데이트되어 출제가 멈췄어요.'}if(state.exam.grading==='busy')state.exam.grading='self'}if(state.view==='level'&&state.level&&!state.level.done){const lt=state.level;lvlRT={cur:null,pre:null};if(!state.exam||lt.loading){lt.loading=false;lt.err='페이지가 업데이트되어 문제를 다시 받아야 해요.'}}}catch(e){}}
   render();
 }
 try{window.claude?.hot?.snapshot?.(()=>({state:JSON.parse(JSON.stringify(state))}))}catch(e){}
 window.claude?.hot?.ready?window.claude.hot.ready(boot):boot(window.claude?.hot?.data??{});
 </script>
-
-</body></html>
