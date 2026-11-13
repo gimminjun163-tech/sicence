@@ -62,6 +62,7 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .seg button{border:0;background:none;padding:7px 16px;border-radius:7px;font-size:14px;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.12)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.trendrow{display:flex;flex-direction:column;gap:10px}.trendrow .chip:disabled{opacity:.4;cursor:not-allowed}.cf-sub{margin-top:16px;display:flex;flex-direction:column;gap:8px}
 .chip{border:1px solid var(--rule);background:none;border-radius:999px;padding:5px 13px;font-size:13.5px;display:inline-flex;gap:6px;align-items:center}
 .chip[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
 .chip .cnt{font-size:11.5px;background:var(--omr);color:#fff;border-radius:999px;padding:0 6px;font-weight:600}
@@ -1628,6 +1629,51 @@ function figRowHTML(){
    <p class="hint" style="margin:0">${state.figMode==='none'?'그림 없이 글과 표만으로 출제해요.':state.figMode==='need'?'도형·회로·실험 장치·그래프처럼 그림이 없으면 풀기 어려운 문제에만 AI가 그림을 그려 넣어요.':'그림이 꼭 필요한 문제와, 그림이 있으면 이해가 쉬워지는 문제에도 AI가 그림을 그려 넣어요.'} AI 출제에만 적용되고, 실제 사진 대신 그림으로 그려요.</p>
    ${state.figMode==='none'?'':`<label class="gq"><input type="checkbox" id="opt-graph" data-act="graphq" ${state.graphQ?'checked':''}><span><b>그래프 문제 꼭 넣기</b> 함수 그래프나 실험·관찰 자료 그래프(꺾은선·막대·점)를 읽고 푸는 문제를 전체의 3분의 1쯤 넣어요.</span></label>`}</div>`;
 }
+/* ---------- 출제 경향 ---------- */
+const TRENDS={
+ sci:[['text','교과서 기본형','교과서 본문·탐구 활동 그대로 묻는 문제','교과서 본문과 탐구 활동에 나온 내용과 표현을 중심으로, 교과서를 꼼꼼히 공부했는지 확인하는 정석적인 문제를 낸다.'],
+  ['concept','개념 이해','왜 그런지 원리를 묻는 문제','용어 암기보다 개념과 원리를 정확히 이해했는지 묻는다. "왜 그런가", "무엇이 달라지는가"를 판단하게 한다.'],
+  ['calc','계산·공식 적용','수치를 넣어 계산하는 문제','공식이나 관계식에 수치를 넣어 계산하는 문항의 비중을 높인다. 단위 변환, 비례 관계, 그래프에서 값 읽어 계산하기를 활용한다.'],
+  ['lab','실험·탐구 과정','실험 설계·변인·결과 해석','실험 장치와 과정, 조작 변인·통제 변인·종속 변인, 실험 결과 해석과 결론 도출, 실험 오류 찾기를 묻는 탐구형 문항의 비중을 높인다.'],
+  ['data','자료·그래프 해석','표·그래프를 읽고 추론','표, 그래프, 관찰 기록 같은 자료를 제시하고 그 자료를 해석하거나 추론해야 풀리는 문항의 비중을 높인다. 자료는 data 필드나 figure로 준다.'],
+  ['life','실생활·융합','생활 속 현상·다른 과목과 연결','일상생활, 기술, 환경, 건강 같은 실제 상황이나 다른 과목·단원과 연결된 맥락 속에서 과학 개념을 적용하게 한다.'],
+  ['trap','함정·오개념','헷갈리는 개념을 찌르는 문제','학생들이 자주 갖는 오개념과 헷갈리기 쉬운 개념 쌍을 일부러 건드리는 문항을 낸다. 오답 선택지는 그럴듯한 오개념으로 만든다.'],
+  ['naesin','학교 내신형','학교 중간·기말고사 스타일','실제 학교 정기고사(중간·기말) 스타일로 낸다. 교과서·학습지 기반의 정확한 지식, 〈보기〉형, 서술형 채점 요소가 분명한 문항을 쓴다.'],
+  ['suneung','수능·모의고사형','평가원·학력평가 스타일','수능·모의고사(학력평가) 과학탐구 스타일로 낸다. 자료 제시 후 〈보기〉 ㄱ·ㄴ·ㄷ 판단형, 여러 조건을 종합하는 추론형을 쓴다. 해당 학교급 수준에 맞춘다.'],
+  ['olym','경시·올림피아드형','깊은 사고력·창의 문제','과학 경시대회·올림피아드 스타일로, 교과 지식을 바탕으로 낯선 상황을 분석하는 깊은 사고력·창의력 문항을 낸다.']],
+ math:[['text','교과서 기본형','교과서 예제·유제 스타일','교과서 예제·유제와 같은 정석적인 유형으로, 개념과 공식을 바르게 적용하는지 확인한다.'],
+  ['concept','개념 이해','정의·성질의 뜻을 묻는 문제','계산보다 정의와 성질의 의미를 정확히 이해했는지 묻는다. 반례 찾기, 참·거짓 판단, 개념 설명형을 활용한다.'],
+  ['calc','계산 연습','정확하고 빠른 계산','계산 과정이 중심인 문항의 비중을 높여 정확한 계산 능력을 확인한다. 계산이 지나치게 지저분하지 않게 수치를 고른다.'],
+  ['reason','서술·추론','풀이 과정과 논리 전개','결과만이 아니라 풀이 과정과 논리적 근거를 요구하는 추론형 문항의 비중을 높인다. 조건을 분석해 단계적으로 결론을 이끌게 한다.'],
+  ['life','실생활 활용','생활 속 상황을 수학으로','실생활 상황(거리·시간·돈·비율·통계·설계 등)을 수학적으로 모델링해 해결하는 문항을 낸다.'],
+  ['geo','도형·그래프','그림과 그래프 중심','도형, 좌표, 그래프를 해석하거나 이용해야 풀리는 문항의 비중을 높인다. 필요한 그림은 figure로 넣는다.'],
+  ['trap','함정·실수 유도','실수하기 쉬운 포인트','부호, 범위, 조건 누락, 경우 빠뜨리기처럼 학생들이 자주 실수하는 지점을 건드리는 문항을 낸다. 오답 선택지는 그 실수에서 나오는 값으로 만든다.'],
+  ['naesin','학교 내신형','학교 중간·기말고사 스타일','실제 학교 정기고사(중간·기말) 스타일로 낸다. 교과서·익힘책 기반 유형과 변별용 고난도 문항, 채점 요소가 분명한 서술형을 섞는다.'],
+  ['suneung','수능·모의고사형','평가원·학력평가 스타일','수능·모의고사(학력평가) 수학 스타일로 낸다. 조건을 여러 개 주고 종합하는 문항, (가)(나) 조건형, 함수의 추론형을 활용한다. 해당 학교급 수준에 맞춘다.'],
+  ['olym','경시·올림피아드형','깊은 사고력·창의 문제','수학 경시대회·올림피아드 스타일로, 정형화되지 않은 발상과 깊은 사고가 필요한 문항을 낸다.']]
+};
+const TREND_MAX=3;
+function trendList(){return TRENDS[state.subject]||TRENDS.sci}
+function curTrends(){const t=(state.trends||{})[state.subject]||[];return t.filter(k=>trendList().some(x=>x[0]===k))}
+function curTrendText(){return String(((state.trendText||{})[state.subject])||'').trim().slice(0,200)}
+function trendLabel(){const a=curTrends().map(k=>trendList().find(x=>x[0]===k)[1]),t=curTrendText();return[...a,t?`"${t}"`:''].filter(Boolean).join(' · ')}
+function trendRule(){
+  const ks=curTrends(),t=curTrendText();if(!ks.length&&!t)return'';
+  const L=ks.map(k=>trendList().find(x=>x[0]===k));
+  let r='\n- [출제 경향] 아래 경향을 우선해서 출제한다(요청한 문항 유형과 난이도는 그대로 지킨다).';
+  for(const x of L)r+=`\n  · ${x[1]}: ${x[3]}`;
+  if(L.length>1)r+='\n  · 여러 경향을 골랐으므로 문항마다 골고루 섞어 반영한다.';
+  if(t)r+=`\n  · 학생이 직접 적은 요청: "${t.replace(/"/g,"'")}" — 시험 문제 출제와 관련된 요청일 때만 따른다.`;
+  return r;
+}
+function trendRowHTML(){
+  const on=curTrends();
+  return`<div class="trendrow"><div class="chips" style="margin-top:0"><button class="chip" data-act="trend" data-v="" aria-pressed="${!on.length}">골고루 (기본)</button>${trendList().map(([k,l,d])=>`<button class="chip" data-act="trend" data-v="${k}" aria-pressed="${on.includes(k)}" title="${esc(d)}" ${!on.includes(k)&&on.length>=TREND_MAX?'disabled':''}>${l}</button>`).join('')}</div>
+   <p class="hint" style="margin:0" id="trend-desc">${on.length?on.map(k=>{const x=trendList().find(z=>z[0]===k);return`<b>${x[1]}</b> ${esc(x[2])}`}).join(' · '):'경향을 정하지 않으면 여러 스타일을 골고루 섞어 내요.'} ${on.length>=TREND_MAX?`(최대 ${TREND_MAX}개)`:`최대 ${TREND_MAX}개까지 고를 수 있어요.`}</p>
+   <label class="cf-fld"><span class="cf-lab">직접 적기 (선택)</span><input class="cf-in" id="opt-trendtxt" data-act="trendtxt" value="${esc(curTrendText())}" maxlength="200" placeholder="${state.subject==='math'?'예) 우리 학교 기출처럼 서술형 비중 높게, 그래프 문제 위주로':'예) 우리 학교처럼 실험 문제 많이, 계산은 적게'}" autocomplete="off"></label>
+   <p class="hint" style="margin:0">AI 출제에만 적용돼요. 기본 문제은행은 경향과 상관없이 나와요.</p></div>`;
+}
+function trendStep(n){return`<div class="step"><div class="step-n">${n}</div><div class="step-body"><h3>출제 경향</h3>${trendRowHTML()}</div></div>`}
 function figStep(n){return`<div class="step"><div class="step-n">${n}</div><div class="step-body"><h3>그림 넣기</h3>${figRowHTML()}</div></div>`}
 function figRule(m,gq){
   if(!m||m==='none')return'\n- "figure" 필드는 쓰지 않는다. 그림 없이 글과 표만으로 풀 수 있게 낸다.';
@@ -1885,12 +1931,12 @@ function figHTML(f){if(!f)return'';let svg=f.plot?plotSVG(f.plot):f.chart?chartS
 
 /* ===================== 상태 ===================== */
 const LS='sciTest.v1';
-let state={subject:'sci',mem:{},view:'setup',lv:'m',grp:'중2',sel:['m2a','m2b'],diff:2,count:10,types:['ox','mc','fill','short'],mode:'ai',exam:null,quitAsk:false,submitAsk:false,err:'',tab:'exam',lvlCount:10,cForm:cfDefault(),gForm:gfDefault(),gRes:null,gBusy:false,gErr:'',tlimit:0,tcustom:false,cKind:'similar',cCount:5,cDiff:0,cLv:'m',cTypes:[],cSrcType:'',allowHints:false,figMode:'need',graphQ:false,pickMult:2,level:null};
+let state={subject:'sci',mem:{},trends:{sci:[],math:[]},trendText:{sci:'',math:''},view:'setup',lv:'m',grp:'중2',sel:['m2a','m2b'],diff:2,count:10,types:['ox','mc','fill','short'],mode:'ai',exam:null,quitAsk:false,submitAsk:false,err:'',tab:'exam',lvlCount:10,cForm:cfDefault(),gForm:gfDefault(),gRes:null,gBusy:false,gErr:'',tlimit:0,tcustom:false,cKind:'similar',cCount:5,cDiff:0,cLv:'m',cTypes:[],cSrcType:'',allowHints:false,figMode:'need',graphQ:false,pickMult:2,level:null};
 let history=[];
 try{history=JSON.parse(localStorage.getItem(LS+'.hist')||'[]')||[]}catch(e){history=[]}
-try{const p=JSON.parse(localStorage.getItem(LS+'.prefs')||'null');if(p&&p.subject==='math'){state.subject='math';applySubject('math')}if(p)Object.assign(state,{mem:p.mem&&typeof p.mem==='object'?p.mem:{},lv:['e','h'].includes(p.lv)?p.lv:'m',grp:p.grp||state.grp,sel:Array.isArray(p.sel)?p.sel.filter(id=>U[id]):state.sel,diff:p.diff||state.diff,count:p.count||state.count,types:Array.isArray(p.types)&&p.types.filter(t=>TYPES[t]).length?p.types.filter(t=>TYPES[t]):state.types,tab:['exam','level','custom','grade'].includes(p.tab)?p.tab:'exam',gForm:gfLoad(p.gForm),tlimit:p.tlimit>=0&&p.tlimit<=180?Math.round(p.tlimit):0,tcustom:!!p.tcustom,lvlCount:[7,10,15].includes(p.lvlCount)?p.lvlCount:10,cForm:cfLoad(p.cForm,p.cText),cKind:p.cKind==='deep'?'deep':'similar',cCount:[3,5,10].includes(p.cCount)?p.cCount:5,cDiff:p.cDiff>=0&&p.cDiff<=6?p.cDiff:0,cLv:['e','h'].includes(p.cLv)?p.cLv:'m',cTypes:Array.isArray(p.cTypes)?p.cTypes.filter(t=>TYPES[t]):[],cSrcType:TYPES[p.cSrcType]?p.cSrcType:'',allowHints:p.allowHints===true,figMode:['none','need','nice'].includes(p.figMode)?p.figMode:'need',graphQ:p.graphQ===true})}catch(e){}
+try{const p=JSON.parse(localStorage.getItem(LS+'.prefs')||'null');if(p&&p.subject==='math'){state.subject='math';applySubject('math')}if(p)Object.assign(state,{mem:p.mem&&typeof p.mem==='object'?p.mem:{},lv:['e','h'].includes(p.lv)?p.lv:'m',grp:p.grp||state.grp,sel:Array.isArray(p.sel)?p.sel.filter(id=>U[id]):state.sel,diff:p.diff||state.diff,count:p.count||state.count,types:Array.isArray(p.types)&&p.types.filter(t=>TYPES[t]).length?p.types.filter(t=>TYPES[t]):state.types,tab:['exam','level','custom','grade'].includes(p.tab)?p.tab:'exam',gForm:gfLoad(p.gForm),tlimit:p.tlimit>=0&&p.tlimit<=180?Math.round(p.tlimit):0,tcustom:!!p.tcustom,lvlCount:[7,10,15].includes(p.lvlCount)?p.lvlCount:10,cForm:cfLoad(p.cForm,p.cText),cKind:p.cKind==='deep'?'deep':'similar',cCount:[3,5,10].includes(p.cCount)?p.cCount:5,cDiff:p.cDiff>=0&&p.cDiff<=6?p.cDiff:0,cLv:['e','h'].includes(p.cLv)?p.cLv:'m',cTypes:Array.isArray(p.cTypes)?p.cTypes.filter(t=>TYPES[t]):[],cSrcType:TYPES[p.cSrcType]?p.cSrcType:'',allowHints:p.allowHints===true,figMode:['none','need','nice'].includes(p.figMode)?p.figMode:'need',graphQ:p.graphQ===true,trends:p.trends&&typeof p.trends==='object'?{sci:Array.isArray(p.trends.sci)?p.trends.sci.slice(0,3):[],math:Array.isArray(p.trends.math)?p.trends.math.slice(0,3):[]}:{sci:[],math:[]},trendText:p.trendText&&typeof p.trendText==='object'?{sci:String(p.trendText.sci||'').slice(0,200),math:String(p.trendText.math||'').slice(0,200)}:{sci:'',math:''}})}catch(e){}
 if(!GROUPS[state.lv].includes(state.grp))state.grp=GROUPS[state.lv][0];state.sel=state.sel.filter(id=>U[id]);if(state.diff>DIFF.length)state.diff=DIFF.length;if(state.subject==='math')ensureMJ();else{state.types=state.types.filter(t=>t!=='proof');if(!state.types.length)state.types=['mc'];state.cTypes=state.cTypes.filter(t=>t!=='proof');if(state.cSrcType==='proof')state.cSrcType=''}
-function savePrefs(){try{localStorage.setItem(LS+'.prefs',JSON.stringify({subject:state.subject,mem:state.mem,lv:state.lv,grp:state.grp,sel:state.sel,diff:state.diff,count:state.count,types:state.types,tab:state.tab,lvlCount:state.lvlCount,cForm:state.cForm,gForm:state.gForm,tlimit:state.tlimit,tcustom:state.tcustom,cKind:state.cKind,cCount:state.cCount,cDiff:state.cDiff,cLv:state.cLv,cTypes:state.cTypes,cSrcType:state.cSrcType,allowHints:state.allowHints,figMode:state.figMode,graphQ:state.graphQ}))}catch(e){}}
+function savePrefs(){try{localStorage.setItem(LS+'.prefs',JSON.stringify({subject:state.subject,mem:state.mem,lv:state.lv,grp:state.grp,sel:state.sel,diff:state.diff,count:state.count,types:state.types,tab:state.tab,lvlCount:state.lvlCount,cForm:state.cForm,gForm:state.gForm,tlimit:state.tlimit,tcustom:state.tcustom,cKind:state.cKind,cCount:state.cCount,cDiff:state.cDiff,cLv:state.cLv,cTypes:state.cTypes,cSrcType:state.cSrcType,allowHints:state.allowHints,figMode:state.figMode,graphQ:state.graphQ,trends:state.trends,trendText:state.trendText}))}catch(e){}}
 function saveHist(){try{localStorage.setItem(LS+'.hist',JSON.stringify(history.slice(0,30)))}catch(e){}}
 
 let sample=null, aiState='checking', genCtl=null, gradeCtl=null, timer=null;
@@ -2014,7 +2060,7 @@ ${units}
 [출력 형식] JSON Lines: 한 줄에 문항 하나씩 정확히 ${n}줄. 다른 문장, 번호, 코드 블록 표시는 쓰지 않는다. 문자열 안 줄바꿈은 \\n으로 쓴다.
 ${used.map(t=>FORMATS[t]).join('\n')}
 - 표가 필요하면 data에 "|항목|값1|값2|" 형태로 한 행씩 \\n으로 구분한다.
-${fmtRule()}${hintRule()}${elemRule(lv)}${figRule(fig,gq)}
+${fmtRule()}${hintRule()}${elemRule(lv)}${trendRule()}${figRule(fig,gq)}
 - unit은 위 출제 범위의 단원명 하나를 그대로 쓴다.`;
 }
 /* 수학 실마리 문구 "(단, ~을 이용해도 좋다)" */
@@ -2137,7 +2183,7 @@ ${srcTxt}
 [출력 형식] JSON Lines: 한 줄에 문항 하나씩 정확히 ${n}줄. 다른 문장, 번호, 코드 블록 표시는 쓰지 않는다. 문자열 안 줄바꿈은 \\n으로 쓴다.
 ${ex.custom?'':'모든 줄에 "from": 원래 문항 번호(숫자)를 넣는다.\n'}${used.map(t=>FORMATS[t]).join('\n')}
 - 표가 필요하면 data에 "|항목|값1|값2|" 형태로 한 행씩 \\n으로 구분한다.
-${fmtRule()}${hintRule()}${elemRule(lv)}${figRule(ex.fig,ex.graphQ)}
+${fmtRule()}${hintRule()}${elemRule(lv)}${trendRule()}${figRule(ex.fig,ex.graphQ)}
 - unit은 ${ex.custom?'문제가 속한 '+subjName()+' 단원명을 짧게 쓴다.':'원래 문항의 단원명을 그대로 쓴다.'}`;
 }
 function startSimilar(o){
@@ -2337,6 +2383,7 @@ function customSteps(aiOK){
    <div class="chips"><button class="chip" data-act="cdiff" data-v="0" aria-pressed="${state.cDiff===0}">난이도 자동</button>${DIFF.map((d,k)=>`<button class="chip" data-act="cdiff" data-v="${k+1}" aria-pressed="${state.cDiff===k+1}">${d.name}</button>`).join('')}</div>
    <p class="diff-desc">${state.cDiff?esc(DIFF[state.cDiff-1].desc):state.cKind==='deep'?'자동: 입력한 문제보다 한두 단계 어렵게 내요.':'자동: 입력한 문제와 같은 수준으로 내요.'}</p>
    ${figRowHTML()}
+   <div class="cf-sub"><span class="cf-lab">출제 경향</span>${trendRowHTML()}</div>
   </div></div>
   <div class="step"><div class="step-n">4</div><div class="step-body">
    <div class="go" style="margin-top:0"><button class="btn" data-act="cstart" ${ok?'':'disabled'}>문제 만들기</button><span class="note" id="c-note">${cNote(aiOK,cReady())}</span></div>
@@ -2475,18 +2522,18 @@ function renderSetup(){
     <div class="step"><div class="step-n">2</div><div class="step-body"><h3>난이도</h3>
       <div class="diffs">${DIFF.map((x,i)=>`<button class="diff" data-act="diff" data-v="${i+1}" aria-pressed="${state.diff===i+1}"><b>${x.name}</b><span>${x.short}</span><i>${DIFF.map((z,k)=>`<em class="${k<=i?'f':''}"></em>`).join('')}</i></button>`).join('')}</div>
       <p class="diff-desc">${esc(D.desc)}${state.lv==='e'?' (초등에서는 같은 단계를 초등 수준에 맞게 바꿔서 내요. 예: 최상위권=초등 최상위 심화, 경시=초등 경시대회·영재교육원 수준)':''}</p>
-    </div></div>
-    <div class="step"><div class="step-n">3</div><div class="step-body"><h3>문항 유형과 수</h3>
+    </div></div>`+trendStep(3)+`
+    <div class="step"><div class="step-n">4</div><div class="step-body"><h3>문항 유형과 수</h3>
       <p class="hint">여러 유형을 고르면 섞어서 내요.</p>
       <div class="types">${typeList().map(k=>{const t=TYPES[k],on=state.types.includes(k);return`<label class="type${on?' on':''}"><input type="checkbox" id="t-${k}" data-act="type" data-v="${k}" ${on?'checked':''}><span><b>${t.name} <span class="pts">${t.pts}점</span></b><small>${t.sub}</small></span></label>`}).join('')}</div>
       <div style="margin-top:12px" class="seg">${[5,10,15,20].map(n=>`<button data-act="count" data-v="${n}" aria-pressed="${state.count===n}">${n}문항</button>`).join('')}</div>
       <p class="mix">${state.types.length?`구성: ${ORDER.filter(k=>want[k]).map(k=>`${TYPES[k].name} ${want[k]}`).join(' · ')} · 원점수 ${ORDER.reduce((s,k)=>s+(want[k]||0)*TYPES[k].pts,0)}점을 100점으로 환산`:'유형을 하나 이상 고르세요.'}</p>
-    </div></div>`+timeStep(4)+figStep(5)+modeStep(6,'start','시험지 받기',state.mode==='ai'&&state.diff>=4?'최상위권·극심화는 깊이 생각한 뒤 출제해서 첫 문항까지 1분 안팎 걸릴 수 있어요.':'');
+    </div></div>`+timeStep(5)+figStep(6)+modeStep(7,'start','시험지 받기',state.mode==='ai'&&state.diff>=4?'최상위권·극심화는 깊이 생각한 뒤 출제해서 첫 문항까지 1분 안팎 걸릴 수 있어요.':'');
   else if(tab==='level')steps=stepScope(1)+`
     <div class="step"><div class="step-n">2</div><div class="step-body"><h3>문항 수</h3>
       <div class="seg">${[7,10,15].map(n=>`<button data-act="lcount" data-v="${n}" aria-pressed="${state.lvlCount===n}">${n}문항</button>`).join('')}</div>
       <p class="diff-desc">첫 문제는 가운데인 레벨 3.5(어려움과 최상위권 사이)에서 시작해요. 맞히면 지금 레벨과 위쪽 끝의 가운데로, 틀리면 아래쪽 끝과의 가운데로 옮겨 가는 이분 탐색이에요. 범위가 문제마다 반으로 줄고, 마지막에 남은 범위의 가운데가 내 레벨이에요. 모르는 문제는 찍지 말고 '모르겠어요'를 누르면 결과가 더 정확해요.</p>
-    </div></div>`+figStep(3)+modeStep(4,'lstart','레벨 테스트 시작','');
+    </div></div>`+trendStep(3)+figStep(4)+modeStep(5,'lstart','레벨 테스트 시작','');
   else if(tab==='custom')steps=customSteps(aiOK);
   else steps=gradeSteps(aiOK)+gResultHTML();
   document.getElementById('app').innerHTML=`
@@ -2607,7 +2654,7 @@ function renderExam(){
       <div class="sheet-meta"><span>${now.getFullYear()}학년도</span><span>${LVN[lv]} ${subjName()}</span></div>
       <h2 class="sheet-title">${subjName()} 단원평가</h2>
       <div class="info-scroll"><table class="sheet-info"><tr><th>범위</th><td>${esc(exScopeFull(ex))}</td></tr>
-       <tr><th>난이도</th><td>${esc(dName(ex.diff))} · ${ex.mode==='ai'?'AI 출제':ex.mode==='similar'?simLabel(ex):ex.mode==='retry'?'틀린 문제 다시 풀기':'기본 문제은행'} · ${ex.questions.length||ex.count}문항 · ${ex.submitted?`걸린 시간 ${mmss(elapsed(ex))}${ex.limit?` / 제한 ${Math.round(ex.limit/60000)}분`:''}`:`<span id="clock">${clockText(ex)}</span>${ex.limit?` (제한 ${Math.round(ex.limit/60000)}분)`:''}`}</td></tr></table></div>
+       ${ex.trend&&ex.mode==='ai'?`<tr><th>경향</th><td>${esc(ex.trend)}</td></tr>`:''}<tr><th>난이도</th><td>${esc(dName(ex.diff))} · ${ex.mode==='ai'?'AI 출제':ex.mode==='similar'?simLabel(ex):ex.mode==='retry'?'틀린 문제 다시 풀기':'기본 문제은행'} · ${ex.questions.length||ex.count}문항 · ${ex.submitted?`걸린 시간 ${mmss(elapsed(ex))}${ex.limit?` / 제한 ${Math.round(ex.limit/60000)}분`:''}`:`<span id="clock">${clockText(ex)}</span>${ex.limit?` (제한 ${Math.round(ex.limit/60000)}분)`:''}`}</td></tr></table></div>
       ${sc&&ex.grading!=='busy'?`<div class="score-pen">${sc.pct}<small>점</small></div>`:''}
     </div>
     ${genHTML(ex)}
@@ -2695,7 +2742,7 @@ function lvlPrompt(L,unitId,avoid){
 ${FORMATS.mc}
 ${FORMATS.box}
 ${FORMATS.fill}
-${fmtRule()}${hintRule()}${elemRule(u.lv)}${figRule(state.level&&state.level.fig,state.level&&state.level.graphQ)}
+${fmtRule()}${hintRule()}${elemRule(u.lv)}${trendRule()}${figRule(state.level&&state.level.fig,state.level&&state.level.graphQ)}
 - unit은 "${u.grp} ${u.name}"으로 쓴다.`;
 }
 function lvlBank(L,units,used){
@@ -2725,7 +2772,7 @@ function makeSlot(L){
 function abortLevel(){try{lvlRT.cur&&lvlRT.cur.ctl.abort()}catch(e){}try{if(lvlRT.pre){lvlRT.pre.up.ctl.abort();lvlRT.pre.down.ctl.abort()}}catch(e){}lvlRT={cur:null,pre:null}}
 function startLevel(){
   const ids=state.sel.slice();state.err='';if(!ids.length)return;
-  if(new Set(ids.map(id=>U[id].lv)).size>1){state.err='중학교와 고등학교 단원을 함께 고를 수 없어요. 한 학교급만 남겨 주세요.';return render()}
+  if(new Set(ids.map(id=>U[id].lv)).size>1){state.err='서로 다른 학교급의 단원을 함께 고를 수 없어요. 한 학교급만 남겨 주세요.';return render()}
   abortLevel();
   const mode=state.mode==='ai'&&sample&&aiState!=='none'?'ai':'bank';
   state.level={fig:state.figMode,graphQ:state.graphQ,units:ids,mode,total:state.lvlCount,lo:LVL_LO,hi:LVL_HI,curL:(LVL_LO+LVL_HI)/2,hist:[],used:[],idx:0,curQ:null,answered:false,done:false,start:Date.now(),quitAsk:false,need:false,err:'',loading:true};
@@ -2847,8 +2894,8 @@ function keepScroll(){const y=window.scrollY;render();window.scrollTo(0,y)}
 function newExam(o){return Object.assign({subj:state.subject,units:[],diff:2,count:10,types:[],mode:'bank',questions:[],answers:{},met:{},fb:{},aiGraded:{},ovr:{},start:0,end:0,submitted:false,grading:'',generating:false,notes:[]},o)}
 function startExam(mode){
   const ids=state.sel.slice();state.err='';state.quitAsk=false;state.submitAsk=false;mSel=null;
-  const lvs=new Set(ids.map(id=>U[id].lv));if(lvs.size>1){state.err='중학교와 고등학교 단원을 함께 고를 수 없어요. 한 학교급만 남겨 주세요.';return render()}
-  const ex=newExam({fig:state.figMode,graphQ:state.graphQ,units:ids,diff:state.diff,count:state.count,types:state.types.slice(),mode,limit:(state.tlimit||0)*60000});
+  const lvs=new Set(ids.map(id=>U[id].lv));if(lvs.size>1){state.err='서로 다른 학교급의 단원을 함께 고를 수 없어요. 한 학교급만 남겨 주세요.';return render()}
+  const ex=newExam({trend:mode==='ai'?trendLabel():'',fig:state.figMode,graphQ:state.graphQ,units:ids,diff:state.diff,count:state.count,types:state.types.slice(),mode,limit:(state.tlimit||0)*60000});
   state.exam=ex;state.view='exam';
   if(mode==='ai'&&sample&&aiState!=='none'){render();window.scrollTo(0,0);genAI()}
   else{const r=buildBank(ids,state.diff,state.count,state.types);ex.questions=r.qs;ex.notes=r.notes;ex.count=r.qs.length||state.count;ex.mode='bank';ex.start=Date.now();
@@ -2917,6 +2964,7 @@ document.addEventListener('click',e=>{
      startSimilar({src,mult:state.pickMult,units:ex.units,diff:v==='deep'?(ex.diff?Math.min(DIFF.length,ex.diff+1):0):ex.diff,kind:v,lv:exLv(ex),title:ex.title});break}
    case'subj':switchSubject(v);window.scrollTo(0,0);break;
    case'fig':state.figMode=v;savePrefs();keepScroll();break;
+   case'trend':{state.trends=state.trends||{sci:[],math:[]};let a=curTrends();if(!v)a=[];else if(a.includes(v))a=a.filter(x=>x!==v);else if(a.length<TREND_MAX)a=[...a,v];state.trends[state.subject]=a;savePrefs();keepScroll();document.querySelector(`[data-act="trend"][data-v="${v}"]`)?.focus({preventScroll:true});break}
    case'cgraph':state.cForm.graph=v==='on'?cfGraphDefault():null;savePrefs();keepScroll();if(v==='on')document.getElementById('cf-graph-fns-0')?.focus({preventScroll:true});break;
    case'gtool':{cgTool=v;cgSel=null;if(cgTool==='pt'&&state.cForm.graph&&state.cForm.graph.kind!=='fn')cgTool='seg';refreshDrawBar();const gp=document.getElementById('cf-gprev');if(gp){gp.classList.toggle('erasing',cgTool==='erase');gp.innerHTML=gPrevHTML()}break}
    case'gdash':cgDash=v==='1';refreshDrawBar();break;
@@ -2991,6 +3039,7 @@ document.addEventListener('change',e=>{
 });
 document.addEventListener('input',e=>{
   const t=e.target;const act=t.dataset&&t.dataset.act;
+  if(act==='trendtxt'){state.trendText=state.trendText||{sci:'',math:''};state.trendText[state.subject]=t.value.slice(0,200);savePrefs();return}
   if(act==='gf'){const k=t.dataset.f;state.gForm[k]=k==='pts'?(Math.round(+t.value)||''):t.value;savePrefs();gUpdate();return}
   if(act==='tlc'){const m=Math.round(+t.value);state.tlimit=m>=1&&m<=180?m:0;savePrefs();const d=document.getElementById('tl-desc');if(d)d.textContent=tlDesc(recMinutes());return}
   if(act==='cf'){const path=t.dataset.f.split('.');let o=state.cForm;for(let k=0;k<path.length-1&&o;k++)o=o[path[k]];if(o){o[path[path.length-1]]=t.value;savePrefs();cUpdate()}return}
